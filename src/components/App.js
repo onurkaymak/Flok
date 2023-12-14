@@ -1,9 +1,12 @@
-import './App.css';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
+
   return (
     <div className="App">
-      <h1>It works!</h1>
+
     </div>
   );
 }
