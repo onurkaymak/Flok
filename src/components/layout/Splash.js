@@ -20,8 +20,8 @@ const Splash = () => {
             <a href="/#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
-                className="h-8 w-auto"
-                src="https://i.ibb.co/DtjF1mc/flok2.png"
+                className="h-9 w-auto"
+                src="https://i.ibb.co/4WCggVY/flok2.png"
                 alt=""
               />
             </a>
@@ -45,12 +45,12 @@ const Splash = () => {
                 {item.name}
               </a>
             ))}
-          </div> */}
+          </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </a>
-          </div>
+          </div> */}
         </nav>
 
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -124,7 +124,7 @@ const Splash = () => {
             <div className="flex items-center justify-center">
               <img
                 className="h-22 w-auto"
-                src="https://i.ibb.co/yPnrDQp/flok1.png"
+                src="https://i.ibb.co/rcpT5Xb/flok1.png"
                 alt=""
               />
             </div>
@@ -133,12 +133,12 @@ const Splash = () => {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="/#"
+                href="/profile"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Get started
+                Login / Sign Up
               </a>
-              <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
+              <a target='_blank' href="https://github.com/onurkaymak/Flok" className="text-sm font-semibold leading-6 text-gray-900" rel="noreferrer">
                 Learn more <span aria-hidden="true">→</span>
               </a>
             </div>
