@@ -5,12 +5,13 @@ import SignUpForm from "../auth/SignUpForm";
 const Auth = () => {
   const [authForm, setAuthForm] = useState(false);
 
-  const buttonHandler = () => {
-    setAuthForm(true);
+  const showAuthFormHandler = () => {
+    setAuthForm(prevState => !prevState);
+    console.log("it changed")
   };
 
   return (
-    (!authForm) ? <SignInForm onCreateAccount={buttonHandler} /> : <SignUpForm />
+    (!authForm) ? <SignInForm onCreateAccountButton={showAuthFormHandler} /> : <SignUpForm onCreateAccount={showAuthFormHandler} />
   )
 };
 

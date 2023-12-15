@@ -79,7 +79,7 @@ const SignInForm = (props) => {
               </button>
 
               <div className="mt-6 text-center">
-                <button type='button' className="font-semibold text-indigo-600 hover:text-indigo-500" onClick={() => props.onCreateAccount()}>
+                <button type='button' className="font-semibold text-indigo-600 hover:text-indigo-500" onClick={() => props.onCreateAccountButton()}>
                   Create an account
                 </button>
               </div>

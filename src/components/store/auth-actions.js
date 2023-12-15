@@ -16,7 +16,7 @@ export const createUser = (userInfo) => {
           "employeeRole": selectedRole
         });
 
-      console.log(response);
+      console.log("Account created");
     }
     catch (err) {
       console.log(err);

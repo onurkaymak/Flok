@@ -1,5 +1,6 @@
 import { useState, Fragment, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { Listbox, Transition } from '@headlessui/react';
@@ -35,8 +36,9 @@ const people = [
 ]
 
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [selected, setSelected] = useState(people[0]);
 
@@ -59,7 +61,8 @@ const SignUpForm = () => {
       selectedRole
     }
 
-    dispatch(createUser(userInfo))
+    dispatch(createUser(userInfo));
+    props.onCreateAccount();
 
   };
 
