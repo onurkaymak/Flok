@@ -24,3 +24,26 @@ export const createUser = (userInfo) => {
 
   }
 }
+
+
+export const SignInUser = (userInfo) => {
+  return async (dispatch) => {
+
+    const { enteredEmail, enteredPassword } = userInfo;
+
+    try {
+      const response = await axios.post("http://localhost:5000/accounts/signIn",
+        {
+          "email": enteredEmail,
+          "password": enteredPassword
+        });
+
+      console.log(response);
+    }
+    catch (error) {
+      console.log(error);
+    }
+
+
+  }
+}
