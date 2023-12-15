@@ -1,8 +1,12 @@
-import ControlPanel from "../layout/ControlPanel";
+import ProfileNavbar from "../layout/ProfileNavbar";
+
 
 const Profile = () => {
   return (
-    <ControlPanel />
+    <div>
+      <ProfileNavbar />
+    </div>
+
   )
 
 };
