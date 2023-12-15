@@ -1,12 +1,16 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { SignInUser } from '../store/auth-actions';
+import { useNavigate } from 'react-router';
 import './SignInForm.css';
 
 const SignInForm = (props) => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -20,6 +24,7 @@ const SignInForm = (props) => {
     }
 
     dispatch(SignInUser(userInfo));
+    navigate('/profile', { replace: true });
   };
 
   return (
