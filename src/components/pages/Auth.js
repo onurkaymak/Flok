@@ -1,6 +1,16 @@
+import { useState } from "react";
+import SignInForm from "../auth/SignInForm";
+import SignUpForm from "../auth/SignUpForm";
+
 const Auth = () => {
+  const [authForm, setAuthForm] = useState(false);
+
+  const buttonHandler = () => {
+    setAuthForm(true);
+  };
+
   return (
-    <h1>AUTH PAGE</h1>
+    (!authForm) ? <SignInForm onCreateAccount={buttonHandler} /> : <SignUpForm />
   )
 };
 
