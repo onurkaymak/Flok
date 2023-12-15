@@ -1,7 +1,11 @@
-import { useState, Fragment, useRef } from 'react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { Listbox, Transition } from '@headlessui/react'
+import { useState, Fragment, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import { Listbox, Transition } from '@headlessui/react';
 import './SignInForm.css';
+
+import { createUser } from '../store/auth-actions';
 
 
 
@@ -32,6 +36,8 @@ const people = [
 
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+
   const [selected, setSelected] = useState(people[0]);
 
   const nameInputRef = useRef();
@@ -46,7 +52,14 @@ const SignUpForm = () => {
     const enteredPass = passInputRef.current.value;
     const selectedRole = selected.name;
 
+    const userInfo = {
+      enteredName,
+      enteredEmail,
+      enteredPass,
+      selectedRole
+    }
 
+    dispatch(createUser(userInfo))
 
   };
 

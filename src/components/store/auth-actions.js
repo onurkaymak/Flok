@@ -5,9 +5,9 @@ import axios from 'axios';
 export const createUser = (userInfo) => {
   return async (dispatch) => {
 
-    const { name, email, password, employeeRole } = userInfo;
+    const { enteredName, enteredEmail, enteredPass, selectedRole } = userInfo;
 
-    console.log(`${name} ${email} ${password} ${employeeRole}`);
+    console.log(`${enteredName} ${enteredEmail} ${enteredPass} ${selectedRole}`);
 
   }
 }
