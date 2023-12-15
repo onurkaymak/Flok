@@ -1,6 +1,8 @@
+import ControlPanel from "../layout/ControlPanel";
+
 const Profile = () => {
   return (
-    <h1>PROFILE PAGE</h1>
+    <ControlPanel />
   )
 
 };
