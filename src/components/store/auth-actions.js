@@ -1,4 +1,5 @@
 import { userActions } from "./user-slice";
+import { jwtDecode } from "jwt-decode";
 
 import axios from 'axios';
 
@@ -43,10 +44,14 @@ export const SignInUser = (userInfo) => {
       const userRole = response.data.userRole;
       const token = response.data.token;
 
+      const decodedToken = jwtDecode(token)
+      const tokenExpTime = decodedToken.exp;
+
       localStorage.setItem('userData', JSON.stringify({
         userId,
         userName,
         token,
+        tokenExpTime
       }));
 
       dispatch(userActions.login({ userId, token, userRole }));
