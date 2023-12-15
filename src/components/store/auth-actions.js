@@ -40,6 +40,7 @@ export const SignInUser = (userInfo) => {
 
       const userId = response.data.userId;
       const userName = response.data.userName;
+      const userRole = response.data.userRole;
       const token = response.data.token;
 
       localStorage.setItem('userData', JSON.stringify({
@@ -48,7 +49,7 @@ export const SignInUser = (userInfo) => {
         token,
       }));
 
-      dispatch(userActions.login({ userId, token }));
+      dispatch(userActions.login({ userId, token, userRole }));
       dispatch(userActions.setIsLoggedIn(true));
     }
     catch (error) {
