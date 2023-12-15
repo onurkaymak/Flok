@@ -7,7 +7,20 @@ export const createUser = (userInfo) => {
 
     const { enteredName, enteredEmail, enteredPass, selectedRole } = userInfo;
 
-    console.log(`${enteredName} ${enteredEmail} ${enteredPass} ${selectedRole}`);
+    try {
+      const response = await axios.post("http://localhost:5000/accounts/register",
+        {
+          "email": enteredEmail,
+          "userName": enteredName,
+          "password": enteredPass,
+          "employeeRole": selectedRole
+        });
+
+      console.log(response);
+    }
+    catch (err) {
+      console.log(err);
+    }
 
   }
 }
