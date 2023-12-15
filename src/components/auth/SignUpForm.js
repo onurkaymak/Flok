@@ -1,6 +1,6 @@
-import { useState, Fragment } from 'react'
-import { ChevronDownIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { Switch, Listbox, Transition } from '@headlessui/react'
+import { useState, Fragment, useRef } from 'react'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { Listbox, Transition } from '@headlessui/react'
 import './SignInForm.css';
 
 
@@ -34,10 +34,20 @@ const people = [
 const SignUpForm = () => {
   const [selected, setSelected] = useState(people[0]);
 
+  const nameInputRef = useRef();
+  const emailInputRef = useRef();
+  const passInputRef = useRef();
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log("here")
+    const enteredName = nameInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPass = passInputRef.current.value;
+    const selectedRole = selected.name;
+
+
+
   };
 
 
@@ -75,6 +85,7 @@ const SignUpForm = () => {
                 required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
+                ref={nameInputRef}
               />
               <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 Please enter a valid email address
@@ -94,6 +105,7 @@ const SignUpForm = () => {
                 id="email"
                 autoComplete="off"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
+                ref={emailInputRef}
               />
             </div>
           </div>
@@ -111,6 +123,7 @@ const SignUpForm = () => {
                 required
                 pattern=".{6,}"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
+                ref={passInputRef}
               />
             </div>
           </div>
