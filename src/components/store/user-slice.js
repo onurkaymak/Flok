@@ -5,6 +5,7 @@ const userSlice = createSlice({
   initialState: {
     userId: null,
     token: null,
+    tokenExpTime: null,
     isLoggedIn: false,
     userRole: null
   },
@@ -12,6 +13,7 @@ const userSlice = createSlice({
     login(state, action) {
       state.userId = action.payload.userId;
       state.token = action.payload.token;
+      state.tokenExpTime = action.payload.token;
       state.userRole = action.payload.userRole;
     },
     logout(state) {
