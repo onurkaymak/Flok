@@ -12,6 +12,7 @@ const userSlice = createSlice({
     login(state, action) {
       state.userId = action.payload.userId;
       state.token = action.payload.token;
+      state.userRole = action.payload.userRole;
     },
     logout(state) {
       state.userId = null;
