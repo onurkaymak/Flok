@@ -38,7 +38,18 @@ export const SignInUser = (userInfo) => {
           "password": enteredPassword
         });
 
-      console.log(response);
+      const userId = response.data.userId;
+      const userName = response.data.userName;
+      const token = response.data.token;
+
+      localStorage.setItem('userData', JSON.stringify({
+        userId,
+        userName,
+        token,
+      }));
+
+      dispatch(userActions.login({ userId, token }));
+      dispatch(userActions.setIsLoggedIn(true));
     }
     catch (error) {
       console.log(error);
