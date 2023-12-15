@@ -1,10 +1,26 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { SignInUser } from '../store/auth-actions';
 import './SignInForm.css';
 
 const SignInForm = (props) => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const dispatch = useDispatch();
 
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    const userInfo = {
+      enteredEmail,
+      enteredPassword
+    }
+
+    dispatch(SignInUser(userInfo));
+  };
 
   return (
     <div className="container">
@@ -36,7 +52,7 @@ const SignInForm = (props) => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={formSubmitHandler} noValidate autoComplete='off'>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -46,7 +62,7 @@ const SignInForm = (props) => {
                   id="email"
                   name="email"
                   type="email"
-                  autoComplete="email"
+                  autoComplete="off"
                   required
                   ref={emailInputRef}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -67,7 +83,7 @@ const SignInForm = (props) => {
                   id="password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
+                  autoComplete="off"
                   required
                   ref={passwordInputRef}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
