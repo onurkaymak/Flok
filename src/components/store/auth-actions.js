@@ -51,7 +51,8 @@ export const SignInUser = (userInfo) => {
         userId,
         userName,
         token,
-        tokenExpTime
+        tokenExpTime,
+        userRole
       }));
 
       dispatch(userActions.login({ userId, token, userRole }));
@@ -60,6 +61,18 @@ export const SignInUser = (userInfo) => {
     catch (error) {
       console.log(error);
     }
+
+
+  }
+}
+
+
+export const logOutUser = () => {
+  return async (dispatch) => {
+    dispatch(userActions.logout())
+    dispatch(userActions.setIsLoggedIn(false));
+    localStorage.removeItem('userData');
+
 
 
   }
