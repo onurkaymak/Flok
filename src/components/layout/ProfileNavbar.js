@@ -15,7 +15,25 @@ function classNames(...classes) {
 }
 
 const ProfileNavbar = () => {
+  const [profileIcon, setProfileIcon] = useState(null);
+  const userRole = useSelector(state => state.user.userRole);
 
+
+  useEffect(() => {
+    switch (userRole) {
+      case 'AUTO DETAILER':
+        setProfileIcon("https://i.ibb.co/J2t8rb4/cleaning.png");
+        break;
+      case 'CUSTOMER SERVICE AGENT':
+        setProfileIcon("https://i.ibb.co/34bsw2G/car-rent.png");
+        break;
+      case 'MANAGER':
+        setProfileIcon("https://i.ibb.co/n7zmdJB/project-management.png");
+        break;
+      default:
+        setProfileIcon(null);
+    }
+  }, [userRole]);
 
 
   return (
