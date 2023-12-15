@@ -4,7 +4,7 @@ const SignInForm = (props) => {
 
 
   return (
-    <div className="test">
+    <div className="container">
 
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
