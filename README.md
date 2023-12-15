@@ -86,6 +86,16 @@
 
 ------------------------------
 
+## Research & Planning Log
+
+### Fri, 12/15/2023
+
+```
+* 02:27 PM - Searching on Stack Overflow about how to check if JWT is valid or not before sending a request. (https://stackoverflow.com/questions/46418975/react-how-to-check-if-jwt-is-valid-before-sending-a-post-request)
+```
+
+------------------------------
+
 ### ✉️ Contact and Support
 
 If you have any feedback or concerns, please contact one of the contributors.
