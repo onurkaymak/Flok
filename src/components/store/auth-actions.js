@@ -7,6 +7,7 @@ export const createUser = (userInfo) => {
 
     const { name, email, password, employeeRole } = userInfo;
 
+    console.log(`${name} ${email} ${password} ${employeeRole}`);
 
   }
 }
