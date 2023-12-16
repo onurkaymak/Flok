@@ -1,7 +1,8 @@
 import { Fragment, useState, useEffect } from 'react';
-import { useSelector, } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { logOutUser } from '../store/auth-actions';
 
 const navigation = [
   { name: 'Fleet', href: '#', current: true },
@@ -16,6 +17,7 @@ function classNames(...classes) {
 const ProfileNavbar = (props) => {
   const [profileIcon, setProfileIcon] = useState(null);
   const userRole = useSelector(state => state.user.userRole);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     switch (userRole) {
@@ -35,7 +37,7 @@ const ProfileNavbar = (props) => {
 
   const signOutButtonHandler = (event) => {
     event.preventDefault();
-    console.log("Button clicked!");
+    dispatch(logOutUser());
   };
 
   return (

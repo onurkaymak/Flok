@@ -29,7 +29,6 @@ const App = () => {
   const logOutHandler = useCallback(() => {
     dispatch(logOutUser());
     clearTimeout(logoutTimer);
-    console.log('logOutHandler runs')
   }, [dispatch]);
 
   useEffect(() => {

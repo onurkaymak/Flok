@@ -70,8 +70,6 @@ export const logOutUser = () => {
     dispatch(userActions.setIsLoggedIn(false));
     localStorage.removeItem('userData');
 
-    console.log('logOutUser triggered.');
-
     if (logoutTimer) {
       clearTimeout(logoutTimer)
     }
