@@ -1,7 +1,7 @@
 import { userActions } from "./user-slice";
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
-import { logoutTimer } from "../layout/ProfileNavbar";
+import { logoutTimer } from "../App";
 
 export const createUser = (userInfo) => {
   return async (dispatch) => {
@@ -43,20 +43,27 @@ export const SignInUser = (userInfo) => {
       const userName = response.data.userName;
       const userRole = response.data.userRole;
       const token = response.data.token;
+      const tokenExpTime = new Date(new Date().getTime() + 3 * 60 * 60 * 1000).toISOString();
 
-      const decodedToken = jwtDecode(token)
-      const tokenExpTime = decodedToken.exp;
+      const test = new Date(new Date().getTime()).toISOString();
+      console.log(test);
+      console.log(tokenExpTime);
 
-      localStorage.setItem('userData', JSON.stringify({
-        userId,
-        userName,
-        token,
-        tokenExpTime,
-        userRole
-      }));
+      // const decodedToken = jwtDecode(token)
+      // // const tokenExpTime = decodedToken.exp;
+      // console.log(response);
+      // console.log(decodedToken);
 
-      dispatch(userActions.login({ userId, token, userRole }));
-      dispatch(userActions.setIsLoggedIn(true));
+      // localStorage.setItem('userData', JSON.stringify({
+      //   userId,
+      //   userName,
+      //   token,
+      //   tokenExpTime,
+      //   userRole
+      // }));
+
+      // dispatch(userActions.login({ userId, token, userRole, tokenExpTime }));
+      // dispatch(userActions.setIsLoggedIn(true));
     }
     catch (error) {
       console.log(error);
@@ -72,7 +79,8 @@ export const logOutUser = () => {
     dispatch(userActions.logout())
     dispatch(userActions.setIsLoggedIn(false));
     localStorage.removeItem('userData');
-    console.log('logOutUser triggered.')
+
+    console.log('logOutUser triggered.');
 
     if (logoutTimer) {
       clearTimeout(logoutTimer)
