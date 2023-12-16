@@ -20,6 +20,21 @@ const ProfileNavbar = (props) => {
   const userRole = useSelector(state => state.user.userRole);
   const dispatch = useDispatch();
 
+  const currentButtonHandler = (itemName, index) => {
+    props.onManagerDashChoice(itemName);
+
+    navigation.forEach((element) => {
+      if (navigation.indexOf(element) === index) {
+        element.current = true;
+      }
+      else {
+        element.current = false;
+      }
+    })
+
+  };
+
+
   useEffect(() => {
     switch (userRole) {
       case 'AUTO DETAILER':
@@ -70,10 +85,11 @@ const ProfileNavbar = (props) => {
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
-                      {navigation.map((item) => (
-                        <a
+                      {navigation.map((item, index) => (
+                        <button
+                          type='button'
+                          onClick={() => currentButtonHandler(item.name, index)}
                           key={item.name}
-                          href={item.href}
                           className={classNames(
                             item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                             'rounded-md px-3 py-2 text-sm font-medium'
@@ -81,7 +97,7 @@ const ProfileNavbar = (props) => {
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
-                        </a>
+                        </button>
                       ))}
                     </div>
                   </div>
