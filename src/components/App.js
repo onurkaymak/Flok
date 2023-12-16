@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 
+import classes from './App.module.css';
 
 export let logoutTimer;
 
@@ -54,7 +55,7 @@ const App = () => {
   }, [dispatch, logOutHandler]);
 
   return (
-    <div className="App">
+    <div className={classes.app}>
       <Routes>
         {!isLoggedIn && (<Route path='/' element={<Home />} />)}
         {isLoggedIn && (<Route path='/' element={<Navigate to={'/profile'} />} />)}
