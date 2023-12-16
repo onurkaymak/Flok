@@ -1,11 +1,17 @@
 import ProfileNavbar from "../layout/ProfileNavbar";
+import ManagerDash from "../roles/ManagerDash";
+
+import classes from "./Profile.module.css";
 
 
 const Profile = () => {
+
+
+
   return (
-    <div>
+    <div className={classes.test}>
       <ProfileNavbar />
-      {/* <h1>Test</h1> */}
+      <ManagerDash />
     </div>
 
   )
