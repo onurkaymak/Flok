@@ -1,9 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, } from 'react-redux';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-
-import { userActions } from '../store/user-slice';
 
 const navigation = [
   { name: 'Fleet', href: '#', current: true },
@@ -15,11 +13,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const ProfileNavbar = () => {
+const ProfileNavbar = (props) => {
   const [profileIcon, setProfileIcon] = useState(null);
   const userRole = useSelector(state => state.user.userRole);
-  const dispatch = useDispatch();
-
 
   useEffect(() => {
     switch (userRole) {
@@ -36,33 +32,6 @@ const ProfileNavbar = () => {
         setProfileIcon(null);
     }
   }, [userRole]);
-
-
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-
-    const d = new Date(0);
-    const utctoSecond = d.setUTCSeconds(storedData.tokenExpTime);
-
-    console.log(storedData)
-
-    if (storedData && storedData.token && new Date(utctoSecond) > new Date()) {
-      const userId = storedData.userId;
-      const token = storedData.token;
-      const tokenExpTime = storedData.tokenExpTime;
-      const userRole = storedData.userRole;
-
-      dispatch(userActions.login({ userId, token, tokenExpTime, userRole }));
-      dispatch(userActions.setIsLoggedIn(true));
-    }
-    else {
-
-    }
-
-
-
-  }, []);
-
 
   return (
     <div>
@@ -200,6 +169,7 @@ const ProfileNavbar = () => {
           </>
         )}
       </Disclosure>
+      <main>{props.children}</main>
     </div>
   )
 }

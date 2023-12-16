@@ -1,12 +1,58 @@
+import { useEffect, useCallback } from 'react';
 import { Routes, Route, Navigate } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { userActions } from './store/user-slice';
+import { logOutUser } from './store/auth-actions';
 
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 
+
+export let logoutTimer;
+
+export const calculateRemainingTime = (expirationTime) => {
+  const currentTime = new Date().getTime();
+  const adjExpirationTime = new Date(expirationTime).getTime();
+  const remainingDuration = adjExpirationTime - currentTime;
+
+  return remainingDuration
+}
+
+
 const App = () => {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  const logOutHandler = useCallback(() => {
+    dispatch(logOutUser());
+    clearTimeout(logoutTimer);
+    console.log('logOutHandler runs')
+  }, [dispatch]);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+
+
+
+    if (storedData && storedData.token && new Date(storedData.tokenExpTime) > new Date()) {
+      const userId = storedData.userId;
+      const token = storedData.token;
+      const tokenExpTime = storedData.tokenExpTime;
+      const userRole = storedData.userRole;
+
+      dispatch(userActions.login({ userId, token, tokenExpTime, userRole }));
+      dispatch(userActions.setIsLoggedIn(true));
+
+      const remainingTime = calculateRemainingTime(tokenExpTime);
+      logoutTimer = setTimeout(() => logOutHandler(), remainingTime);
+    }
+    else {
+      logOutHandler();
+    }
+  }, [dispatch, logOutHandler]);
 
   return (
     <div className="App">
