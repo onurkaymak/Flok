@@ -1,5 +1,4 @@
 import { userActions } from "./user-slice";
-import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
 import { logoutTimer } from "../App";
 
@@ -45,25 +44,16 @@ export const SignInUser = (userInfo) => {
       const token = response.data.token;
       const tokenExpTime = new Date(new Date().getTime() + 3 * 60 * 60 * 1000).toISOString();
 
-      const test = new Date(new Date().getTime()).toISOString();
-      console.log(test);
-      console.log(tokenExpTime);
+      localStorage.setItem('userData', JSON.stringify({
+        userId,
+        userName,
+        token,
+        tokenExpTime,
+        userRole
+      }));
 
-      // const decodedToken = jwtDecode(token)
-      // // const tokenExpTime = decodedToken.exp;
-      // console.log(response);
-      // console.log(decodedToken);
-
-      // localStorage.setItem('userData', JSON.stringify({
-      //   userId,
-      //   userName,
-      //   token,
-      //   tokenExpTime,
-      //   userRole
-      // }));
-
-      // dispatch(userActions.login({ userId, token, userRole, tokenExpTime }));
-      // dispatch(userActions.setIsLoggedIn(true));
+      dispatch(userActions.login({ userId, token, userRole, tokenExpTime }));
+      dispatch(userActions.setIsLoggedIn(true));
     }
     catch (error) {
       console.log(error);
