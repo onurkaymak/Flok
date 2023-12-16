@@ -1,0 +1,35 @@
+.container {
+  height: 95%;
+  /* background-color: goldenrod; */
+
+  display: flex;
+}
+
+.sidebarContainer {
+  height: 100%;
+  width: 12.5%;
+  background-color: #1e293b;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarAddButton {
+  background-color: goldenrod;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.listContainer {
+  height: 20%;
+  width: 100%;
+  /* background-color: yellow; */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.listItem {
+  background-color: red;
+}
