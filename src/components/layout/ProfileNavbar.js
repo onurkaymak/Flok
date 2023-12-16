@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { logOutUser } from '../store/auth-actions';
+import classes from './ProfileNavbar.module.css';
 
 const navigation = [
   { name: 'Fleet', href: '#', current: true },
@@ -41,11 +42,11 @@ const ProfileNavbar = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
@@ -62,7 +63,7 @@ const ProfileNavbar = (props) => {
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
                     <img
-                      className="h-9 w-auto"
+                      className="h-7 w-auto"
                       src="https://i.ibb.co/4WCggVY/flok2.png"
                       alt=""
                     />
