@@ -1,7 +1,7 @@
 import { userActions } from "./user-slice";
 import { jwtDecode } from "jwt-decode";
-
 import axios from 'axios';
+import { logoutTimer } from "../layout/ProfileNavbar";
 
 export const createUser = (userInfo) => {
   return async (dispatch) => {
@@ -72,8 +72,11 @@ export const logOutUser = () => {
     dispatch(userActions.logout())
     dispatch(userActions.setIsLoggedIn(false));
     localStorage.removeItem('userData');
+    console.log('logOutUser triggered.')
 
-
+    if (logoutTimer) {
+      clearTimeout(logoutTimer)
+    }
 
   }
 }
