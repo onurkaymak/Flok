@@ -14,11 +14,11 @@
   flex-direction: column;
 }
 
-.sidebarAddButton {
+.sidebarTopButton {
   background-color: goldenrod;
   margin-top: 5rem;
-  margin-bottom: 5rem;
 }
+
 
 .listContainer {
   height: 20%;
@@ -30,6 +30,39 @@
   justify-content: space-evenly;
 }
 
-.listItem {
-  background-color: red;
+
+.listItemContainer {
+  background-color: rgba(0, 0, 255, 0.0);
+  height: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.2s;
 }
+
+.listItemContainer:hover {
+  cursor: pointer;
+  background-color: rgba(4, 251, 189, 0.5);
+}
+
+.listItemContainer:active {
+  transform: translateY(0.08rem);
+}
+
+.listItem {
+  color: whitesmoke;
+  font-weight: 700;
+  border-bottom: solid 2px transparent;
+  transition: all 0.2s;
+}
+
+.listItemContainer:hover .listItem {
+  cursor: pointer;
+  border-bottom: solid 1.5px whitesmoke;
+  color: rgba(0, 5, 4, 0.7);
+  transform: scale(1.05);
+}
+
