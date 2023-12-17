@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import classes from './ManagerDash.module.css';
 
-import sprite from '../img/sprite.svg';
+import sprite from '../../img/sprite.svg';
+import SearchResult from './SearchResult';
 
 
 const ManagerDash = (props) => {
@@ -93,7 +94,6 @@ const ManagerDash = (props) => {
         </ul>
       </div>
 
-
     switch (props.currentDash) {
       case 'Fleet':
         setSideBarLink(fleetLinks);
@@ -112,17 +112,10 @@ const ManagerDash = (props) => {
 
 
 
-
-
-
   return (
     <div className={classes.container}>
       {sideBarLink}
-
-      <h1>Test</h1>
-
-
-
+      <SearchResult />
     </div>
   )
 };

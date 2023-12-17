@@ -3,12 +3,18 @@
   /* background-color: goldenrod; */
 
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebarContainer {
-  height: 100%;
+  height: 95%;
   width: 12.5%;
   background-color: #1e293b;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
   display: flex;
   flex-direction: column;
