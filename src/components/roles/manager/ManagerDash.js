@@ -5,46 +5,56 @@ import sprite from '../../img/sprite.svg';
 
 import FleetManager from './fleet/FleetManager';
 import ProductionManager from './production/ProductionManager';
+import RentalManager from './rental/RentalManager';
 
 
 const ManagerDash = (props) => {
   const [sideBarLink, setSideBarLink] = useState(null);
 
-  const [selectedFleetLink, setSelectedFleetLink] = useState(null);
-  const [selectedProductionLink, setSelectedProductionLink] = useState(null);
-  const [selectedRentalLink, setSelectedRentalLink] = useState(null);
+  const [selectedLink, setSelectedLink] = useState(null);
+
+  useEffect(() => {
+    setSelectedLink(null);
+  }, [props.currentDash]);
+
 
   const selectedLinkHandler = (selectedLink) => {
     switch (selectedLink) {
       case 'search fleet':
-        setSelectedFleetLink("fleet search")
+        setSelectedLink("fleet search");
         break;
       case 'add fleet':
-        setSelectedFleetLink("fleet add")
+        setSelectedLink("fleet add");
         break;
       case 'update fleet':
-        setSelectedFleetLink("fleet update")
+        setSelectedLink("fleet update");
         break;
       case 'delete fleet':
-        setSelectedFleetLink("fleet delete")
+        setSelectedLink("fleet delete");
         break;
       case 'search production':
-        setSelectedProductionLink("production search")
+        setSelectedLink("production search");
         break;
       case 'add production':
-        setSelectedProductionLink("production add")
+        setSelectedLink("production add");
         break;
       case 'search2 production':
-        setSelectedProductionLink("production search2")
+        setSelectedLink("production search2");
         break;
-
-
-
-
-
-
+      case 'search rental':
+        setSelectedLink("rental search");
+        break;
+      case 'add rental':
+        setSelectedLink("rental add");
+        break;
+      case 'update rental':
+        setSelectedLink("rental update");
+        break;
+      case 'delete rental':
+        setSelectedLink("rental delete");
+        break;
       default:
-        setSelectedFleetLink(null);
+        setSelectedLink(null);
     }
   };
 
@@ -106,26 +116,26 @@ const ManagerDash = (props) => {
 
     const rentalLinks =
       <div className={classes.sidebarContainer}>
-        <div className={classes.sidebarTopButtonContainer}>
+        <div className={classes.sidebarTopButtonContainer} onClick={() => selectedLinkHandler("search rental")}>
           <button className={classes.sidebarTopButton}>Rentals</button>
           <svg className={classes.iconSearch}>
             <use href={sprite + "#icon-search"}></use>
           </svg>
         </div>
         <ul className={classes.listContainer}>
-          <div className={classes.listItemContainer}>
+          <div className={classes.listItemContainer} onClick={() => selectedLinkHandler("add rental")}>
             <li className={classes.listItem}>Book a Rental</li>
             <svg className={classes.listItemIcon}>
               <use href={sprite + "#icon-plus"}></use>
             </svg>
           </div>
-          <div className={classes.listItemContainer}>
+          <div className={classes.listItemContainer} onClick={() => selectedLinkHandler("update rental")}>
             <li className={classes.listItem}>Update Rental</li>
             <svg className={classes.listItemIcon}>
               <use href={sprite + "#icon-loop2"}></use>
             </svg>
           </div>
-          <div className={classes.listItemContainer}>
+          <div className={classes.listItemContainer} onClick={() => selectedLinkHandler("delete rental")}>
             <li className={classes.listItem}>Delete Rental</li>
             <svg className={classes.listItemIcon}>
               <use href={sprite + "#icon-bin2"}></use>
@@ -155,8 +165,9 @@ const ManagerDash = (props) => {
   return (
     <div className={classes.container}>
       {sideBarLink}
-      {props.currentDash === "Fleet" && <FleetManager onLinkSelection={selectedFleetLink} />}
-      {props.currentDash === "Production" && <ProductionManager onLinkSelection={selectedProductionLink} />}
+      {props.currentDash === "Fleet" && <FleetManager onLinkSelection={selectedLink} />}
+      {props.currentDash === "Production" && <ProductionManager onLinkSelection={selectedLink} />}
+      {props.currentDash === "Rental" && <RentalManager onLinkSelection={selectedLink} />}
     </div>
   )
 };
