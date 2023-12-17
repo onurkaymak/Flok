@@ -12,18 +12,53 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.sidebarTopButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3%;
+  width: 85%;
+  margin-top: 5rem;
+
+  background-color: rgba(4, 251, 189, 0.951);
+  transition: all 0.3s;
+}
+
+.sidebarTopButtonContainer:hover {
+  transform: translateY(-0.2rem);
+  background-color: rgba(4, 251, 189, 1);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.sidebarTopButtonContainer:hover .iconSearch {
+  fill: rgba(33, 35, 36, 0.677);
+}
+
+.sidebarTopButtonContainer:active {
+  transform: translateY(0.1rem);
+  background-color: rgb(251, 251, 251);
 }
 
 .sidebarTopButton {
-  background-color: goldenrod;
-  margin-top: 5rem;
+  font-weight: 500;
+  color: rgba(3, 82, 62, 0.951);
 }
 
+.iconSearch {
+  height: 1rem;
+  width: 1rem;
+  fill: rgba(3, 82, 62, 0.951);
+  margin-left: 0.5rem;
+}
 
 .listContainer {
   height: 20%;
   width: 100%;
-  /* background-color: yellow; */
   
   display: flex;
   flex-direction: column;
@@ -36,16 +71,17 @@
   height: 3rem;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 2px 0px rgba(4, 251, 189, 0.951);
 
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .listItemContainer:hover {
   cursor: pointer;
-  background-color: rgba(4, 251, 189, 0.5);
+  background-color: rgb(93, 213, 185);
+  border-bottom-left-radius: 20rem;
 }
 
 .listItemContainer:active {
@@ -54,15 +90,27 @@
 
 .listItem {
   color: whitesmoke;
-  font-weight: 700;
   border-bottom: solid 2px transparent;
   transition: all 0.2s;
 }
 
 .listItemContainer:hover .listItem {
   cursor: pointer;
-  border-bottom: solid 1.5px whitesmoke;
-  color: rgba(0, 5, 4, 0.7);
-  transform: scale(1.05);
+  border-bottom: solid 1.5px rgb(2, 2, 2);
+  color: rgb(0, 10, 8);
+  font-weight: 500;
+  transform: translateY(-0.2rem);
 }
 
+.listItemIcon {
+  height: 0.8rem;
+  width: 0.8rem;
+  fill: rgba(255, 255, 255, 0.951);
+  margin-left: 0.5rem;
+  transition: all 0.3s;
+}
+
+.listItemContainer:hover .listItemIcon {
+  fill: rgba(7, 107, 82, 0.951);
+  transform: translateY(-0.2rem);
+}

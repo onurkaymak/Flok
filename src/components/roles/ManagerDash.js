@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import classes from './ManagerDash.module.css';
 
+import sprite from '../img/sprite.svg';
+
 
 const ManagerDash = (props) => {
   const [sideBarLink, setSideBarLink] = useState(null);
@@ -8,37 +10,86 @@ const ManagerDash = (props) => {
   useEffect(() => {
     const fleetLinks =
       <div className={classes.sidebarContainer}>
-        <button className={classes.sidebarTopButton}>Add New Vehicle</button>
+        <div className={classes.sidebarTopButtonContainer}>
+          <button className={classes.sidebarTopButton}>Vehicle</button>
+          <svg className={classes.iconSearch}>
+            <use href={sprite + "#icon-search"}></use>
+          </svg>
+        </div>
         <ul className={classes.listContainer}>
-
           <div className={classes.listItemContainer}>
-            <li className={classes.listItem}>Search For a Vehicle</li>
+            <li className={classes.listItem}>Add Vehicle</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-plus"}></use>
+            </svg>
           </div>
           <div className={classes.listItemContainer}>
-            <li className={classes.listItem}>Update a Vehicle</li>
+            <li className={classes.listItem}>Update Vehicle</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-loop2"}></use>
+            </svg>
           </div>
           <div className={classes.listItemContainer}>
-            <li className={classes.listItem}>Delete a Vehicle</li>
+            <li className={classes.listItem}>Delete Vehicle</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-bin2"}></use>
+            </svg>
           </div>
         </ul>
+
       </div>
 
     const productionLinks =
       <div className={classes.sidebarContainer}>
-        <button className={classes.sidebarTopButton}>Start New Detailing</button>
+        <div className={classes.sidebarTopButtonContainer}>
+          <button className={classes.sidebarTopButton}>Detailings</button>
+          <svg className={classes.iconSearch}>
+            <use href={sprite + "#icon-search"}></use>
+          </svg>
+        </div>
         <ul className={classes.listContainer}>
-          <li className={classes.listItem}>Pending Detailings</li>
-          <li className={classes.listItem}>Detailer Performance</li>
+          <div className={classes.listItemContainer}>
+            <li className={classes.listItem}>New Detailing</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-plus"}></use>
+            </svg>
+          </div>
+          <div className={classes.listItemContainer}>
+            <li className={classes.listItem}>Productivity</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-users"}></use>
+            </svg>
+          </div>
         </ul>
       </div>
 
     const rentalLinks =
       <div className={classes.sidebarContainer}>
-        <button className={classes.sidebarTopButton}>Book a Vehicle</button>
+        <div className={classes.sidebarTopButtonContainer}>
+          <button className={classes.sidebarTopButton}>Rentals</button>
+          <svg className={classes.iconSearch}>
+            <use href={sprite + "#icon-search"}></use>
+          </svg>
+        </div>
         <ul className={classes.listContainer}>
-          <li className={classes.listItem}>Check Pending Rentals</li>
-          <li className={classes.listItem}>Update Pending Rental Information</li>
-          <li className={classes.listItem}>Delete Pending Rental</li>
+          <div className={classes.listItemContainer}>
+            <li className={classes.listItem}>Book a Rental</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-plus"}></use>
+            </svg>
+          </div>
+          <div className={classes.listItemContainer}>
+            <li className={classes.listItem}>Update Rental</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-loop2"}></use>
+            </svg>
+          </div>
+          <div className={classes.listItemContainer}>
+            <li className={classes.listItem}>Delete Rental</li>
+            <svg className={classes.listItemIcon}>
+              <use href={sprite + "#icon-bin2"}></use>
+            </svg>
+          </div>
         </ul>
       </div>
 
