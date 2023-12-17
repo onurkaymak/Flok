@@ -1,4 +1,4 @@
-
+import Vehicle from "./Vehicle";
 
 const dummyData = [
   {
@@ -22,25 +22,25 @@ const dummyData = [
 ]
 
 
+
 const VehicleList = () => {
 
 
 
   return (
     <div>
-      <ul>
-        {dummyData.map(vehicle =>
-          <div>
-            <li>{vehicle.vehicleId}</li>
-            <li>{vehicle.make}</li>
-            <li>{vehicle.model}</li>
-            <li>{vehicle.vin}</li>
-            <li>{vehicle.mileage}</li>
-            <li>{vehicle.isRented}</li>
-            <li>{vehicle.inProduction}</li>
-          </div>
-        )}
-      </ul>
+      {dummyData.map(vehicle =>
+        <Vehicle
+          key={vehicle.vehicleId}
+          id={vehicle.vehicleId}
+          make={vehicle.make}
+          model={vehicle.make}
+          vin={vehicle.vin}
+          mileage={vehicle.mileage}
+          isRented={vehicle.isRented}
+          inProduction={vehicle.inProduction}
+        />
+      )}
     </div>
   )
 };
