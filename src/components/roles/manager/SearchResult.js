@@ -1,7 +1,9 @@
+import VehicleList from "./VehicleList";
+
 const SearchResult = () => {
 
   return (
-    <h1>Result</h1>
+    <VehicleList />
   )
 };
 
