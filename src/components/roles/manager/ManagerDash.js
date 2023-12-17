@@ -4,6 +4,7 @@ import classes from './ManagerDash.module.css';
 import sprite from '../../img/sprite.svg';
 
 import FleetManager from './fleet/FleetManager';
+import ProductionManager from './production/ProductionManager';
 
 
 const ManagerDash = (props) => {
@@ -16,25 +17,25 @@ const ManagerDash = (props) => {
   const selectedLinkHandler = (selectedLink) => {
     switch (selectedLink) {
       case 'search fleet':
-        setSelectedFleetLink("search")
+        setSelectedFleetLink("fleet search")
         break;
       case 'add fleet':
-        setSelectedFleetLink("add")
+        setSelectedFleetLink("fleet add")
         break;
       case 'update fleet':
-        setSelectedFleetLink("update")
+        setSelectedFleetLink("fleet update")
         break;
       case 'delete fleet':
-        setSelectedFleetLink("delete")
+        setSelectedFleetLink("fleet delete")
         break;
       case 'search production':
-        setSelectedFleetLink("search")
+        setSelectedProductionLink("production search")
         break;
       case 'add production':
-        setSelectedFleetLink("search")
+        setSelectedProductionLink("production add")
         break;
       case 'search2 production':
-        setSelectedFleetLink("search")
+        setSelectedProductionLink("production search2")
         break;
 
 
@@ -155,6 +156,7 @@ const ManagerDash = (props) => {
     <div className={classes.container}>
       {sideBarLink}
       {props.currentDash === "Fleet" && <FleetManager onLinkSelection={selectedFleetLink} />}
+      {props.currentDash === "Production" && <ProductionManager onLinkSelection={selectedProductionLink} />}
     </div>
   )
 };

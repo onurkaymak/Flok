@@ -1,17 +1,14 @@
-import { useState } from "react";
-
 const FleetManager = (props) => {
-  // const [currentSelection, setCurrentSelection] = useState(null);
 
   let content;
 
-  if (props.onLinkSelection === "search") {
+  if (props.onLinkSelection === "fleet search") {
     content = <h1>Search Vehicle</h1>
-  } else if (props.onLinkSelection === "add") {
+  } else if (props.onLinkSelection === "fleet add") {
     content = <h1>Add Vehicle</h1>
-  } else if (props.onLinkSelection === "update") {
+  } else if (props.onLinkSelection === "fleet update") {
     content = <h1>Update Vehicle</h1>
-  } else if (props.onLinkSelection === "delete") {
+  } else if (props.onLinkSelection === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
   } else {
     content = <h1>No content selected.</h1>
