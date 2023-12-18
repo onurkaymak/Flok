@@ -6,18 +6,22 @@ import { fetchVehicles } from '../../../store/fleet-actions';
 const FleetManager = (props) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
+  const vehicles = useSelector(state => state.fleet.vehicles);
 
   const fetcher = useCallback(async () => {
     dispatch(fetchVehicles({ token }))
   }, [dispatch, token])
 
+  useEffect(() => {
+    fetcher()
+  }, [dispatch, token, fetcher])
 
 
 
   let content;
 
   if (props.onLinkSelection === "fleet search") {
-    content = <SearchResult />
+    content = <SearchResult vehiclesResult={vehicles} />
   } else if (props.onLinkSelection === "fleet add") {
     content = <h1>Add Vehicle</h1>
   } else if (props.onLinkSelection === "fleet update") {
