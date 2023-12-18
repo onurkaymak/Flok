@@ -8,7 +8,7 @@ export const createUser = (userInfo) => {
     const { enteredName, enteredEmail, enteredPass, selectedRole } = userInfo;
 
     try {
-      const response = await axios.post("http://localhost:5000/accounts/register",
+      const response = await axios.post("https://localhost:5000/accounts/register",
         {
           "email": enteredEmail,
           "userName": enteredName,
@@ -32,7 +32,7 @@ export const SignInUser = (userInfo) => {
     const { enteredEmail, enteredPassword } = userInfo;
 
     try {
-      const response = await axios.post("http://localhost:5000/accounts/signIn",
+      const response = await axios.post("https://localhost:5000/accounts/signIn",
         {
           "email": enteredEmail,
           "password": enteredPassword
