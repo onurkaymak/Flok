@@ -94,6 +94,9 @@
 * 02:27 PM - Searching on Stack Overflow about how to check if JWT is valid or not before sending a request. (https://stackoverflow.com/questions/46418975/react-how-to-check-if-jwt-is-valid-before-sending-a-post-request)
 ```
 
+### Sun, 12/17/2023
+* 09:49 PM - Trying to fix a bug with JWT, I can make a request from Postman with JWT but get 401 for requests for React app.
+
 ------------------------------
 
 ### ✉️ Contact and Support
