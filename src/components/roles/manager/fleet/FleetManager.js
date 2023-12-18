@@ -1,22 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import SearchResult from "./SearchResult";
-import { fetchVehicles } from '../../../store/fleet-actions';
+import { fetchVehicles, resetVehiclesList } from '../../../store/fleet-actions';
 
-const FleetManager = (props) => {
+
+const FleetManager = (props = null) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
   const vehicles = useSelector(state => state.fleet.vehicles);
 
-
   const fetcher = useCallback(async () => {
-    dispatch(fetchVehicles({ token }))
+    dispatch(resetVehiclesList());
+    dispatch(fetchVehicles({ token }));
   }, [dispatch, token])
 
   useEffect(() => {
-    fetcher()
-  }, [dispatch, token, fetcher])
-
+    if (props.onLinkSelection === "fleet search") {
+      fetcher()
+    }
+  }, [fetcher, props.onLinkSelection])
 
 
   let content;
