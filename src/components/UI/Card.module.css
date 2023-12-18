@@ -1,5 +1,7 @@
 .card {
   background: #2b354d;
-  width: 50vw;
-  margin-top: 1rem;
+  width: 60vw;
+  height: 5vh;
+  text-align: center;
+  border-radius:10px;
 }

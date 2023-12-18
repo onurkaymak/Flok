@@ -2,8 +2,14 @@
   width: 100%;
   height: 100%;
 
-  background-color: goldenrod;
+  background-color: rgb(17, 187, 130);
+  border-radius: 50px;
 
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin: 0.5rem;
 }

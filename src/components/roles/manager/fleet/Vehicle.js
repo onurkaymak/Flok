@@ -7,13 +7,13 @@ const Vehicle = (props) => {
   return (
     <Card>
       <div className={classes.vehicleContainer}>
-        <li>Id = {props.vehicleId}</li>
-        <li>Make = {props.make}</li>
-        <li>Model = {props.model}</li>
-        <li>VIN = {props.vin}</li>
-        <li>Mileage = {props.mileage}</li>
-        <li>Rented = {props.isRented ? "true" : "false"}</li>
-        <li>Production = {props.inProduction ? "true" : "false"}</li>
+        <p><strong>Id: </strong>{props.vehicleId}</p>
+        <p><strong>Make: </strong>{props.make}</p>
+        <p><strong>Model: </strong>{props.model}</p>
+        <p><strong>VIN: </strong>{props.vin}</p>
+        <p><strong>Mileage: </strong>{props.mileage}</p>
+        <p><strong>Rented: </strong>{props.isRented ? "true" : "false"}</p>
+        <p><strong>Production: </strong>{props.inProduction ? "true" : "false"}</p>
       </div>
     </Card>
   )
