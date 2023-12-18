@@ -8,7 +8,6 @@ const fleetSlice = createSlice({
   reducers: {
     fetch(state, action) {
       const data = action.payload;
-
       data.map(vehicle => (
         state.vehicles.push({
           key: vehicle.vehicleId,
@@ -25,6 +24,9 @@ const fleetSlice = createSlice({
           inProduction: vehicle.inProduction
         })
       ))
+    },
+    resetVehicles(state) {
+      state.vehicles = []
     }
   }
 });
