@@ -1,18 +1,21 @@
 import classes from './Vehicle.module.css';
+import Card from '../../../UI/Card';
 
 const Vehicle = (props) => {
 
 
   return (
-    <div className={classes.vehicleContainer}>
-      <li>{props.id}</li>
-      <li>{props.make}</li>
-      <li>{props.model}</li>
-      <li>{props.vin}</li>
-      <li>{props.mileage}</li>
-      <li>{props.isRented ? "true" : "false"}</li>
-      <li>{props.inProduction ? "true" : "false"}</li>
-    </div>
+    <Card>
+      <div className={classes.vehicleContainer}>
+        <li>Id = {props.id}</li>
+        <li>Make = {props.make}</li>
+        <li>Model = {props.model}</li>
+        <li>VIN = {props.vin}</li>
+        <li>Mileage = {props.mileage}</li>
+        <li>Rented = {props.isRented ? "true" : "false"}</li>
+        <li>Production = {props.inProduction ? "true" : "false"}</li>
+      </div>
+    </Card>
   )
 };
 
