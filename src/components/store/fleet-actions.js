@@ -9,13 +9,13 @@ export const fetchVehicles = (queries) => {
     const { VIN, isRented, inProduction, token } = queries;
 
     try {
-      const response = await axios.get("http://localhost:5000/fleet", {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.get("http://localhost:5000/api/fleet", { headers: { Authorization: `Bearer ${token}` } });
 
-      console.log(response);
+      const fetchedVehicles = response.data;
+      dispatch(fleetActions.fetch(fetchedVehicles));
     }
     catch (err) {
+      console.log(err);
 
     }
 
