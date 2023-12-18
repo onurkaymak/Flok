@@ -8,6 +8,7 @@ const FleetManager = (props) => {
   const token = useSelector(state => state.user.token);
   const vehicles = useSelector(state => state.fleet.vehicles);
 
+
   const fetcher = useCallback(async () => {
     dispatch(fetchVehicles({ token }))
   }, [dispatch, token])
@@ -21,7 +22,7 @@ const FleetManager = (props) => {
   let content;
 
   if (props.onLinkSelection === "fleet search") {
-    content = <SearchResult vehiclesResult={vehicles} />
+    content = <SearchResult fetchedVehicles={vehicles} />
   } else if (props.onLinkSelection === "fleet add") {
     content = <h1>Add Vehicle</h1>
   } else if (props.onLinkSelection === "fleet update") {

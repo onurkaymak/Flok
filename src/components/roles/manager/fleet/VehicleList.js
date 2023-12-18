@@ -1,41 +1,20 @@
 import Vehicle from "./Vehicle";
 
-const dummyData = [
-  {
-    vehicleId: "1",
-    make: "Nissan",
-    model: "Frontier",
-    vin: "12345678",
-    mileage: "550",
-    isRented: false,
-    inProduction: false
-  },
-  {
-    vehicleId: "2",
-    make: "Toyota",
-    model: "Camry",
-    vin: "87654321",
-    mileage: "867",
-    isRented: false,
-    inProduction: false
-  }
-]
 
-
-
-const VehicleList = () => {
-
+const VehicleList = (props) => {
 
 
   return (
     <div>
-      {dummyData.map(vehicle =>
+      <h1>Fleet Inventory</h1>
+
+      {props.fetchedVehicles.map(vehicle =>
         <Vehicle
           key={vehicle.vehicleId}
-          id={vehicle.vehicleId}
-          make={vehicle.make}
-          model={vehicle.make}
+          vehicleId={vehicle.vehicleId}
           vin={vehicle.vin}
+          make={vehicle.make}
+          model={vehicle.model}
           mileage={vehicle.mileage}
           isRented={vehicle.isRented}
           inProduction={vehicle.inProduction}

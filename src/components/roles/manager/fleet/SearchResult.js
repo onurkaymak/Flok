@@ -1,9 +1,9 @@
 import VehicleList from "./VehicleList";
 
-const SearchResult = () => {
+const SearchResult = (props) => {
 
   return (
-    <VehicleList />
+    <VehicleList fetchedVehicles={props.fetchedVehicles} />
   )
 };
 
