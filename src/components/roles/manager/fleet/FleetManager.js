@@ -1,6 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useCallback, useEffect } from 'react';
 import SearchResult from "./SearchResult";
+import { fetchVehicles } from '../../../store/fleet-actions';
 
 const FleetManager = (props) => {
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.user.token);
+
+  const fetcher = useCallback(async () => {
+    dispatch(fetchVehicles({ token }))
+  }, [dispatch, token])
+
+
+
 
   let content;
 
