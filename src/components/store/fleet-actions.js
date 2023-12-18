@@ -6,7 +6,7 @@ import axios from "axios";
 export const fetchVehicles = (queries) => {
   return async (dispatch) => {
 
-    const { VIN, isRented, inProduction, token } = queries;
+    const { token } = queries;
 
     try {
       const response = await axios.get("http://localhost:5000/api/fleet", { headers: { Authorization: `Bearer ${token}` } });
@@ -19,5 +19,12 @@ export const fetchVehicles = (queries) => {
 
     }
 
+  }
+}
+
+
+export const resetVehiclesList = () => {
+  return (dispatch) => {
+    dispatch(fleetActions.resetVehicles());
   }
 }
