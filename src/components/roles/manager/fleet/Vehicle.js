@@ -7,7 +7,7 @@ const Vehicle = (props) => {
   return (
     <Card>
       <div className={classes.vehicleContainer}>
-        <li>Id = {props.id}</li>
+        <li>Id = {props.vehicleId}</li>
         <li>Make = {props.make}</li>
         <li>Model = {props.model}</li>
         <li>VIN = {props.vin}</li>
