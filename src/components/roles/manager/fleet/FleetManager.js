@@ -3,6 +3,7 @@ import { useCallback, useEffect } from 'react';
 import VehicleList from "./VehicleList";
 import { fetchVehicles, resetVehiclesList } from '../../../store/fleet-actions';
 import classes from './FleetManager.module.css';
+import AddVehicleForm from './AddVehicleForm';
 
 
 const FleetManager = (props = null) => {
@@ -22,25 +23,30 @@ const FleetManager = (props = null) => {
   }, [fetcher, props.selectedLink])
 
 
+
   let content;
+  let title;
 
   if (props.selectedLink === "fleet search") {
+    title = <h1 className={classes.titleVehicleList}>Vehicle List</h1>
     content = <VehicleList fetchedVehicles={vehicles} />
   } else if (props.selectedLink === "fleet add") {
-    content = <h1>Add Vehicle</h1>
+    title = <h1>Add Vehicle Form</h1>
+    content = <AddVehicleForm />
   } else if (props.selectedLink === "fleet update") {
     content = <h1>Update Vehicle</h1>
   } else if (props.selectedLink === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
   } else {
     content = <h1>No content selected.</h1>
+    title = "";
   }
 
 
   return (
     <div className={classes.fleetManagerContainer}>
       <div className={classes.titleContainer}>
-        <h1>Title Here</h1>
+        {title}
       </div>
 
       <div className={classes.contentContainer}>
