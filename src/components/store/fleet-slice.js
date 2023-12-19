@@ -25,6 +25,9 @@ const fleetSlice = createSlice({
         })
       ))
     },
+    add(state, action) {
+      state.vehicles.push(action.payload);
+    },
     resetVehicles(state) {
       state.vehicles = []
     }
