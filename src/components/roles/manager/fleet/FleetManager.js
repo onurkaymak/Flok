@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import VehicleList from "./VehicleList";
 import { fetchVehicles, resetVehiclesList } from '../../../store/fleet-actions';
+import classes from './FleetManager.module.css';
 
 
 const FleetManager = (props = null) => {
@@ -37,8 +38,15 @@ const FleetManager = (props = null) => {
 
 
   return (
-    <div>
-      {content}
+    <div className={classes.fleetManagerContainer}>
+      <div className={classes.titleContainer}>
+        <h1>Title Here</h1>
+      </div>
+
+      <div className={classes.contentContainer}>
+        {content}
+      </div>
+
     </div>
   )
 };
