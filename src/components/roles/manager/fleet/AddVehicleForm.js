@@ -1,6 +1,7 @@
-
-
 const AddVehicleForm = () => {
+
+
+
   return (
     <form>
       <div className="space-y-12">
@@ -64,6 +65,24 @@ const AddVehicleForm = () => {
             </div>
 
             <div className="sm:col-span-2">
+              <label htmlFor="color" className="block text-sm font-medium leading-6 text-gray-900">
+                Model
+              </label>
+              <div className="mt-2">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Color:</span>
+                  <input
+                    type="text"
+                    name="color"
+                    id="color"
+                    autoComplete="off"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="sm:col-span-2">
               <label htmlFor="mileage" className="block text-sm font-medium leading-6 text-gray-900">
                 Mileage
               </label>
@@ -89,16 +108,16 @@ const AddVehicleForm = () => {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-4">
 
             <div className="sm:col-span-2">
-              <label htmlFor="class" className="block text-sm font-medium leading-6 text-gray-900">
-                Class
+              <label htmlFor="vehicleclass" className="block text-sm font-medium leading-6 text-gray-900">
+                Vehicle Class
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Class:</span>
+                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Vehicle Class:</span>
                   <input
                     type="text"
-                    name="class"
-                    id="class"
+                    name="vehicleclass"
+                    id="vehicleclass"
                     autoComplete="off"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   />
