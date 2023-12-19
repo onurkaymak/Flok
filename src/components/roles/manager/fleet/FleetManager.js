@@ -19,6 +19,7 @@ const FleetManager = (props = null) => {
 
   const addVehicleFormHandler = (vehicleInfo) => {
     dispatch(addVehicle(vehicleInfo, token));
+    props.setSelectedLink(null);
   };
 
 

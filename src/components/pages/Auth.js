@@ -7,7 +7,6 @@ const Auth = () => {
 
   const showAuthFormHandler = () => {
     setAuthForm(prevState => !prevState);
-    console.log("it changed")
   };
 
   return (
