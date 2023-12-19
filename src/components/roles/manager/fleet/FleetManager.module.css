@@ -13,7 +13,16 @@
   grid-column: 2/3;
   grid-row: 1/2;
   text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.titleVehicleList {
+  font-size: 3.5rem;
+}
+
 
 .contentContainer {
   grid-column: 2/3;
