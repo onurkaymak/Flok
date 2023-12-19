@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
-import SearchResult from "./SearchResult";
+import VehicleList from "./VehicleList";
 import { fetchVehicles, resetVehiclesList } from '../../../store/fleet-actions';
 
 
@@ -24,7 +24,7 @@ const FleetManager = (props = null) => {
   let content;
 
   if (props.selectedLink === "fleet search") {
-    content = <SearchResult fetchedVehicles={vehicles} />
+    content = <VehicleList fetchedVehicles={vehicles} />
   } else if (props.selectedLink === "fleet add") {
     content = <h1>Add Vehicle</h1>
   } else if (props.selectedLink === "fleet update") {
