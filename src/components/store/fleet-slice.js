@@ -11,7 +11,7 @@ const fleetSlice = createSlice({
       data.map(vehicle => (
         state.vehicles.push({
           key: vehicle.vehicleId,
-          vehicleId: vehicle.vehicleId,
+          id: vehicle.vehicleId,
           vin: vehicle.vin,
           make: vehicle.make,
           model: vehicle.model,

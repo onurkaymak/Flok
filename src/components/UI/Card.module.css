@@ -1,7 +1,8 @@
 .card {
   background: #2b354d;
   width: 60vw;
-  height: 5vh;
+  /* height: 5vh; */
   text-align: center;
   border-radius:10px;
+  margin-bottom: 0.5rem;
 }
