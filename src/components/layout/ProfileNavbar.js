@@ -194,7 +194,7 @@ const ProfileNavbar = (props) => {
           </>
         )}
       </Disclosure>
-      <main>{props.children}</main>
+      {/* <main>{props.children}</main> */}
     </div>
   )
 }

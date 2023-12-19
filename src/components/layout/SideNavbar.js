@@ -10,50 +10,45 @@ import RentalManager from '../roles/manager/rental/RentalManager';
 const SideNavbar = (props) => {
   const [sideBarLink, setSideBarLink] = useState(null);
 
-  const [selectedLink, setSelectedLink] = useState(null);
-
-  useEffect(() => {
-    setSelectedLink(null);
-  }, [props.currentDash]);
-
 
   const selectedLinkHandler = (selectedLink) => {
     switch (selectedLink) {
       case 'search fleet':
-        setSelectedLink("fleet search");
+        console.log('selected link handler')
+        props.selectedSideLinkHandler("fleet search");
         break;
       case 'add fleet':
-        setSelectedLink("fleet add");
+        props.selectedSideLinkHandler("fleet add");
         break;
       case 'update fleet':
-        setSelectedLink("fleet update");
+        props.selectedSideLinkHandler("fleet update");
         break;
       case 'delete fleet':
-        setSelectedLink("fleet delete");
+        props.selectedSideLinkHandler("fleet delete");
         break;
       case 'search production':
-        setSelectedLink("production search");
+        props.selectedSideLinkHandler("production search");
         break;
       case 'add production':
-        setSelectedLink("production add");
+        props.selectedSideLinkHandler("production add");
         break;
       case 'search2 production':
-        setSelectedLink("production search2");
+        props.selectedSideLinkHandler("production search2");
         break;
       case 'search rental':
-        setSelectedLink("rental search");
+        props.selectedSideLinkHandler("rental search");
         break;
       case 'add rental':
-        setSelectedLink("rental add");
+        props.selectedSideLinkHandler("rental add");
         break;
       case 'update rental':
-        setSelectedLink("rental update");
+        props.selectedSideLinkHandler("rental update");
         break;
       case 'delete rental':
-        setSelectedLink("rental delete");
+        props.selectedSideLinkHandler("rental delete");
         break;
       default:
-        setSelectedLink(null);
+        props.selectedSideLinkHandler(null);
     }
   };
 
@@ -163,9 +158,6 @@ const SideNavbar = (props) => {
   return (
     <Fragment>
       {sideBarLink}
-      {/* {props.currentDash === "Fleet" && <FleetManager onLinkSelection={selectedLink} />}
-      {props.currentDash === "Production" && <ProductionManager onLinkSelection={selectedLink} />}
-      {props.currentDash === "Rental" && <RentalManager onLinkSelection={selectedLink} />} */}
     </Fragment>
   )
 };

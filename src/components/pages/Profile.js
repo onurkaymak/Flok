@@ -1,20 +1,33 @@
-import { useState } from "react";
-import ProfileNavbar from "../layout/ProfileNavbar";
-import ManagerDash from "../roles/manager/ManagerDash";
+import { useState, useEffect } from "react";
 import classes from "./Profile.module.css";
+import ProfileNavbar from "../layout/ProfileNavbar";
+import SideNavbar from "../layout/SideNavbar";
+import Content from "../layout/Content";
+
 
 
 const Profile = () => {
   const [currentManagerDash, setCurrentManagerDash] = useState("Fleet");
+  const [selectedLink, setSelectedLink] = useState(null);
 
   const dashChoiceHandler = (chosenDash) => {
     setCurrentManagerDash(chosenDash);
   };
 
+  useEffect(() => {
+    setSelectedLink(null);
+  }, [currentManagerDash]);
+
+  const selectedSideLinkHandler = (link) => {
+    setSelectedLink(link);
+  };
+
+
   return (
-    <div className={classes.test}>
+    <div className={classes.profileContainer}>
       <ProfileNavbar onManagerDashChoice={dashChoiceHandler} />
-      <ManagerDash currentDash={currentManagerDash} />
+      <SideNavbar currentDash={currentManagerDash} selectedLink={selectedLink} selectedSideLinkHandler={selectedSideLinkHandler} />
+      <Content selectedLink={selectedLink} currentDash={currentManagerDash} />
     </div>
 
   )

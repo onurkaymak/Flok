@@ -1,3 +1,7 @@
-.test {
+.profileContainer {
   height: 100%;
+  display: grid;
+  
+  grid-template-columns: 12.5% 1fr 1fr;
+  grid-template-rows: 5% 95%;
 }

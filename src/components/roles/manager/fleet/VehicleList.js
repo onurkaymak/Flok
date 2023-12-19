@@ -6,8 +6,6 @@ const VehicleList = (props) => {
 
   return (
     <div>
-      <h1>Fleet Inventory</h1>
-
       {props.fetchedVehicles.map(vehicle =>
         <Vehicle
           key={vehicle.vehicleId}

@@ -15,21 +15,21 @@ const FleetManager = (props = null) => {
   }, [dispatch, token])
 
   useEffect(() => {
-    if (props.onLinkSelection === "fleet search") {
+    if (props.selectedLink === "fleet search") {
       fetcher()
     }
-  }, [fetcher, props.onLinkSelection])
+  }, [fetcher, props.selectedLink])
 
 
   let content;
 
-  if (props.onLinkSelection === "fleet search") {
+  if (props.selectedLink === "fleet search") {
     content = <SearchResult fetchedVehicles={vehicles} />
-  } else if (props.onLinkSelection === "fleet add") {
+  } else if (props.selectedLink === "fleet add") {
     content = <h1>Add Vehicle</h1>
-  } else if (props.onLinkSelection === "fleet update") {
+  } else if (props.selectedLink === "fleet update") {
     content = <h1>Update Vehicle</h1>
-  } else if (props.onLinkSelection === "fleet delete") {
+  } else if (props.selectedLink === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
   } else {
     content = <h1>No content selected.</h1>
