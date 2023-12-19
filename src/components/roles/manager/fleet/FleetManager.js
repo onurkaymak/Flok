@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import VehicleList from "./VehicleList";
-import { fetchVehicles, resetVehiclesList } from '../../../store/fleet-actions';
+import { fetchVehicles, addVehicle, resetVehiclesList } from '../../../store/fleet-actions';
 import classes from './FleetManager.module.css';
 import AddVehicleForm from './AddVehicleForm';
 
@@ -15,6 +15,12 @@ const FleetManager = (props = null) => {
     dispatch(resetVehiclesList());
     dispatch(fetchVehicles({ token }));
   }, [dispatch, token])
+
+
+  const addVehicleFormHandler = (vehicleInfo) => {
+    dispatch(addVehicle(vehicleInfo, token));
+  };
+
 
   useEffect(() => {
     if (props.selectedLink === "fleet search") {
@@ -32,7 +38,7 @@ const FleetManager = (props = null) => {
     content = <VehicleList fetchedVehicles={vehicles} />
   } else if (props.selectedLink === "fleet add") {
     title = <h1>Add Vehicle Form</h1>
-    content = <AddVehicleForm />
+    content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} />
   } else if (props.selectedLink === "fleet update") {
     content = <h1>Update Vehicle</h1>
   } else if (props.selectedLink === "fleet delete") {

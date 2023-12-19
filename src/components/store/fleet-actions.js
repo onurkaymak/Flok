@@ -18,7 +18,7 @@ export const fetchVehicles = (queries) => {
 }
 
 
-export const AddVehicle = (vehicleInfo, token) => {
+export const addVehicle = (vehicleInfo, token) => {
   return async (dispatch) => {
 
     const { vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction } = vehicleInfo;
