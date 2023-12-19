@@ -12,8 +12,8 @@ const columns = [
   { field: 'classCode', headerName: 'Class Code', width: 90 },
   { field: 'state', headerName: 'State', width: 50 },
   { field: 'licensePlate', headerName: 'License Plate', width: 100 },
-  { field: 'isRented', headerName: 'Rent Status', width: 90 },
-  { field: 'inProduction', headerName: 'Production Status', width: 125 },
+  { field: 'isRented', headerName: 'Rented', width: 70 },
+  { field: 'inProduction', headerName: 'Production', width: 80 },
 
 
 
