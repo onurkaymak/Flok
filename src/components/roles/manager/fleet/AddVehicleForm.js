@@ -1,11 +1,29 @@
-const AddVehicleForm = () => {
+const AddVehicleForm = (props) => {
 
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
 
+    const vin = event.target[0].value;
+    const make = event.target[1].value;
+    const model = event.target[2].value;
+    const color = event.target[3].value;
+    const mileage = event.target[4].value;
+    const vehicleClass = event.target[5].value;
+    const classCode = event.target[6].value;
+    const state = event.target[7].value;
+    const licensePlate = event.target[8].value;
+    const isRented = event.target[9].checked;
+    const inProduction = event.target[10].checked;
+
+    const vehicleInfo = { vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction };
+
+    props.addVehicleFormHandler(vehicleInfo);
+    document.getElementById("addVehicleForm").reset();
+  };
 
   return (
-    <form>
+    <form id="addVehicleForm" onSubmit={formSubmitHandler}>
       <div className="space-y-12">
-
         {/* //First Section */}
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-4">
@@ -187,46 +205,44 @@ const AddVehicleForm = () => {
         {/* // Third Section */}
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 space-y-10">
-            <fieldset>
-              <legend className="text-sm font-semibold leading-6 text-gray-900">Rent Status</legend>
-              <div className="mt-6 space-y-6">
+            <legend className="text-sm font-semibold leading-6 text-gray-900">Rent Status</legend>
+            <div className="mt-6 space-y-6">
 
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="isRented"
-                      name="isRented"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label htmlFor="isRented" className="font-medium text-gray-900">
-                      Is Booked
-                    </label>
-                    <p className="text-gray-500">Select this only if the vehicle is currently rented.</p>
-                  </div>
+              <div className="relative flex gap-x-3">
+                <div className="flex h-6 items-center">
+                  <input
+                    id="isRented"
+                    name="isRented"
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
                 </div>
-
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="inProduction"
-                      name="inProduction"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label htmlFor="inProduction" className="font-medium text-gray-900">
-                      In Production
-                    </label>
-                    <p className="text-gray-500">Select this only if the vehicle is currently in production.</p>
-                  </div>
+                <div className="text-sm leading-6">
+                  <label htmlFor="isRented" className="font-medium text-gray-900">
+                    Is Booked
+                  </label>
+                  <p className="text-gray-500">Select this only if the vehicle is currently rented.</p>
                 </div>
-
               </div>
-            </fieldset>
+
+              <div className="relative flex gap-x-3">
+                <div className="flex h-6 items-center">
+                  <input
+                    id="inProduction"
+                    name="inProduction"
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  />
+                </div>
+                <div className="text-sm leading-6">
+                  <label htmlFor="inProduction" className="font-medium text-gray-900">
+                    In Production
+                  </label>
+                  <p className="text-gray-500">Select this only if the vehicle is currently in production.</p>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
