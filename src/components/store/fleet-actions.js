@@ -18,6 +18,41 @@ export const fetchVehicles = (queries) => {
 }
 
 
+export const AddVehicle = (vehicleInfo, token) => {
+  return async (dispatch) => {
+
+    const { vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction } = vehicleInfo;
+
+    try {
+      const response = await axios.post("https://localhost:5000/api/fleet", {
+        "vin": vin,
+        "make": make,
+        "model": model,
+        "color": color,
+        "mileage": mileage,
+        "class": vehicleClass,
+        "classCode": classCode,
+        "state": state,
+        "licensePlate": licensePlate,
+        "isRented": isRented,
+        "inProduction": inProduction
+      },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      console.log(response);
+
+
+    } catch (error) {
+
+    }
+
+  }
+}
+
+
 export const resetVehiclesList = () => {
   return (dispatch) => {
     dispatch(fleetActions.resetVehicles());
