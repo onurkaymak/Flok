@@ -3,56 +3,54 @@ import { useState, useEffect, Fragment } from 'react';
 import classes from './SideNavbar.module.css';
 import sprite from '../img/sprite.svg';
 
-import FleetManager from '../roles/manager/fleet/FleetManager';
-import ProductionManager from '../roles/manager/production/ProductionManager';
-import RentalManager from '../roles/manager/rental/RentalManager';
-
 const SideNavbar = (props) => {
   const [sideBarLink, setSideBarLink] = useState(null);
 
 
-  const selectedLinkHandler = (selectedLink) => {
-    switch (selectedLink) {
-      case 'search fleet':
-        console.log('selected link handler')
-        props.selectedSideLinkHandler("fleet search");
-        break;
-      case 'add fleet':
-        props.selectedSideLinkHandler("fleet add");
-        break;
-      case 'update fleet':
-        props.selectedSideLinkHandler("fleet update");
-        break;
-      case 'delete fleet':
-        props.selectedSideLinkHandler("fleet delete");
-        break;
-      case 'search production':
-        props.selectedSideLinkHandler("production search");
-        break;
-      case 'add production':
-        props.selectedSideLinkHandler("production add");
-        break;
-      case 'search2 production':
-        props.selectedSideLinkHandler("production search2");
-        break;
-      case 'search rental':
-        props.selectedSideLinkHandler("rental search");
-        break;
-      case 'add rental':
-        props.selectedSideLinkHandler("rental add");
-        break;
-      case 'update rental':
-        props.selectedSideLinkHandler("rental update");
-        break;
-      case 'delete rental':
-        props.selectedSideLinkHandler("rental delete");
-        break;
-      default:
-        props.selectedSideLinkHandler(null);
-    }
-  };
+
 
   useEffect(() => {
+    const selectedLinkHandler = (selectedLink) => {
+      switch (selectedLink) {
+        case 'search fleet':
+          props.selectedSideLinkHandler("fleet search");
+          break;
+        case 'add fleet':
+          props.selectedSideLinkHandler("fleet add");
+          break;
+        case 'update fleet':
+          props.selectedSideLinkHandler("fleet update");
+          break;
+        case 'delete fleet':
+          props.selectedSideLinkHandler("fleet delete");
+          break;
+        case 'search production':
+          props.selectedSideLinkHandler("production search");
+          break;
+        case 'add production':
+          props.selectedSideLinkHandler("production add");
+          break;
+        case 'search2 production':
+          props.selectedSideLinkHandler("production search2");
+          break;
+        case 'search rental':
+          props.selectedSideLinkHandler("rental search");
+          break;
+        case 'add rental':
+          props.selectedSideLinkHandler("rental add");
+          break;
+        case 'update rental':
+          props.selectedSideLinkHandler("rental update");
+          break;
+        case 'delete rental':
+          props.selectedSideLinkHandler("rental delete");
+          break;
+        default:
+          props.selectedSideLinkHandler(null);
+      }
+    };
+
+
     const fleetLinks =
       <div className={classes.sidebarContainer}>
         <div className={classes.sidebarTopButtonContainer} onClick={() => selectedLinkHandler("search fleet")}>
@@ -151,7 +149,7 @@ const SideNavbar = (props) => {
       default:
         setSideBarLink(fleetLinks);
     }
-  }, [props.currentDash]);
+  }, [props.currentDash, props]);
 
 
 
