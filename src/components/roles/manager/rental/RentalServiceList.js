@@ -1,7 +1,17 @@
 const RentalServiceList = (props) => {
 
-  const formSubmitHandler = () => {
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
 
+    const rentalServiceId = parseInt(event.target[0].value);
+    const customerEmail = event.target[1].value;
+    const serviceAgentId = event.target[2].value;
+    const customerPhoneNum = event.target[3].value;
+
+    const reservationInfo = { rentalServiceId, customerEmail, serviceAgentId, customerPhoneNum };
+
+    props.searchRentalService(reservationInfo);
+    // document.getElementById("checkRentalServiceForm").reset();
   };
 
 
@@ -11,7 +21,7 @@ const RentalServiceList = (props) => {
 
 
   return (
-    <form id="addRentalForm" onSubmit={formSubmitHandler} autoComplete="off">
+    <form id="checkRentalServiceForm" onSubmit={formSubmitHandler} autoComplete="off">
       <div className="space-y-12">
         {/* //First Section */}
         <div className="border-b border-gray-900/10 pb-12">
