@@ -1,0 +1,36 @@
+.rentalManagerContainer {
+  height: 100%;
+  width: 100%;
+  /* background-color: rgba(41, 48, 46, 0.393); */
+
+  display: grid;
+  grid-template-columns: 7.5% 85% 7.5%;
+  grid-template-rows: 10% 80% 10%;
+}
+
+
+.titleContainer {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 3.5rem;
+}
+
+
+.contentContainer {
+  grid-column: 2/3;
+  grid-row: 2/3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* background-color: blue; */
+}

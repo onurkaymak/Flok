@@ -88,7 +88,7 @@ const AddVehicleForm = (props) => {
 
             <div className="sm:col-span-2">
               <label htmlFor="color" className="block text-sm font-medium leading-6 text-gray-900">
-                Model
+                Color
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">

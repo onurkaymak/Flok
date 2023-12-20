@@ -1,11 +1,16 @@
+import AddRentalForm from './AddRentalForm';
+import classes from './RentalManager.module.css';
+
 const RentalManager = (props) => {
 
+  let title;
   let content;
 
   if (props.selectedLink === "rental search") {
     content = <h1>Search Rental</h1>
   } else if (props.selectedLink === "rental add") {
-    content = <h1>Add Rental</h1>
+    title = <h1 className={classes.title}>Book a Rental</h1>
+    content = <AddRentalForm />
   } else if (props.selectedLink === "rental update") {
     content = <h1>Update Rental</h1>
   } else if (props.selectedLink === "rental delete") {
@@ -15,8 +20,15 @@ const RentalManager = (props) => {
   }
 
   return (
-    <div>
-      {content}
+    <div className={classes.rentalManagerContainer}>
+      <div className={classes.titleContainer}>
+        {title}
+      </div>
+
+      <div className={classes.contentContainer}>
+        {content}
+      </div>
+
     </div>
   )
 };
