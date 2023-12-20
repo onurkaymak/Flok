@@ -6,7 +6,9 @@ const rentalSlice = createSlice({
     rentals: []
   },
   reducers: {
-
+    add(state, action) {
+      state.rentals.push(action.payload);
+    }
   }
 });
 
