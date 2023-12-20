@@ -6,6 +6,12 @@ const rentalSlice = createSlice({
     rentals: []
   },
   reducers: {
+    fetch(state, action) {
+      const data = action.payload;
+
+      const { message, serviceAgent, customerInfo, reservationInfo = data.vehicle.rentalJoinEntities[4] } = data;
+
+    },
     add(state, action) {
       state.rentals.push(action.payload);
     }
