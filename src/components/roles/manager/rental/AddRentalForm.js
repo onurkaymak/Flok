@@ -6,7 +6,16 @@ const AddRentalForm = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log(event);
+    const vin = event.target[0].value;
+    const customerEmail = event.target[1].value;
+    const serviceAgentId = event.target[2].value;
+    const reservationStart = event.target[4].value;
+    const reservationEnd = event.target[5].value;
+
+    const reservationInfo = { vin, customerEmail, serviceAgentId, reservationStart, reservationEnd };
+
+    props.addRentalFormHandler(reservationInfo);
+    document.getElementById("addRentalForm").reset();
   }
 
   const cancelButtonClickHandler = () => {
@@ -14,7 +23,7 @@ const AddRentalForm = (props) => {
   };
 
   return (
-    <form id="addVehicleForm" onSubmit={formSubmitHandler} autoComplete="off">
+    <form id="addRentalForm" onSubmit={formSubmitHandler} autoComplete="off">
       <div className="space-y-12">
         {/* //First Section */}
         <div className="border-b border-gray-900/10 pb-12">
