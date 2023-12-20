@@ -3,28 +3,31 @@ import axios from "axios";
 
 
 
-export const fetchRentalService = (rentalServiceInfo) => {
+export const fetchRentalService = (reservationInfo, token) => {
   return async (dispatch) => {
-    const { rentalServiceId, customerEmail, customerPhoneNum, token } = rentalServiceInfo;
+    const { rentalServiceId, customerEmail, customerPhoneNum, token } = reservationInfo;
 
     let url = "https://localhost:5000/api/rental";
 
     if (rentalServiceId) {
-      url = `${url}?rentalServiceId=${rentalServiceId}`;
+      url = `${url}?rentalServiceId=${rentalServiceId}&`;
     }
     if (customerEmail) {
-      url = `${url}?customerEmail=${customerEmail}`;
+      url = `${url}?customerEmail=${customerEmail}&`;
     }
     if (customerPhoneNum) {
-      url = `${url}?phoneNum=${customerPhoneNum}`;
+      url = `${url}?phoneNum=${customerPhoneNum}&`;
     }
 
     try {
+      console.log(url);
       const response = await axios.get(url);
 
       console.log(response);
 
-      // const fetchedVehicles = response.data;
+      const fetchedRentalServices = response.data[0];
+
+
 
     }
     catch (err) {
