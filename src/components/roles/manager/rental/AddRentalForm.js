@@ -9,8 +9,8 @@ const AddRentalForm = (props) => {
     const vin = event.target[0].value;
     const customerEmail = event.target[1].value;
     const serviceAgentId = event.target[2].value;
-    const reservationStart = event.target[4].value;
-    const reservationEnd = event.target[5].value;
+    const reservationStart = event.target[3].value;
+    const reservationEnd = event.target[4].value;
 
     const reservationInfo = { vin, customerEmail, serviceAgentId, reservationStart, reservationEnd };
 
