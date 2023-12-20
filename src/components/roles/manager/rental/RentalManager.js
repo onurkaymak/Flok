@@ -1,10 +1,15 @@
+import { useSelector, useDispatch } from 'react-redux';
 import AddRentalForm from './AddRentalForm';
 import classes from './RentalManager.module.css';
 
 const RentalManager = (props) => {
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.user.token);
 
 
   const addRentalFormHandler = (reservationInfo) => {
+
+    console.log(reservationInfo);
 
     // props.setSelectedLink(null);
   };
