@@ -22,6 +22,9 @@ const FleetManager = (props = null) => {
     props.setSelectedLink(null);
   };
 
+  const addVehicleFormCancelButtonHandler = () => {
+    props.setSelectedLink(null);
+  };
 
   useEffect(() => {
     if (props.selectedLink === "fleet search") {
@@ -39,7 +42,7 @@ const FleetManager = (props = null) => {
     content = <VehicleList fetchedVehicles={vehicles} />
   } else if (props.selectedLink === "fleet add") {
     title = <h1>Add Vehicle Form</h1>
-    content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} />
+    content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} addVehicleFormCancelButtonHandler={addVehicleFormCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
     content = <h1>Update Vehicle</h1>
   } else if (props.selectedLink === "fleet delete") {

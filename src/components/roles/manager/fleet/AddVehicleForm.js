@@ -21,6 +21,10 @@ const AddVehicleForm = (props) => {
     document.getElementById("addVehicleForm").reset();
   };
 
+  const cancelButtonClickHandler = () => {
+    props.addVehicleFormCancelButtonHandler();
+  };
+
   return (
     <form id="addVehicleForm" onSubmit={formSubmitHandler}>
       <div className="space-y-12">
@@ -249,7 +253,7 @@ const AddVehicleForm = (props) => {
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+        <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={cancelButtonClickHandler}>
           Cancel
         </button>
         <button
