@@ -9,7 +9,7 @@ const rentalSlice = createSlice({
     fetch(state, action) {
       const data = action.payload;
 
-      const { message, serviceAgent, customerInfo, reservationInfo = data.vehicle.rentalJoinEntities[4] } = data;
+      // const { message, serviceAgent, customerInfo, reservationInfo = data.vehicle.rentalJoinEntities[4] } = data;
 
     },
     add(state, action) {
