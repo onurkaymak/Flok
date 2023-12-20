@@ -3,6 +3,14 @@ import classes from './RentalManager.module.css';
 
 const RentalManager = (props) => {
 
+
+  const addRentalFormHandler = (reservationInfo) => {
+
+    // props.setSelectedLink(null);
+  };
+
+
+
   let title;
   let content;
 
@@ -10,7 +18,7 @@ const RentalManager = (props) => {
     content = <h1>Search Rental</h1>
   } else if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
-    content = <AddRentalForm />
+    content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} />
   } else if (props.selectedLink === "rental update") {
     content = <h1>Update Rental</h1>
   } else if (props.selectedLink === "rental delete") {
