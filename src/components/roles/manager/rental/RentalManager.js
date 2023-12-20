@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import AddRentalForm from './AddRentalForm';
 import classes from './RentalManager.module.css';
+import { addRentalService } from '../../../store/rental-actions';
 
 const RentalManager = (props) => {
   const dispatch = useDispatch();
@@ -8,9 +9,7 @@ const RentalManager = (props) => {
 
 
   const addRentalFormHandler = (reservationInfo) => {
-
-    console.log(reservationInfo);
-
+    dispatch(addRentalService(reservationInfo, token));
     // props.setSelectedLink(null);
   };
 
