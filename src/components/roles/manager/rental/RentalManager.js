@@ -10,7 +10,11 @@ const RentalManager = (props) => {
 
   const addRentalFormHandler = (reservationInfo) => {
     dispatch(addRentalService(reservationInfo, token));
-    // props.setSelectedLink(null);
+    props.setSelectedLink(null);
+  };
+
+  const formCancelButtonHandler = () => {
+    props.setSelectedLink(null);
   };
 
 
@@ -22,7 +26,7 @@ const RentalManager = (props) => {
     content = <h1>Search Rental</h1>
   } else if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
-    content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} />
+    content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "rental update") {
     content = <h1>Update Rental</h1>
   } else if (props.selectedLink === "rental delete") {

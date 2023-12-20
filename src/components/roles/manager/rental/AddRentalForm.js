@@ -19,7 +19,7 @@ const AddRentalForm = (props) => {
   }
 
   const cancelButtonClickHandler = () => {
-    // props.addVehicleFormCancelButtonHandler();
+    props.formCancelButtonHandler();
   };
 
   return (
