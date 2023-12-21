@@ -1,5 +1,4 @@
 .rentalServiceListContainer {
-  /* background-color: salmon; */
   width: 100%;
   height: 100%;
 
@@ -7,26 +6,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .formContainer {
-  /* background-color: blue; */
-  width: 80%;
+  width: 75%;
 }
 
 .selectedRentalServiceContainer {
-  height: 20%;
   width: 100%;
-  /* background-color: yellowgreen; */
 }
 
 .allRentalServicesContainer {
-  height: 35%;
+  height: 60%;
   width: 100%;
-  /* background-color: yellow; */
 }
 
-.reservationInfoModalContainer {
-  /* height: 100%; */
-  /* width: 100%; */
-}

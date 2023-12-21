@@ -14,9 +14,6 @@ const columns = [
   { field: 'licensePlate', headerName: 'License Plate', width: 100 },
   { field: 'isRented', headerName: 'Rented', width: 70 },
   { field: 'inProduction', headerName: 'Production', width: 80 },
-
-
-
 ];
 
 const VehicleList = (props) => {
