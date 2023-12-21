@@ -7,7 +7,6 @@ import RentalServiceList from './RentalServiceList';
 const RentalManager = (props) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
-  const rentalServices = useSelector(state => state.rental.rentalServices);
 
 
   const searchRentalService = (reservationInfo) => {
@@ -29,6 +28,7 @@ const RentalManager = (props) => {
   let content;
 
   if (props.selectedLink === "rental search") {
+    title = <h1 className={classes.title}>Reservation List</h1>
     content = <RentalServiceList searchRentalService={searchRentalService} />
   } else if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
