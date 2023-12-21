@@ -21,7 +21,7 @@ export const fetchRentalService = (reservationInfo, token) => {
       const response = await axios.get(url);
 
       const fetchedRentalService = response.data[0];
-      dispatch(rentalActions.addSelectedRentalService(fetchedRentalService));
+      dispatch(rentalActions.fetchSelectedRentalService(fetchedRentalService));
 
     }
     catch (err) {

@@ -7,7 +7,7 @@ const rentalSlice = createSlice({
     selectedRentalService: null
   },
   reducers: {
-    addSelectedRentalService(state, action) {
+    fetchSelectedRentalService(state, action) {
       const data = action.payload;
 
       state.selectedRentalService = { ...data };
