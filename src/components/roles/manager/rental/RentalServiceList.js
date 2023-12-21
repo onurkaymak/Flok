@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
 import classes from './RentalServiceList.module.css';
-
-
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import { PaperClipIcon } from '@heroicons/react/20/solid'
+import format from 'date-fns/format';
 
 const RentalServiceList = (props) => {
   const [open, setOpen] = useState(false);
@@ -13,8 +11,6 @@ const RentalServiceList = (props) => {
   const cancelButtonRef = useRef(null)
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
-
-  console.log(fetchedRentalService)
   // const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
 
 
@@ -170,10 +166,10 @@ const RentalServiceList = (props) => {
                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
-                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                       <div className="sm:flex sm:items-start">
-                        <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
                           <InformationCircleIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
                         </div>
                         <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -181,9 +177,8 @@ const RentalServiceList = (props) => {
                             Reservation Information
                           </Dialog.Title>
                           <div className="mt-4">
-
                             <div className={classes.reservationInfoModalContainer}>
-                              <div className="mt-6 border-t border-gray-100">
+                              <div className="border-t border-gray-600">
                                 <dl className="divide-y divide-gray-100">
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt className="text-sm font-medium leading-6 text-gray-900">Reservation No</dt>
@@ -192,33 +187,39 @@ const RentalServiceList = (props) => {
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Customer Name</dt>
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Name</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                       {fetchedRentalService ? fetchedRentalService.customer.name : null}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Customer Email</dt>
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Email</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                       {fetchedRentalService ? fetchedRentalService.customer.email : null}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Customer Phone Number</dt>
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Number</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                       {fetchedRentalService ? fetchedRentalService.customer.phoneNum : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Pick-up Date</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? format(fetchedRentalService.reservationStart, 'mm, dd, yyyy / p') : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Return Date</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? format(fetchedRentalService.reservationEnd, 'mm, dd, yyyy / p') : null}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt className="text-sm font-medium leading-6 text-gray-900">Vehicle VIN</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                       {fetchedRentalService ? fetchedRentalService.vehicle.vin : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Reservation Pick-up Date</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.reservationStart.toString() : null}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -250,18 +251,10 @@ const RentalServiceList = (props) => {
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                       <button
                         type="button"
-                        className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                        className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
                         onClick={() => setOpen(false)}
                       >
-                        Deactivate
-                      </button>
-                      <button
-                        type="button"
-                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                        onClick={() => setOpen(false)}
-                        ref={cancelButtonRef}
-                      >
-                        Cancel
+                        Okay
                       </button>
                     </div>
                   </Dialog.Panel>
