@@ -5,6 +5,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
 import { fetchRentalServiceList } from '../../../store/rental-actions';
+import RentalServiceListTable from './RentalServiceListTable';
 
 const RentalServiceList = (props) => {
   const dispatch = useDispatch();
@@ -277,7 +278,9 @@ const RentalServiceList = (props) => {
           </Dialog>
         </Transition.Root>
       </div>
-      <div className={classes.allRentalServicesContainer}></div>
+      <div className={classes.allRentalServicesContainer}>
+        <RentalServiceListTable fetchedRentalServiceList={fetchedRentalServiceList} />
+      </div>
     </div>
   )
 };
