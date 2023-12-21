@@ -7,8 +7,6 @@ export const fetchRentalService = (reservationInfo, token) => {
   return async (dispatch) => {
     const { rentalServiceId, customerEmail, customerPhoneNum, token } = reservationInfo;
 
-    console.log(customerPhoneNum);
-
     let url = "https://localhost:5000/api/rental";
 
     if (rentalServiceId) {
@@ -21,17 +19,12 @@ export const fetchRentalService = (reservationInfo, token) => {
       url = `${url}?customerPhoneNum=${customerPhoneNum}`;
     }
 
-    console.log(url);
-
     try {
-      console.log(url);
       const response = await axios.get(url);
 
-      console.log(response);
+      const fetchedRentalService = response.data[0];
 
-      const fetchedRentalServices = response.data[0];
-
-
+      dispatch(rentalActions.addSelectedRentalService(fetchedRentalService));
 
     }
     catch (err) {
@@ -55,8 +48,6 @@ export const addRentalService = (reservationInfo, token) => {
         "reservationEnd": reservationEnd
       }
       );
-
-      console.log(response);
 
 
     } catch (error) {
