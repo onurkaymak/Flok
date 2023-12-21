@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import format from 'date-fns/format';
 
 const rentalSlice = createSlice({
   name: 'rental',
@@ -20,8 +21,8 @@ const rentalSlice = createSlice({
           contactName: service.customer.name,
           contactEmail: service.customer.email,
           contactNum: service.customer.phoneNum,
-          pickUpTime: service.reservationStart,
-          returnTime: service.reservationEnd,
+          pickUpTime: format(service.reservationStart, 'mm, dd, yyyy / p'),
+          returnTime: format(service.reservationEnd, 'mm, dd, yyyy / p'),
           make: service.vehicle.make,
           model: service.vehicle.model,
           vin: service.vehicle.vin,
