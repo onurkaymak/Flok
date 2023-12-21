@@ -15,6 +15,7 @@ const RentalServiceList = (props) => {
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
   const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
+  console.log(fetchedRentalServiceList);
 
   const rentalServiceListfetcher = useCallback(async () => {
     dispatch(fetchRentalServiceList());
