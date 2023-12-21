@@ -1,11 +1,9 @@
 import { rentalActions } from "./rental-slice";
 import axios from "axios";
 
-
-
 export const fetchRentalService = (reservationInfo, token) => {
   return async (dispatch) => {
-    const { rentalServiceId, customerEmail, customerPhoneNum, token } = reservationInfo;
+    const { rentalServiceId, customerEmail, customerPhoneNum } = reservationInfo;
 
     let url = "https://localhost:5000/api/rental";
 
@@ -23,7 +21,6 @@ export const fetchRentalService = (reservationInfo, token) => {
       const response = await axios.get(url);
 
       const fetchedRentalService = response.data[0];
-
       dispatch(rentalActions.addSelectedRentalService(fetchedRentalService));
 
     }
@@ -40,7 +37,7 @@ export const addRentalService = (reservationInfo, token) => {
     const { vin, customerEmail, serviceAgentId, reservationStart, reservationEnd } = reservationInfo;
 
     try {
-      const response = await axios.post("https://localhost:5000/api/rental", {
+      await axios.post("https://localhost:5000/api/rental", {
         "vin": vin,
         "customerEmail": customerEmail,
         "serviceAgentId": serviceAgentId,
