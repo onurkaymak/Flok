@@ -32,6 +32,9 @@ const rentalSlice = createSlice({
     },
     add(state, action) {
       state.rentals.push(action.payload);
+    },
+    resetRentalServices(state) {
+      state.rentalServices = []
     }
   }
 });

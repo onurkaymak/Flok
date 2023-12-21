@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef, useState, useCallback } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
-import { fetchRentalServiceList } from '../../../store/rental-actions';
+import { fetchRentalServiceList, resetRentalServiceList } from '../../../store/rental-actions';
 import RentalServiceListTable from './RentalServiceListTable';
 
 const RentalServiceList = (props) => {
@@ -16,9 +16,9 @@ const RentalServiceList = (props) => {
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
   const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
-  console.log(fetchedRentalServiceList);
 
   const rentalServiceListfetcher = useCallback(async () => {
+    dispatch(resetRentalServiceList());
     dispatch(fetchRentalServiceList());
   }, [dispatch])
 

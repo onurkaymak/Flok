@@ -67,6 +67,12 @@ export const addRentalService = (reservationInfo, token) => {
     } catch (error) {
 
     }
+  }
+}
 
+
+export const resetRentalServiceList = () => {
+  return (dispatch) => {
+    dispatch(rentalActions.resetRentalServices());
   }
 }
