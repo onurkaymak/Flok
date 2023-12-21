@@ -1,12 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
 import AddRentalForm from './AddRentalForm';
 import classes from './RentalManager.module.css';
-import { addRentalService } from '../../../store/rental-actions';
+import { fetchRentalService, addRentalService } from '../../../store/rental-actions';
+import RentalServiceList from './RentalServiceList';
 
 const RentalManager = (props) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
+  const rentalServices = useSelector(state => state.rental.rentalServices);
 
+
+  const searchRentalService = (reservationInfo) => {
+    dispatch(fetchRentalService(reservationInfo, token));
+  };
 
   const addRentalFormHandler = (reservationInfo) => {
     dispatch(addRentalService(reservationInfo, token));
@@ -23,7 +29,7 @@ const RentalManager = (props) => {
   let content;
 
   if (props.selectedLink === "rental search") {
-    content = <h1>Search Rental</h1>
+    content = <RentalServiceList searchRentalService={searchRentalService} />
   } else if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
     content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
