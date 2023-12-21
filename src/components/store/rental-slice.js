@@ -3,14 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const rentalSlice = createSlice({
   name: 'rental',
   initialState: {
-    rentals: []
+    rentalServices: [],
+    selectedRentalService: null
   },
   reducers: {
-    fetch(state, action) {
+    addSelectedRentalService(state, action) {
       const data = action.payload;
 
-      // const { message, serviceAgent, customerInfo, reservationInfo = data.vehicle.rentalJoinEntities[4] } = data;
-
+      state.selectedRentalService = { ...data };
     },
     add(state, action) {
       state.rentals.push(action.payload);
