@@ -7,17 +7,21 @@ export const fetchRentalService = (reservationInfo, token) => {
   return async (dispatch) => {
     const { rentalServiceId, customerEmail, customerPhoneNum, token } = reservationInfo;
 
+    console.log(customerPhoneNum);
+
     let url = "https://localhost:5000/api/rental";
 
     if (rentalServiceId) {
-      url = `${url}?rentalServiceId=${rentalServiceId}&`;
+      url = `${url}?rentalServiceId=${rentalServiceId}`;
     }
     if (customerEmail) {
-      url = `${url}?customerEmail=${customerEmail}&`;
+      url = `${url}?customerEmail=${customerEmail}`;
     }
     if (customerPhoneNum) {
-      url = `${url}?phoneNum=${customerPhoneNum}&`;
+      url = `${url}?customerPhoneNum=${customerPhoneNum}`;
     }
+
+    console.log(url);
 
     try {
       console.log(url);
