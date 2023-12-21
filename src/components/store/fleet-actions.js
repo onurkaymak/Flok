@@ -24,7 +24,7 @@ export const addVehicle = (vehicleInfo, token) => {
     const { vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction } = vehicleInfo;
 
     try {
-      const response = await axios.post("https://localhost:5000/api/fleet", {
+      await axios.post("https://localhost:5000/api/fleet", {
         "vin": vin,
         "make": make,
         "model": model,
@@ -41,9 +41,6 @@ export const addVehicle = (vehicleInfo, token) => {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
-
-      console.log(response);
-
 
     } catch (error) {
 
