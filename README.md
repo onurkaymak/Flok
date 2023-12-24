@@ -104,9 +104,9 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 ### Sign In & Sign Up Pages
 
 <div style="display:flex">
-<a href="https://ibb.co/w7Q7C8b"><img src="https://i.ibb.co/xYgYGwc/SignIn.png" alt="SignIn" border="0" height="300px" style="margin-right:10px"></a>
+<a href="https://ibb.co/w7Q7C8b"><img src="https://i.ibb.co/xYgYGwc/SignIn.png" alt="SignIn" border="0" height="300px" width="300px"></a>
 
-<a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0" height="300px"></a>
+<a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0" height="300px" width="300px"></a>
 </div>
 
 
