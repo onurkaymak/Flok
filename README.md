@@ -146,9 +146,19 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 
 
 
-<a href="https://ibb.co/Gc2KFCh"><img src="https://i.ibb.co/cDFGx2m/Book-Rental.png" alt="Book-Rental" border="0"></a><br /><a target='_blank' href='https://poetandpoem.com/ode'>famous odes</a><br />
+<a href="https://ibb.co/Gc2KFCh"><img src="https://i.ibb.co/cDFGx2m/Book-Rental.png" alt="Book-Rental" border="0"></a>
 
 - You can book a rental from this page, you can provide VIN, customer email and employee ID to create a reservation. Flok API will do the rest and find the existing user and the vehicle, match them in a join table in the database to create a rental service.
+
+---
+
+### Some of the role features
+
+
+<a href="https://ibb.co/Xty5wym"><img src="https://i.ibb.co/L1QgGQ4/Roles.png" alt="Roles" border="0"></a>
+
+- Flok API built on role-based authorization to authorize authenticated users in the application. You can find more information about role-based authorization
+in [here]("https://learn.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-8.0).
 
 ---
 
