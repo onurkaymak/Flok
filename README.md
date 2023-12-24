@@ -100,6 +100,7 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 
 - Landing page is visible to the users who is not authenticated, authenticated users will be redirected to profile page.
 
+---
 
 ### Sign In & Sign Up Pages
 
@@ -109,14 +110,26 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 <a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0"></a>
 </div>
 
+- These are the pages that users can sign up and sign in, Flok API sends a JWT to authenticate the users after a successful login.
+
+---
 
 ### Fleet Page
 
+⭐ Please note that, FLeet route is visible only to managers accounts, if you choose different role during registration, you cannot reach Fleet routes.
+
+
 <a href="https://ibb.co/NjL88zG"><img src="https://i.ibb.co/G2VKKjr/Vehicle-List.png" alt="Vehicle-List" border="0"></a>
 
+- Authenticated users can reach this route see current vehicles in the fleet inventory.
 
 
 
+<a href="https://ibb.co/TMZDZcf"><img src="https://i.ibb.co/N2XgXxv/Add-Vehicle.png" alt="Add-Vehicle" border="0"></a>
+
+- Authenticated users can reach this route and add new vehicle into the fleet inventory, you can find detailed information in Flok API documentation.
+
+---
 
 ## 🏁 Getting Started
 
