@@ -1,6 +1,12 @@
-<a href="https://github.com/onurkaymak/Flok" style="display:flex;justify-content:center;" align="center">
+<br>
+  <h1 align="center">Flok</h1>
+
+<p align="center">
+  
+   <br>
+    <a href="https://github.com/onurkaymak/Flok" style="display:flex;justify-content:center;">
         <img src="https://i.ibb.co/nfMH2jN/flok2.png" style="width:450px;height:100px;">
-</a>
+    </a>
     <p align="center">
       ___________________________
     </p>
