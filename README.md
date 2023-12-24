@@ -160,7 +160,7 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 
 ### 🔗 Flok API repository Link
 
-* [Flok](https://github.com/onurkaymak/FlokAPI)
+* [Flok API](https://github.com/onurkaymak/FlokAPI)
 
 ### ⚙️ Setup and Use
 
