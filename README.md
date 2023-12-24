@@ -104,11 +104,12 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 
 ### Sign In & Sign Up Pages
 
-<div style="display:flex">
 <a href="https://ibb.co/w7Q7C8b"><img src="https://i.ibb.co/xYgYGwc/SignIn.png" alt="SignIn" border="0"></a>
 
+
+
 <a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0"></a>
-</div>
+
 
 - These are the pages that users can sign up and sign in, Flok API sends a JWT to authenticate the users after a successful login.
 
@@ -116,7 +117,7 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 
 ### Fleet Page
 
-⭐ Please note that, FLeet route is visible only to managers accounts, if you choose different role during registration, you cannot reach Fleet routes.
+⭐ Please note that, Fleet routes are visible only to manager accounts, if you choose different role during registration, you cannot reach Fleet routes.
 
 
 <a href="https://ibb.co/NjL88zG"><img src="https://i.ibb.co/G2VKKjr/Vehicle-List.png" alt="Vehicle-List" border="0"></a>
@@ -128,6 +129,21 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 <a href="https://ibb.co/TMZDZcf"><img src="https://i.ibb.co/N2XgXxv/Add-Vehicle.png" alt="Add-Vehicle" border="0"></a>
 
 - Authenticated users can reach this route and add new vehicle into the fleet inventory, you can find detailed information in Flok API documentation.
+
+---
+
+### Rental Page
+
+
+<a href="https://ibb.co/TrdFY9Y"><img src="https://i.ibb.co/stzMb8b/Reservation-List.png" alt="Reservation-List" border="0"></a>
+
+- You can see the current reservations as a list in this page, you also search a specific reservation with reservation information includes customer information or reservation number.
+
+
+
+<a href="https://ibb.co/Gc2KFCh"><img src="https://i.ibb.co/cDFGx2m/Book-Rental.png" alt="Book-Rental" border="0"></a><br /><a target='_blank' href='https://poetandpoem.com/ode'>famous odes</a><br />
+
+- You can book a rental from this page, you can provide VIN, customer email and employee ID to create a reservation. Flok API will do the rest and find the existing user and the vehicle, match them in a join table in the database to create a rental service.
 
 ---
 
