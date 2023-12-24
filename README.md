@@ -104,15 +104,15 @@ It's a full-stack application that is built on React with Redux & ASP.NET Web AP
 ### Sign In & Sign Up Pages
 
 <div style="display:flex">
-<a href="https://ibb.co/w7Q7C8b"><img src="https://i.ibb.co/xYgYGwc/SignIn.png" alt="SignIn" border="0" height="300px" width="400px"></a>
+<a href="https://ibb.co/w7Q7C8b"><img src="https://i.ibb.co/xYgYGwc/SignIn.png" alt="SignIn" border="0"></a>
 
-<a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0" height="300px" width="400px"></a>
+<a href="https://ibb.co/NFTPVB9"><img src="https://i.ibb.co/QJDRbwP/SignUp.png" alt="SignUp" border="0"></a>
 </div>
 
 
 ### Fleet Page
 
-<a href="https://ibb.co/NjL88zG"><img src="https://i.ibb.co/G2VKKjr/Vehicle-List.png" alt="Vehicle-List" border="0" height="300px" width="400px"></a>
+<a href="https://ibb.co/NjL88zG"><img src="https://i.ibb.co/G2VKKjr/Vehicle-List.png" alt="Vehicle-List" border="0"></a>
 
 
 
