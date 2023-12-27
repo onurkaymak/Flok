@@ -51,6 +51,9 @@ const RentalServiceList = (props) => {
 
   };
 
+  const deleteButtonHandler = () => {
+    setWarningModal(true);
+  };
 
 
   return (
