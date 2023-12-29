@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import classes from './RentalServiceList.module.css';
-import { Fragment, useEffect, useRef, useState, useCallback } from 'react';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
@@ -12,8 +12,6 @@ const RentalServiceList = (props) => {
   const [open, setOpen] = useState(false);
   const [warningModal, setWarningModal] = useState(false);
 
-
-  const cancelButtonRef = useRef(null)
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
   const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
@@ -57,7 +55,8 @@ const RentalServiceList = (props) => {
       setWarningModal(true);
       console.log("Just open the modal!");
     } else {
-      console.log("dispatch action!")
+      console.log("dispatch action!");
+      console.log(fetchedRentalService);
       setWarningModal(false);
       setOpen(false);
     }
@@ -170,7 +169,7 @@ const RentalServiceList = (props) => {
 
       <div className={classes.selectedRentalServiceContainer}>
         <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+          <Dialog as="div" className="relative z-10" onClose={setOpen}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -195,7 +194,7 @@ const RentalServiceList = (props) => {
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
                   <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    {warningModal && <div className={classes.test} ref={cancelButtonRef}>TEST</div>}
+                    {warningModal && <div className={classes.test}>TEST</div>}
                     {!warningModal && <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                       <div className="sm:flex sm:items-start">
                         <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
