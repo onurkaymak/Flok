@@ -21,6 +21,7 @@ const RentalServiceList = (props) => {
   const rentalServiceListfetcher = useCallback(async () => {
     dispatch(resetRentalServiceList());
     dispatch(fetchRentalServiceList());
+    console.log("here")
   }, [dispatch])
 
 
@@ -52,7 +53,15 @@ const RentalServiceList = (props) => {
   };
 
   const deleteButtonHandler = () => {
-    setWarningModal(true);
+    if (!warningModal) {
+      setWarningModal(true);
+      console.log("Just open the modal!");
+    } else {
+      console.log("dispatch action!")
+      setWarningModal(false);
+      setOpen(false);
+    }
+
   };
 
 
