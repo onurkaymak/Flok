@@ -58,7 +58,10 @@ const RentalServiceList = (props) => {
 
   };
 
-
+  const closeHandler = () => {
+    setOpen(false);
+    setWarningModal(false);
+  }
 
 
   return (
