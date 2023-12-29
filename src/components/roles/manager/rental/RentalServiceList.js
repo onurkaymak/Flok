@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState, useCallback } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
-import { fetchRentalServiceList, resetRentalServiceList } from '../../../store/rental-actions';
+import { fetchRentalServiceList, resetRentalServiceList, deleteRentalService } from '../../../store/rental-actions';
 import RentalServiceListTable from './RentalServiceListTable';
 
 const RentalServiceList = (props) => {
@@ -56,7 +56,7 @@ const RentalServiceList = (props) => {
       console.log("Just open the modal!");
     } else {
       console.log("dispatch action!");
-      console.log(fetchedRentalService);
+      dispatch(deleteRentalService(fetchedRentalService.rentalServiceId));
       setWarningModal(false);
       setOpen(false);
     }
