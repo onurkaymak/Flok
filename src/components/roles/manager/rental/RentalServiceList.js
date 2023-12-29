@@ -217,7 +217,86 @@ const RentalServiceList = (props) => {
                       </div>
                     }
 
-
+                    {!warningModal && <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                      <div className="sm:flex sm:items-start">
+                        <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                          <InformationCircleIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+                        </div>
+                        <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                          <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                            Reservation Information
+                          </Dialog.Title>
+                          <div className="mt-4">
+                            <div className={classes.reservationInfoModalContainer}>
+                              <div className="border-t border-gray-600">
+                                <dl className="divide-y divide-gray-100">
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Reservation No</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.rentalServiceId : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Name</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.customer.name : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Email</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.customer.email : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Number</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.customer.phoneNum : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Pick-up Date</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? format(fetchedRentalService.reservationStart, 'mm, dd, yyyy / p') : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Return Date</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? format(fetchedRentalService.reservationEnd, 'mm, dd, yyyy / p') : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Vehicle VIN</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.vehicle.vin : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Make</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.vehicle.make : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Model</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.vehicle.model : null}
+                                    </dd>
+                                  </div>
+                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                    <dt className="text-sm font-medium leading-6 text-gray-900">Color</dt>
+                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                      {fetchedRentalService ? fetchedRentalService.vehicle.color : null}
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>}
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                       <button
                         type="button"
