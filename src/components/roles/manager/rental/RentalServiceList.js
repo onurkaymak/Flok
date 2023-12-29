@@ -19,7 +19,6 @@ const RentalServiceList = (props) => {
   const rentalServiceListfetcher = useCallback(async () => {
     dispatch(resetRentalServiceList());
     dispatch(fetchRentalServiceList());
-    console.log("here")
   }, [dispatch])
 
 
@@ -46,10 +45,6 @@ const RentalServiceList = (props) => {
   };
 
 
-  const cancelButtonClickHandler = () => {
-
-  };
-
   const deleteButtonHandler = () => {
     if (!warningModal) {
       setWarningModal(true);
@@ -62,6 +57,8 @@ const RentalServiceList = (props) => {
     }
 
   };
+
+
 
 
   return (
@@ -154,9 +151,6 @@ const RentalServiceList = (props) => {
           </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={cancelButtonClickHandler}>
-              Cancel
-            </button>
             <button
               type="submit"
               className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -169,7 +163,7 @@ const RentalServiceList = (props) => {
 
       <div className={classes.selectedRentalServiceContainer}>
         <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          <Dialog as="div" className="relative z-10" onClose={closeHandler}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -194,87 +188,36 @@ const RentalServiceList = (props) => {
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
                   <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    {warningModal && <div className={classes.test}>TEST</div>}
-                    {!warningModal && <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                      <div className="sm:flex sm:items-start">
-                        <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
-                          <InformationCircleIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
-                        </div>
-                        <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                          <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                            Reservation Information
-                          </Dialog.Title>
-                          <div className="mt-4">
-                            <div className={classes.reservationInfoModalContainer}>
-                              <div className="border-t border-gray-600">
-                                <dl className="divide-y divide-gray-100">
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Reservation No</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.rentalServiceId : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Name</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.customer.name : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Email</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.customer.email : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Contact Number</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.customer.phoneNum : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Pick-up Date</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? format(fetchedRentalService.reservationStart, 'mm, dd, yyyy / p') : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Return Date</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? format(fetchedRentalService.reservationEnd, 'mm, dd, yyyy / p') : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Vehicle VIN</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.vehicle.vin : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Make</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.vehicle.make : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Model</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.vehicle.model : null}
-                                    </dd>
-                                  </div>
-                                  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt className="text-sm font-medium leading-6 text-gray-900">Color</dt>
-                                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.vehicle.color : null}
-                                    </dd>
-                                  </div>
-                                </dl>
+
+                    {warningModal &&
+                      <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <div className="sm:flex sm:items-start">
+                          <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <InformationCircleIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+                          </div>
+                          <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                            <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+                              Cancel Reservation
+                            </Dialog.Title>
+                            <div className="mt-4">
+                              <div className={classes.reservationInfoModalContainer}>
+                                <div className="border-t border-gray-600">
+                                  <dl className="divide-y divide-gray-100">
+
+                                    <div className="px-4 py-6 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-0">
+                                      <p>Are you sure you want to delete this reservation?</p>
+                                    </div>
+
+                                  </dl>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>}
+                    }
+
+
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                       <button
                         type="button"
