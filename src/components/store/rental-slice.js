@@ -33,6 +33,11 @@ const rentalSlice = createSlice({
     add(state, action) {
       state.rentals.push(action.payload);
     },
+    delete(state, action) {
+      const deleteId = action.payload;
+      state.rentalServices = state.rentalServices.filter(rentalService => rentalService.id !== deleteId);
+      state.selectedRentalService = null;
+    },
     resetRentalServices(state) {
       state.rentalServices = []
     }
