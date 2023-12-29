@@ -58,7 +58,7 @@ const RentalServiceList = (props) => {
 
   };
 
-  const closeHandler = () => {
+  const modalCloseHandler = () => {
     setOpen(false);
     setTimeout(() => setWarningModal(false), 500);
   }
@@ -166,7 +166,7 @@ const RentalServiceList = (props) => {
 
       <div className={classes.selectedRentalServiceContainer}>
         <Transition.Root show={open} as={Fragment}>
-          <Dialog as="div" className="relative z-10" onClose={closeHandler}>
+          <Dialog as="div" className="relative z-10" onClose={modalCloseHandler}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
