@@ -70,6 +70,17 @@ export const addRentalService = (reservationInfo, token) => {
   }
 }
 
+export const deleteRentalService = (rentalServiceId, token) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`https://localhost:5000/api/rental/${rentalServiceId}`)
+      dispatch(rentalActions.delete());
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
+
 
 export const resetRentalServiceList = () => {
   return (dispatch) => {
