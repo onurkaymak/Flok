@@ -59,8 +59,12 @@ const RentalServiceList = (props) => {
   };
 
   const modalCloseHandler = () => {
-    setOpen(false);
-    setTimeout(() => setWarningModal(false), 500);
+    if (!warningModal) {
+      setOpen(false);
+    } else {
+      setOpen(false);
+      setTimeout(() => setWarningModal(false), 500);
+    }
   }
 
 
