@@ -24,7 +24,6 @@ const RentalServiceList = (props) => {
 
   useEffect(() => {
     rentalServiceListfetcher()
-
   }, [rentalServiceListfetcher]);
 
 
@@ -48,14 +47,11 @@ const RentalServiceList = (props) => {
   const deleteButtonHandler = () => {
     if (!warningModal) {
       setWarningModal(true);
-      console.log("Just open the modal!");
     } else {
-      console.log("dispatch action!");
       dispatch(deleteRentalService(fetchedRentalService.rentalServiceId));
       setWarningModal(false);
       setOpen(false);
     }
-
   };
 
   const modalCloseHandler = () => {
