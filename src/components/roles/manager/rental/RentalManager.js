@@ -27,10 +27,7 @@ const RentalManager = (props) => {
   let title;
   let content;
 
-  if (props.selectedLink === "rental search") {
-    title = <h1 className={classes.title}>Reservation List</h1>
-    content = <RentalServiceList searchRentalService={searchRentalService} />
-  } else if (props.selectedLink === "rental add") {
+  if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
     content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "rental update") {
@@ -38,7 +35,8 @@ const RentalManager = (props) => {
   } else if (props.selectedLink === "rental delete") {
     content = <h1>Delete Rental</h1>
   } else {
-    content = <h1>No content selected.</h1>
+    title = <h1 className={classes.title}>Reservation List</h1>
+    content = <RentalServiceList searchRentalService={searchRentalService} />
   }
 
   return (
