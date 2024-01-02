@@ -74,7 +74,7 @@ export const deleteRentalService = (rentalServiceId, token) => {
   return async (dispatch) => {
     try {
       await axios.delete(`https://localhost:5000/api/rental/${rentalServiceId}`)
-      dispatch(rentalActions.delete());
+      dispatch(rentalActions.delete(rentalServiceId));
     } catch (err) {
       console.log(err)
     }
