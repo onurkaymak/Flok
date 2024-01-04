@@ -27,10 +27,8 @@ const FleetManager = (props = null) => {
   };
 
   useEffect(() => {
-    if (props.selectedLink === "fleet search") {
-      fetcher()
-    }
-  }, [fetcher, props.selectedLink])
+    fetcher()
+  }, [fetcher])
 
 
 
