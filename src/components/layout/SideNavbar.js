@@ -42,9 +42,6 @@ const SideNavbar = (props) => {
         case 'update rental':
           props.selectedSideLinkHandler("rental update");
           break;
-        case 'delete rental':
-          props.selectedSideLinkHandler("rental delete");
-          break;
         default:
           props.selectedSideLinkHandler(null);
       }
@@ -125,12 +122,6 @@ const SideNavbar = (props) => {
             <li className={classes.listItem}>Update Rental</li>
             <svg className={classes.listItemIcon}>
               <use href={sprite + "#icon-loop2"}></use>
-            </svg>
-          </div>
-          <div className={classes.listItemContainer} onClick={() => selectedLinkHandler("delete rental")}>
-            <li className={classes.listItem}>Delete Rental</li>
-            <svg className={classes.listItemIcon}>
-              <use href={sprite + "#icon-bin2"}></use>
             </svg>
           </div>
         </ul>
