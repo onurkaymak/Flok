@@ -6,7 +6,12 @@ const uiSlice = createSlice({
     notification: null,
   },
   reducers: {
-
+    showNotification(state, action) {
+      state.notification = {
+        title: action.payload.title,
+        message: action.payload.message
+      }
+    }
   }
 });
 
