@@ -45,6 +45,7 @@ const AddRentalForm = (props) => {
                   />
                 </div>
               </div>
+              <p className="bg-red-300 text-red-600 bg-opacity-5 mt-1 text-center">test</p>
             </div>
 
             <div className="sm:col-span-2">
