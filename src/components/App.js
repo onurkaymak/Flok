@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <div className={classes.app}>
-      {ui && <Notification />}
+      {ui && <Notification title="Test Title" message="Test Message" />}
       <Routes>
         {!isLoggedIn && (<Route path='/' element={<Home />} />)}
         {isLoggedIn && (<Route path='/' element={<Navigate to={'/profile'} />} />)}
