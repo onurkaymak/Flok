@@ -10,6 +10,7 @@ import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 
 import classes from './App.module.css';
+import Notification from './UI/Notification';
 
 export let logoutTimer;
 
@@ -23,9 +24,10 @@ export const calculateRemainingTime = (expirationTime) => {
 
 
 const App = () => {
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-
   const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const ui = useSelector(state => state.ui.notification);
 
   const logOutHandler = useCallback(() => {
     dispatch(logOutUser());
@@ -56,6 +58,7 @@ const App = () => {
 
   return (
     <div className={classes.app}>
+      {ui && <Notification />}
       <Routes>
         {!isLoggedIn && (<Route path='/' element={<Home />} />)}
         {isLoggedIn && (<Route path='/' element={<Navigate to={'/profile'} />} />)}
