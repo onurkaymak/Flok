@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
@@ -8,8 +8,6 @@ import classes from './Notification.module.css';
 
 const Notification = ({ title, message }) => {
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(true);
 
   const modalCloseHandler = () => {
     dispatch(uiActions.setNotification());
