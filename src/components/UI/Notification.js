@@ -16,7 +16,7 @@ const Notification = ({ title, message }) => {
 
   return (
     <div className={classes.selectedRentalServiceContainer}>
-      <Transition.Root show={open} as={Fragment} onClose={modalCloseHandler}>
+      <Transition.Root show={true} as={Fragment} onClose={modalCloseHandler}>
         <Dialog as="div" className="relative z-10">
           <Transition.Child
             as={Fragment}
