@@ -37,6 +37,10 @@ const RentalServiceList = (props) => {
     const serviceAgentId = event.target[2].value;
     const customerPhoneNum = event.target[3].value;
 
+    if (isNaN(rentalServiceId) && customerEmail === "" && serviceAgentId === "" && customerPhoneNum === "") {
+      return
+    }
+
     const reservationInfo = { rentalServiceId, customerEmail, serviceAgentId, customerPhoneNum };
 
     props.searchRentalService(reservationInfo);
