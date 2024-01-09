@@ -7,6 +7,7 @@ import format from 'date-fns/format';
 import { fetchRentalServiceList, resetRentalServiceList, deleteRentalService } from '../../../store/rental-actions';
 import RentalServiceListTable from './RentalServiceListTable';
 
+
 const RentalServiceList = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
