@@ -54,7 +54,7 @@ export const addRentalService = (reservationInfo, token) => {
     const { vin, customerEmail, serviceAgentId, reservationStart, reservationEnd } = reservationInfo;
 
     try {
-      await axios.post("https://localhost:5000/api/rental", {
+      const response = await axios.post("https://localhost:5000/api/rental", {
         "vin": vin,
         "customerEmail": customerEmail,
         "serviceAgentId": serviceAgentId,
@@ -62,7 +62,7 @@ export const addRentalService = (reservationInfo, token) => {
         "reservationEnd": reservationEnd
       }
       );
-
+      dispatch(rentalActions.add(response.data));
 
     } catch (error) {
 
