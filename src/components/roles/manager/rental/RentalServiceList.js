@@ -6,7 +6,7 @@ import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
 import { fetchRentalServiceList, resetRentalServiceList, deleteRentalService } from '../../../store/rental-actions';
 import RentalServiceListTable from './RentalServiceListTable';
-
+import { uiActions } from "../../../store/ui-slice";
 
 const RentalServiceList = (props) => {
   const dispatch = useDispatch();
@@ -38,6 +38,10 @@ const RentalServiceList = (props) => {
     const customerPhoneNum = event.target[3].value;
 
     if (isNaN(rentalServiceId) && customerEmail === "" && serviceAgentId === "" && customerPhoneNum === "") {
+      dispatch(uiActions.showNotification({
+        title: "Reservation Check Error",
+        message: "Please fill at least one of the inputs to check a reservation."
+      }));
       return
     }
 
