@@ -6,7 +6,7 @@ import { logOutUser } from '../store/auth-actions';
 import classes from './ProfileNavbar.module.css';
 
 const navigation = [
-  { name: 'Fleet', href: '#', current: true },
+  { name: 'Fleet', href: '#', current: false },
   { name: 'Production', href: '#', current: false },
   { name: 'Rental', href: '#', current: false }
 ]
@@ -50,6 +50,15 @@ const ProfileNavbar = (props) => {
         setProfileIcon(null);
     }
   }, [userRole]);
+
+  useEffect(() => {
+    navigation.forEach((element) => {
+      if (element.name === props.current) {
+        element.current = true;
+      }
+    })
+  }, [props]);
+
 
   const signOutButtonHandler = (event) => {
     event.preventDefault();
