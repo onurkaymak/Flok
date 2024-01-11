@@ -41,7 +41,7 @@ export const addVehicle = (vehicleInfo, token) => {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
-      console.log(response);
+      dispatch(fleetActions.add(response));
     } catch (error) {
 
     }
