@@ -7,14 +7,14 @@ import Content from "../layout/Content";
 
 
 const Profile = () => {
-  const selectedNavLink = useRef(null);
-  console.log(selectedNavLink);
-  const [currentManagerDash, setCurrentManagerDash] = useState(selectedNavLink);
+  // const selectedNavLink = useRef(null);
+  // console.log(selectedNavLink);
+  const [currentManagerDash, setCurrentManagerDash] = useState("Fleet");
   const [selectedLink, setSelectedLink] = useState(null);
 
   const dashChoiceHandler = (chosenDash) => {
     setCurrentManagerDash(chosenDash);
-    selectedNavLink.current = chosenDash;
+    // selectedNavLink.current = chosenDash;
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Profile = () => {
 
   return (
     <div className={classes.profileContainer}>
-      <ProfileNavbar onManagerDashChoice={dashChoiceHandler} current={selectedNavLink} />
+      <ProfileNavbar onManagerDashChoice={dashChoiceHandler} />
       <SideNavbar currentDash={currentManagerDash} selectedLink={selectedLink} selectedSideLinkHandler={selectedSideLinkHandler} />
       <Content selectedLink={selectedLink} currentDash={currentManagerDash} setSelectedLink={setSelectedLink} />
     </div>
