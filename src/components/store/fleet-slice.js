@@ -27,7 +27,22 @@ const fleetSlice = createSlice({
       ))
     },
     add(state, action) {
-      state.vehicles.push(action.payload);
+      const data = action.payload;
+      state.vehicles.push({
+        key: data.vehicle.vehicleId,
+        id: data.vehicle.vehicleId,
+        vin: data.vehicle.vin,
+        make: data.vehicle.make,
+        model: data.vehicle.model,
+        color: data.vehicle.color,
+        mileage: data.vehicle.mileage,
+        vehicleClass: data.vehicle.class,
+        classCode: data.vehicle.classCode,
+        state: data.vehicle.state,
+        licensePlate: data.vehicle.licensePlate,
+        isRented: data.vehicle.isRented,
+        inProduction: data.vehicle.inProduction
+      });
     },
     resetVehicles(state) {
       state.vehicles = []
