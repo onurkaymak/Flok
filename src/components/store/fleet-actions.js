@@ -41,7 +41,25 @@ export const addVehicle = (vehicleInfo, token) => {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
-      dispatch(fleetActions.add(response));
+
+      const newVehicle = {
+        key: response.data.vehicle.vehicleId,
+        id: response.data.vehicle.vehicleId,
+        vin: response.data.vehicle.vin,
+        make: response.data.vehicle.make,
+        model: response.data.vehicle.model,
+        color: response.data.vehicle.color,
+        mileage: response.data.vehicle.mileage,
+        vehicleClass: response.data.vehicle.class,
+        classCode: response.data.vehicle.classCode,
+        state: response.data.vehicle.state,
+        licensePlate: response.data.vehicle.licensePlate,
+        isRented: response.data.vehicle.isRented,
+        inProduction: response.data.vehicle.inProduction
+      }
+
+
+      dispatch(fleetActions.add(newVehicle));
     } catch (error) {
 
     }
