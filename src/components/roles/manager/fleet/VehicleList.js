@@ -18,18 +18,19 @@ const columns = [
 
 const VehicleList = (props) => {
 
+
   return (
     <React.Fragment>
       <div style={{ height: 1000, width: '100%' }}>
         <DataGrid
-          rows={props.fetchedVehicles}
+          rows={props.vehicles}
           columns={columns}
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 10 },
+              paginationModel: { page: 0, pageSize: 15 },
             },
           }}
-          pageSizeOptions={[5, 10, 20]}
+          pageSizeOptions={[5, 15, 20]}
           checkboxSelection
         />
       </div>
