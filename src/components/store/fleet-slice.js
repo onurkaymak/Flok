@@ -27,22 +27,24 @@ const fleetSlice = createSlice({
       ))
     },
     add(state, action) {
-      const data = action.payload;
-      state.vehicles.push({
-        key: data.vehicle.vehicleId,
-        id: data.vehicle.vehicleId,
-        vin: data.vehicle.vin,
-        make: data.vehicle.make,
-        model: data.vehicle.model,
-        color: data.vehicle.color,
-        mileage: data.vehicle.mileage,
-        vehicleClass: data.vehicle.class,
-        classCode: data.vehicle.classCode,
-        state: data.vehicle.state,
-        licensePlate: data.vehicle.licensePlate,
-        isRented: data.vehicle.isRented,
-        inProduction: data.vehicle.inProduction
-      });
+      const addedVehicle = action.payload;
+      console.log(addedVehicle);
+      // state.vehicles.push({
+      //   key: addedVehicle.data.vehicle.vehicleId,
+      //   id: addedVehicle.data.vehicle.vehicleId,
+      //   vin: addedVehicle.data.vehicle.vin,
+      //   make: addedVehicle.data.vehicle.make,
+      //   model: addedVehicle.data.vehicle.model,
+      //   color: addedVehicle.data.vehicle.color,
+      //   mileage: addedVehicle.data.vehicle.mileage,
+      //   vehicleClass: addedVehicle.data.vehicle.class,
+      //   classCode: addedVehicle.data.vehicle.classCode,
+      //   state: addedVehicle.data.vehicle.state,
+      //   licensePlate: addedVehicle.data.vehicle.licensePlate,
+      //   isRented: addedVehicle.data.vehicle.isRented,
+      //   inProduction: addedVehicle.data.vehicle.inProduction
+      // });
+      state.vehicles.push(addedVehicle);
     },
     resetVehicles(state) {
       state.vehicles = []
