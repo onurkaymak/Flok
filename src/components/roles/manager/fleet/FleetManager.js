@@ -10,6 +10,7 @@ const FleetManager = (props = null) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
   const vehicles = useSelector(state => state.fleet.vehicles);
+  // console.log(vehicles);
 
   const fetcher = useCallback(async () => {
     dispatch(resetVehiclesList());
@@ -44,7 +45,7 @@ const FleetManager = (props = null) => {
     content = <h1>Delete Vehicle</h1>
   } else {
     title = <h1 className={classes.title}>Vehicle List</h1>
-    content = <VehicleList fetchedVehicles={vehicles} />
+    content = <VehicleList vehicles={vehicles} />
   }
 
 
