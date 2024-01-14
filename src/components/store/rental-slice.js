@@ -32,19 +32,38 @@ const rentalSlice = createSlice({
     },
     add(state, action) {
       const data = action.payload;
+
+      console.log(data);
+
+      state.rentalServices.push(data);
+
       state.rentalServices.push({
-        key: data.rentalJoinEntities[0].rentalserviceId,
-        id: data.rentalJoinEntities[0].rentalserviceId,
+        key: data.customer.rentalJoinEntities[0].rentalserviceId,
+        id: data.customer.rentalJoinEntities[0].rentalserviceId,
         contactName: data.customer.name,
         contactEmail: data.customer.email,
         contactNum: data.customer.phoneNum,
-        pickUpTime: format(data.vehicle.rentalJoinEntities.reservationStart, 'mm, dd, yyyy / p'),
-        returnTime: format(data.vehicle.rentalJoinEntities.reservationEnd, 'mm, dd, yyyy / p'),
+        pickUpTime: format(data.vehicle.rentalJoinEntities[0].reservationStart, 'mm, dd, yyyy / p'),
+        returnTime: format(data.vehicle.rentalJoinEntities[0].reservationEnd, 'mm, dd, yyyy / p'),
         make: data.vehicle.make,
         model: data.vehicle.model,
         vin: data.vehicle.vin,
         color: data.vehicle.color
       });
+
+      // state.rentalServices.push({
+      //   key: data.rentalserviceId,
+      //   id: data.rentalserviceId,
+      //   contactName: data.contactName,
+      //   contactEmail: data.contactEmail,
+      //   contactNum: data.contactNum,
+      //   pickUpTime: format(data.pickUpTime, 'mm, dd, yyyy / p'),
+      //   returnTime: format(data.returnTime, 'mm, dd, yyyy / p'),
+      //   make: data.make,
+      //   model: data.model,
+      //   vin: data.vin,
+      //   color: data.color
+      // });
     },
     delete(state, action) {
       const deleteId = action.payload;
