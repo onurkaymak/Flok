@@ -17,15 +17,15 @@ const RentalServiceList = (props) => {
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
   const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
 
-  const rentalServiceListfetcher = useCallback(async () => {
-    dispatch(resetRentalServiceList());
-    dispatch(fetchRentalServiceList());
-  }, [dispatch])
+  // const rentalServiceListfetcher = useCallback(async () => {
+  //   dispatch(resetRentalServiceList());
+  //   dispatch(fetchRentalServiceList());
+  // }, [dispatch])
 
 
-  useEffect(() => {
-    rentalServiceListfetcher()
-  }, [rentalServiceListfetcher]);
+  // useEffect(() => {
+  //   rentalServiceListfetcher()
+  // }, [rentalServiceListfetcher]);
 
 
 
