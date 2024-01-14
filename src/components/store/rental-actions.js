@@ -64,23 +64,22 @@ export const addRentalService = (reservationInfo, token) => {
       }
       );
 
+      const createdReservation = {
+        key: response.data.customer.rentalJoinEntities[0].rentalServiceId,
+        id: response.data.customer.rentalJoinEntities[0].rentalServiceId,
+        contactName: response.data.customer.name,
+        contactEmail: response.data.customer.email,
+        contactNum: response.data.customer.phoneNum,
+        pickUpTime: format(response.data.customer.rentalJoinEntities[0].reservationStart, 'mm, dd, yyyy / p'),
+        returnTime: format(response.data.customer.rentalJoinEntities[0].reservationEnd, 'mm, dd, yyyy / p'),
+        make: response.data.vehicle.make,
+        model: response.data.vehicle.model,
+        vin: response.data.vehicle.vin,
+        color: response.data.vehicle.color
 
-      // const testRes = {
-      //   id: 99,
-      //   key: 99,
-      //   rentalServiceId: 99,
-      //   contactName: "Onur",
-      //   contactEmail: "onur@onur.com",
-      //   contactNum: "123456789",
-      //   pickUpTime: format("2024-01-13 19:45:00.000000", 'mm, dd, yyyy / p'),
-      //   returnTime: format("2024-01-14 19:45:00.000000", 'mm, dd, yyyy / p'),
-      //   make: "Test",
-      //   model: "Test Model",
-      //   vin: "41851235",
-      //   color: "Blue"
-      // }
+      }
 
-      // dispatch(rentalActions.add(response.data));
+      dispatch(rentalActions.add(createdReservation));
 
     } catch (error) {
 
