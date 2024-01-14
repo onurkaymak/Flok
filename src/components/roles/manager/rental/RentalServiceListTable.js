@@ -18,14 +18,14 @@ const columns = [
 
 const RentalServiceListTable = (props) => {
 
-  const testList = useSelector(state => state.rental.rentalServices);
+  const reservationList = useSelector(state => state.rental.rentalServices);
 
 
   return (
     <React.Fragment>
       <div style={{ height: '100%', width: '100%' }}>
         <DataGrid
-          rows={testList}
+          rows={reservationList}
           columns={columns}
           initialState={{
             pagination: {
