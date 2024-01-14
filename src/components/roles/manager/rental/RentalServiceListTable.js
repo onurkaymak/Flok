@@ -1,5 +1,6 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
+import { useSelector } from "react-redux";
 
 
 const columns = [
@@ -17,11 +18,15 @@ const columns = [
 
 const RentalServiceListTable = (props) => {
 
+  const testList = useSelector(state => state.rental.rentalServices);
+
+  console.log(testList);
+
   return (
     <React.Fragment>
       <div style={{ height: '100%', width: '100%' }}>
         <DataGrid
-          rows={props.fetchedRentalServiceList}
+          rows={testList}
           columns={columns}
           initialState={{
             pagination: {
