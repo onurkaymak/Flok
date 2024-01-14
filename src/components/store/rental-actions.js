@@ -1,5 +1,6 @@
 import { rentalActions } from "./rental-slice";
 import axios from "axios";
+import format from 'date-fns/format';
 
 
 export const fetchRentalService = (reservationInfo, token) => {
@@ -62,7 +63,24 @@ export const addRentalService = (reservationInfo, token) => {
         "reservationEnd": reservationEnd
       }
       );
-      dispatch(rentalActions.add(response.data));
+
+
+      // const testRes = {
+      //   id: 99,
+      //   key: 99,
+      //   rentalServiceId: 99,
+      //   contactName: "Onur",
+      //   contactEmail: "onur@onur.com",
+      //   contactNum: "123456789",
+      //   pickUpTime: format("2024-01-13 19:45:00.000000", 'mm, dd, yyyy / p'),
+      //   returnTime: format("2024-01-14 19:45:00.000000", 'mm, dd, yyyy / p'),
+      //   make: "Test",
+      //   model: "Test Model",
+      //   vin: "41851235",
+      //   color: "Blue"
+      // }
+
+      // dispatch(rentalActions.add(response.data));
 
     } catch (error) {
 
