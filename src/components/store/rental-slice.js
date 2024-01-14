@@ -37,19 +37,19 @@ const rentalSlice = createSlice({
 
       state.rentalServices.push(data);
 
-      state.rentalServices.push({
-        key: data.customer.rentalJoinEntities[0].rentalserviceId,
-        id: data.customer.rentalJoinEntities[0].rentalserviceId,
-        contactName: data.customer.name,
-        contactEmail: data.customer.email,
-        contactNum: data.customer.phoneNum,
-        pickUpTime: format(data.vehicle.rentalJoinEntities[0].reservationStart, 'mm, dd, yyyy / p'),
-        returnTime: format(data.vehicle.rentalJoinEntities[0].reservationEnd, 'mm, dd, yyyy / p'),
-        make: data.vehicle.make,
-        model: data.vehicle.model,
-        vin: data.vehicle.vin,
-        color: data.vehicle.color
-      });
+      // state.rentalServices.push({
+      //   key: data.customer.rentalJoinEntities[0].rentalserviceId,
+      //   id: data.customer.rentalJoinEntities[0].rentalserviceId,
+      //   contactName: data.customer.name,
+      //   contactEmail: data.customer.email,
+      //   contactNum: data.customer.phoneNum,
+      //   pickUpTime: format(data.vehicle.rentalJoinEntities[0].reservationStart, 'mm, dd, yyyy / p'),
+      //   returnTime: format(data.vehicle.rentalJoinEntities[0].reservationEnd, 'mm, dd, yyyy / p'),
+      //   make: data.vehicle.make,
+      //   model: data.vehicle.model,
+      //   vin: data.vehicle.vin,
+      //   color: data.vehicle.color
+      // });
 
       // state.rentalServices.push({
       //   key: data.rentalserviceId,
