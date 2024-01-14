@@ -10,7 +10,7 @@ const FleetManager = (props = null) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
   const vehicles = useSelector(state => state.fleet.vehicles);
-  // console.log(vehicles);
+
 
   const fetcher = useCallback(async () => {
     dispatch(resetVehiclesList());
@@ -29,8 +29,7 @@ const FleetManager = (props = null) => {
 
   useEffect(() => {
     fetcher()
-  }, [fetcher])
-
+  }, [fetcher]);
 
 
   let content;
