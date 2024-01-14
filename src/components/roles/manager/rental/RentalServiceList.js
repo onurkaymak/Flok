@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import classes from './RentalServiceList.module.css';
-import { Fragment, useEffect, useState, useCallback } from 'react';
+import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import format from 'date-fns/format';
-import { fetchRentalServiceList, resetRentalServiceList, deleteRentalService } from '../../../store/rental-actions';
+import { deleteRentalService } from '../../../store/rental-actions';
 import RentalServiceListTable from './RentalServiceListTable';
 import { uiActions } from "../../../store/ui-slice";
 
@@ -15,18 +15,6 @@ const RentalServiceList = (props) => {
 
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
-  const fetchedRentalServiceList = useSelector(state => state.rental.rentalServices);
-
-  // const rentalServiceListfetcher = useCallback(async () => {
-  //   dispatch(resetRentalServiceList());
-  //   dispatch(fetchRentalServiceList());
-  // }, [dispatch])
-
-
-  // useEffect(() => {
-  //   rentalServiceListfetcher()
-  // }, [rentalServiceListfetcher]);
-
 
 
   const formSubmitHandler = (event) => {
@@ -337,7 +325,7 @@ const RentalServiceList = (props) => {
 
 
       <div className={classes.allRentalServicesContainer}>
-        <RentalServiceListTable fetchedRentalServiceList={fetchedRentalServiceList} />
+        <RentalServiceListTable />
       </div>
     </div>
   )
