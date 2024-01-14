@@ -20,7 +20,6 @@ const RentalServiceListTable = (props) => {
 
   const testList = useSelector(state => state.rental.rentalServices);
 
-  console.log(testList);
 
   return (
     <React.Fragment>
