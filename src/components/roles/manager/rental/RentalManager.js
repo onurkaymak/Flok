@@ -4,9 +4,23 @@ import classes from './RentalManager.module.css';
 import { fetchRentalService, addRentalService } from '../../../store/rental-actions';
 import RentalServiceList from './RentalServiceList';
 
+import { fetchRentalServiceList, resetRentalServiceList } from '../../../store/rental-actions';
+import { useEffect, useCallback } from 'react';
+
 const RentalManager = (props) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
+
+
+  const rentalServiceListfetcher = useCallback(async () => {
+    dispatch(resetRentalServiceList());
+    dispatch(fetchRentalServiceList());
+  }, [dispatch])
+
+
+  useEffect(() => {
+    rentalServiceListfetcher()
+  }, [rentalServiceListfetcher]);
 
 
   const searchRentalService = (reservationInfo) => {
