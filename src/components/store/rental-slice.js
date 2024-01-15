@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { parseISO } from "date-fns";
 import format from 'date-fns/format';
 
 const rentalSlice = createSlice({
@@ -14,6 +15,7 @@ const rentalSlice = createSlice({
     },
     fetchRentalServiceList(state, action) {
       const data = action.payload;
+      console.log(data);
       data.map(service => (
         state.rentalServices.push({
           key: service.rentalServiceId,
@@ -21,7 +23,8 @@ const rentalSlice = createSlice({
           contactName: service.customer.name,
           contactEmail: service.customer.email,
           contactNum: service.customer.phoneNum,
-          pickUpTime: format(service.reservationStart, 'mm, dd, yyyy / p'),
+          pickUpTime: format(service.reservationStart, 'Pp'),
+          // pickUpTime: parseISO(service.reservationStart, 'mm, dd, yyyy / p'),
           returnTime: format(service.reservationEnd, 'mm, dd, yyyy / p'),
           make: service.vehicle.make,
           model: service.vehicle.model,
