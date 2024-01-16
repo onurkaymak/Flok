@@ -1,6 +1,7 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useSelector } from "react-redux";
+import classes from './RentalServiceListTable.module.css';
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -38,6 +39,22 @@ const RentalServiceListTable = (props) => {
           checkboxSelection
           onRowSelectionModelChange={selectedRentalServiceHandler}
         />
+      </div>
+      <div className={classes.buttonContainer}>
+        <button
+          type="button"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+        >
+          Check
+        </button>
+        <button
+          type="button"
+          className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+
+        >
+          Delete
+        </button>
       </div>
     </React.Fragment>
   );
