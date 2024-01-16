@@ -20,9 +20,5 @@
 .allRentalServicesContainer {
   height: 60%;
   width: 100%;
-}
-
-.test {
-  height: 20vh;
-  width: 60vw;
+  margin-bottom: 40px;
 }
