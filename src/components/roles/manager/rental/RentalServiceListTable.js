@@ -21,10 +21,13 @@ const RentalServiceListTable = (props) => {
   const reservationList = useSelector(state => state.rental.rentalServices);
 
 
+
+
   return (
     <React.Fragment>
       <div style={{ height: '100%', width: '100%' }}>
         <DataGrid
+          sx={{ ":hover": { cursor: "pointer" } }}
           rows={reservationList}
           columns={columns}
           initialState={{
