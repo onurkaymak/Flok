@@ -2,7 +2,6 @@ import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useSelector } from "react-redux";
 
-
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
   { field: 'contactName', headerName: 'Contact Name', width: 130 },
@@ -12,16 +11,16 @@ const columns = [
   { field: 'make', headerName: 'Make', width: 80 },
   { field: 'model', headerName: 'Model', width: 80 },
   { field: 'vin', headerName: 'VIN', width: 90 },
-  { field: 'color', headerName: 'Color', width: 65 },
+  { field: 'color', headerName: 'Color', width: 65 }
 ];
 
 
 const RentalServiceListTable = (props) => {
-
   const reservationList = useSelector(state => state.rental.rentalServices);
 
-
-
+  const selectedRentalServiceHandler = (selectedRowIds) => {
+    console.log(selectedRowIds);
+  };
 
   return (
     <React.Fragment>
@@ -37,6 +36,7 @@ const RentalServiceListTable = (props) => {
           }}
           pageSizeOptions={[5, 10]}
           checkboxSelection
+          onRowSelectionModelChange={selectedRentalServiceHandler}
         />
       </div>
     </React.Fragment>
