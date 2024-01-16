@@ -14,7 +14,6 @@ const rentalSlice = createSlice({
     },
     fetchRentalServiceList(state, action) {
       const data = action.payload;
-      console.log(data);
       data.map(service => (
         state.rentalServices.push({
           key: service.rentalServiceId,
