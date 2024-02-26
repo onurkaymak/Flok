@@ -1,7 +1,6 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useSelector } from "react-redux";
-import classes from './RentalServiceListTable.module.css';
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },

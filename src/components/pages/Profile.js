@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import classes from "./Profile.module.css";
 import ProfileNavbar from "../layout/ProfileNavbar";
 import SideNavbar from "../layout/SideNavbar";
