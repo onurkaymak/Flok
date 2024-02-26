@@ -1,6 +1,7 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -17,9 +18,10 @@ const columns = [
 
 const RentalServiceListTable = (props) => {
   const reservationList = useSelector(state => state.rental.rentalServices);
+  const selectedVehicle = useRef();
 
   const selectedRentalServiceHandler = (selectedRowIds) => {
-    console.log(selectedRowIds);
+    selectedVehicle.current = selectedRowIds;
   };
 
   return (
