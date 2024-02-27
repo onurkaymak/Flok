@@ -17,23 +17,29 @@ const RentalServiceList = (props) => {
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
 
 
-  const formSubmitHandler = (event) => {
-    event.preventDefault();
+  const formSubmitHandler = (event, rentalService) => {
+    let reservationInfo;
+    if (event.type === "submit") event.preventDefault();
 
-    const rentalServiceId = parseInt(event.target[0].value);
-    const customerEmail = event.target[1].value;
-    const serviceAgentId = event.target[2].value;
-    const customerPhoneNum = event.target[3].value;
+    if (rentalService) {
+      reservationInfo = { rentalServiceId: rentalService }
+    } else {
+      const rentalServiceId = parseInt(event.target[0].value);
+      const customerEmail = event.target[1].value;
+      const serviceAgentId = event.target[2].value;
+      const customerPhoneNum = event.target[3].value;
 
-    if (isNaN(rentalServiceId) && customerEmail === "" && serviceAgentId === "" && customerPhoneNum === "") {
-      dispatch(uiActions.showNotification({
-        title: "Reservation Check Error",
-        message: "Please fill at least one of the inputs to check a reservation."
-      }));
-      return
+
+      if (isNaN(rentalServiceId) && customerEmail === "" && serviceAgentId === "" && customerPhoneNum === "") {
+        dispatch(uiActions.showNotification({
+          title: "Reservation Check Error",
+          message: "Please fill at least one of the inputs to check a reservation."
+        }));
+        return
+      }
+
+      reservationInfo = { rentalServiceId, customerEmail, serviceAgentId, customerPhoneNum };
     }
-
-    const reservationInfo = { rentalServiceId, customerEmail, serviceAgentId, customerPhoneNum };
 
     props.searchRentalService(reservationInfo);
     document.getElementById("checkRentalServiceForm").reset();
@@ -325,7 +331,7 @@ const RentalServiceList = (props) => {
 
 
       <div className={classes.allRentalServicesContainer}>
-        <RentalServiceListTable />
+        <RentalServiceListTable searchRentalService={props.searchRentalService} formSubmitHandler={formSubmitHandler} />
       </div>
     </div>
   )
