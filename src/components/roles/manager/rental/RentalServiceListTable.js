@@ -1,7 +1,8 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useRef } from "react";
+import { deleteRentalService } from '../../../store/rental-actions';
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -17,6 +18,7 @@ const columns = [
 
 
 const RentalServiceListTable = (props) => {
+  const dispatch = useDispatch();
   const reservationList = useSelector(state => state.rental.rentalServices);
   const selectedVehicleId = useRef();
 
@@ -56,7 +58,7 @@ const RentalServiceListTable = (props) => {
         <button
           type="button"
           className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-
+          onClick={() => dispatch(deleteRentalService(selectedVehicleId.current[0]))}
         >
           Delete
         </button>
