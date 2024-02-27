@@ -18,13 +18,10 @@ export const fetchRentalService = (reservationInfo, token) => {
     if (customerPhoneNum) {
       url = `${url}?customerPhoneNum=${customerPhoneNum}`;
     }
-
     try {
       const response = await axios.get(url);
-
       const fetchedRentalService = response.data[0];
       dispatch(rentalActions.fetchSelectedRentalService(fetchedRentalService));
-
     }
     catch (err) {
       console.log(err);

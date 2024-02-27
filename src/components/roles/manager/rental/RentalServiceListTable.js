@@ -18,11 +18,15 @@ const columns = [
 
 const RentalServiceListTable = (props) => {
   const reservationList = useSelector(state => state.rental.rentalServices);
-  const selectedVehicle = useRef();
+  const selectedVehicleId = useRef();
 
-  const selectedRentalServiceHandler = (selectedRowIds) => {
-    selectedVehicle.current = selectedRowIds;
+  const selectedVehicleHandler = (selectedRowIds) => {
+    selectedVehicleId.current = selectedRowIds;
   };
+
+  const selectedVehicleCheckHandler = async () => {
+    props.formSubmitHandler({ type: null }, selectedVehicleId.current[0]);
+  }
 
   return (
     <React.Fragment>
@@ -38,14 +42,14 @@ const RentalServiceListTable = (props) => {
           }}
           pageSizeOptions={[5, 10]}
           checkboxSelection
-          onRowSelectionModelChange={selectedRentalServiceHandler}
+          onRowSelectionModelChange={selectedVehicleHandler}
         />
       </div>
       <div className="flex justify-end mt-2">
         <button
           type="button"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-
+          onClick={selectedVehicleCheckHandler}
         >
           Check
         </button>
