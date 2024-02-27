@@ -12,6 +12,7 @@ const RentalServiceList = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [warningModal, setWarningModal] = useState(false);
+  const [selectedRentalServiceFromList, setSelectedRentalServiceFromList] = useState();
 
 
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
@@ -46,12 +47,18 @@ const RentalServiceList = (props) => {
     setOpen(true);
   };
 
+  const vehicleListDeleteHandler = (selectedServiceId) => {
+    setSelectedRentalServiceFromList(selectedServiceId);
+    setOpen(true);
+    setWarningModal(true);
+  };
+
 
   const deleteButtonHandler = () => {
     if (!warningModal) {
       setWarningModal(true);
     } else {
-      dispatch(deleteRentalService(fetchedRentalService.rentalServiceId));
+      dispatch(deleteRentalService(selectedRentalServiceFromList ? selectedRentalServiceFromList : fetchedRentalService.rentalServiceId));
       setWarningModal(false);
       setOpen(false);
     }
@@ -331,7 +338,7 @@ const RentalServiceList = (props) => {
 
 
       <div className={classes.allRentalServicesContainer}>
-        <RentalServiceListTable searchRentalService={props.searchRentalService} formSubmitHandler={formSubmitHandler} />
+        <RentalServiceListTable searchRentalService={props.searchRentalService} formSubmitHandler={formSubmitHandler} vehicleListDeleteHandler={vehicleListDeleteHandler} />
       </div>
     </div>
   )
