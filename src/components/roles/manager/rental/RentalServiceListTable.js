@@ -26,7 +26,7 @@ const RentalServiceListTable = (props) => {
     selectedVehicleId.current = selectedRowIds;
   };
 
-  const selectedVehicleCheckHandler = async () => {
+  const selectedVehicleCheckHandler = () => {
     if (selectedVehicleId.current === undefined || selectedVehicleId.current.length === 0) {
       dispatch(uiActions.showNotification({
         title: "Reservation Check Error",
@@ -42,6 +42,23 @@ const RentalServiceListTable = (props) => {
     }
     props.formSubmitHandler({ type: null }, selectedVehicleId.current[0]);
   }
+
+  const selectedVehicleDeleteHandler = () => {
+    if (selectedVehicleId.current === undefined || selectedVehicleId.current.length === 0) {
+      dispatch(uiActions.showNotification({
+        title: "Reservation Check Error",
+        message: "Please select a reservation."
+      }));
+      return
+    } else if (selectedVehicleId.current.length > 1) {
+      dispatch(uiActions.showNotification({
+        title: "Reservation Check Error",
+        message: "You can only select one reservation at a time."
+      }));
+      return
+    }
+    props.vehicleListDeleteHandler(selectedVehicleId.current[0]);
+  };
 
   return (
     <React.Fragment>
@@ -71,7 +88,7 @@ const RentalServiceListTable = (props) => {
         <button
           type="button"
           className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-          onClick={() => props.vehicleListDeleteHandler(selectedVehicleId.current[0])}
+          onClick={selectedVehicleDeleteHandler}
         >
           Delete
         </button>
