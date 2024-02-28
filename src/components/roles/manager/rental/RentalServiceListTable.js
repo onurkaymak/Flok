@@ -1,7 +1,8 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
+import { uiActions } from "../../../store/ui-slice";
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -19,12 +20,26 @@ const columns = [
 const RentalServiceListTable = (props) => {
   const reservationList = useSelector(state => state.rental.rentalServices);
   const selectedVehicleId = useRef();
+  const dispatch = useDispatch();
 
   const selectedVehicleHandler = (selectedRowIds) => {
     selectedVehicleId.current = selectedRowIds;
   };
 
   const selectedVehicleCheckHandler = async () => {
+    if (selectedVehicleId.current === undefined || selectedVehicleId.current.length === 0) {
+      dispatch(uiActions.showNotification({
+        title: "Reservation Check Error",
+        message: "Please select a reservation."
+      }));
+      return
+    } else if (selectedVehicleId.current.length > 1) {
+      dispatch(uiActions.showNotification({
+        title: "Reservation Check Error",
+        message: "You can only select one reservation at a time."
+      }));
+      return
+    }
     props.formSubmitHandler({ type: null }, selectedVehicleId.current[0]);
   }
 
