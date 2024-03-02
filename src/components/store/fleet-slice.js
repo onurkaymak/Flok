@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const fleetSlice = createSlice({
   name: 'fleet',
   initialState: {
-    vehicles: []
+    vehicles: [],
+    selectedVehicle: null
   },
   reducers: {
     fetch(state, action) {
