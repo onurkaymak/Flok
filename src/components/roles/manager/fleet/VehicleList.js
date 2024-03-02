@@ -31,7 +31,11 @@ const VehicleList = (props) => {
             },
           }}
           pageSizeOptions={[5, 15, 20]}
-          checkboxSelection
+          sx={{
+            "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
+              outline: "none !important",
+            }
+          }}
         />
       </div>
     </React.Fragment>
