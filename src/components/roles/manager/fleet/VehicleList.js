@@ -18,6 +18,10 @@ const columns = [
 
 const VehicleList = (props) => {
 
+  const selectedVehicleHandler = (event) => {
+    console.log(event);
+  };
+
 
   return (
     <React.Fragment>
@@ -36,6 +40,7 @@ const VehicleList = (props) => {
               outline: "none !important",
             }
           }}
+          onRowClick={selectedVehicleHandler}
         />
       </div>
     </React.Fragment>
