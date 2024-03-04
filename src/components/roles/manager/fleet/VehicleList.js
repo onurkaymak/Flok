@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -17,9 +17,11 @@ const columns = [
 ];
 
 const VehicleList = (props) => {
+  const selectedVehiclesRef = useRef();
 
-  const selectedVehicleHandler = (event) => {
-    console.log(event);
+  const selectedVehicleHandler = (selectedVehicles) => {
+    selectedVehiclesRef.current = selectedVehicles;
+    console.log(selectedVehiclesRef);
   };
 
 
