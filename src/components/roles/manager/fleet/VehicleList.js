@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -17,12 +17,6 @@ const columns = [
 ];
 
 const VehicleList = (props) => {
-  const selectedVehiclesRef = useRef();
-
-  const selectedVehicleHandler = (selectedVehicles) => {
-    selectedVehiclesRef.current = selectedVehicles;
-    console.log(selectedVehiclesRef);
-  };
 
 
   return (
@@ -43,7 +37,7 @@ const VehicleList = (props) => {
               outline: "none !important",
             }
           }}
-          onRowSelectionModelChange={selectedVehicleHandler}
+          onRowSelectionModelChange={(e) => props.selectedVehicleHandler(e)}
         />
       </div>
     </React.Fragment>
