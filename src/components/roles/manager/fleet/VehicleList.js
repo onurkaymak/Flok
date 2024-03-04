@@ -1,5 +1,7 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
+import { useDispatch } from "react-redux";
+import { setSelectedVehicles } from '../../../store/fleet-actions';
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -17,6 +19,7 @@ const columns = [
 ];
 
 const VehicleList = (props) => {
+  const dispatch = useDispatch();
 
 
   return (
@@ -37,7 +40,7 @@ const VehicleList = (props) => {
               outline: "none !important",
             }
           }}
-          onRowSelectionModelChange={(e) => props.selectedVehicleHandler(e)}
+          onRowSelectionModelChange={(selectedVehiclesId) => dispatch(setSelectedVehicles(selectedVehiclesId))}
         />
       </div>
     </React.Fragment>
