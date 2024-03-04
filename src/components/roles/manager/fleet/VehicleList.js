@@ -27,6 +27,7 @@ const VehicleList = (props) => {
     <React.Fragment>
       <div style={{ height: 1000, width: '100%' }}>
         <DataGrid
+          checkboxSelection
           rows={props.vehicles}
           columns={columns}
           initialState={{
@@ -40,7 +41,7 @@ const VehicleList = (props) => {
               outline: "none !important",
             }
           }}
-          onRowClick={selectedVehicleHandler}
+          onRowSelectionModelChange={selectedVehicleHandler}
         />
       </div>
     </React.Fragment>
