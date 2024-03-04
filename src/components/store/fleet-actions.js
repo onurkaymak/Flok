@@ -73,3 +73,9 @@ export const resetVehiclesList = () => {
     dispatch(fleetActions.resetVehicles());
   }
 }
+
+export const setSelectedVehicles = (selectedVehiclesId) => {
+  return (dispatch) => {
+    dispatch(fleetActions.setSelectedVehiclesbyId(selectedVehiclesId));
+  }
+}
