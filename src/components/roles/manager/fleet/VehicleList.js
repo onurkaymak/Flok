@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch } from "react-redux";
 import { setSelectedVehicles } from '../../../store/fleet-actions';
@@ -20,6 +20,12 @@ const columns = [
 
 const VehicleList = (props) => {
   const dispatch = useDispatch();
+  const selectedVehiclesRef = useRef();
+
+  const selectedVehicleHandler = (selectedVehiclesId) => {
+    selectedVehiclesRef.current = selectedVehiclesId;
+    dispatch(setSelectedVehicles(selectedVehiclesRef));
+  };
 
 
   return (
@@ -40,7 +46,7 @@ const VehicleList = (props) => {
               outline: "none !important",
             }
           }}
-          onRowSelectionModelChange={(selectedVehiclesId) => dispatch(setSelectedVehicles(selectedVehiclesId))}
+          onRowSelectionModelChange={(selectedVehiclesId) => selectedVehicleHandler(selectedVehiclesId)}
         />
       </div>
     </React.Fragment>
