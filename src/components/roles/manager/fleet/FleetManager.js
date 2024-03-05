@@ -37,12 +37,17 @@ const FleetManager = (props = null) => {
   let title;
 
   useEffect(() => {
-    if (props.selectedLink === "fleet update" && selectedVehicles === null) {
+    if (props.selectedLink === "fleet update" && selectedVehicles.length === 0) {
       dispatch(uiActions.showNotification({
-        title: "Test",
-        message: "Test error"
+        title: "Error",
+        message: "Please select a vehicle from the vehicle list."
       }));
       return
+    } else if (props.selectedLink === "fleet update" && selectedVehicles.length !== 1) {
+      dispatch(uiActions.showNotification({
+        title: "Error",
+        message: "You can select only one vehicle to update at once."
+      }));
     }
   }, [selectedVehicles, dispatch, props.selectedLink])
 
@@ -50,7 +55,7 @@ const FleetManager = (props = null) => {
   if (props.selectedLink === "fleet add") {
     title = <h1 className={classes.title}>Add Vehicle</h1>
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
-  } else if (props.selectedLink === "fleet update" && selectedVehicles !== null) {
+  } else if (props.selectedLink === "fleet update" && selectedVehicles.length === 1) {
     content = <h1>Update Vehicle</h1>
   }
   else if (props.selectedLink === "fleet delete") {
