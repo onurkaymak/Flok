@@ -4,7 +4,7 @@ const fleetSlice = createSlice({
   name: 'fleet',
   initialState: {
     vehicles: [],
-    selectedVehicles: null
+    selectedVehicles: []
   },
   reducers: {
     fetch(state, action) {
@@ -35,7 +35,7 @@ const fleetSlice = createSlice({
       state.vehicles = []
     },
     setSelectedVehiclesById(state, action) {
-      state.selectedVehicles = action.payload;
+      state.selectedVehicles = [...action.payload.current];
       console.log(state.selectedVehicles);
     }
   }
