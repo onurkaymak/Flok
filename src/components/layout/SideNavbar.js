@@ -1,4 +1,7 @@
 import { useState, useEffect, Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { uiActions } from '../store/ui-slice';
+import { fleetActions } from '../store/fleet-slice';
 
 import classes from './SideNavbar.module.css';
 import sprite from '../img/sprite.svg';
@@ -6,6 +9,8 @@ import sprite from '../img/sprite.svg';
 const SideNavbar = (props) => {
   const [sideBarLink, setSideBarLink] = useState(null);
 
+  const selectedVehicles = useSelector(state => state.fleet.selectedVehicles);
+  const dispatch = useDispatch();
 
 
 
@@ -13,14 +18,30 @@ const SideNavbar = (props) => {
     const selectedLinkHandler = (selectedLink) => {
       switch (selectedLink) {
         case 'search fleet':
+          dispatch(fleetActions.setSelectedVehiclesById({ current: [] }))
           props.selectedSideLinkHandler("fleet search");
           break;
         case 'add fleet':
           props.selectedSideLinkHandler("fleet add");
           break;
         case 'update fleet':
-          props.selectedSideLinkHandler("fleet update");
-          break;
+          if (selectedVehicles.length === 0) {
+            dispatch(uiActions.showNotification({
+              title: "Error",
+              message: "Please select a vehicle from the vehicle list."
+            }));
+            break;
+          } else if (selectedVehicles.length > 1) {
+            dispatch(uiActions.showNotification({
+              title: "Error",
+              message: "You can select only one vehicle to update at once."
+            }));
+            break;
+          }
+          else {
+            props.selectedSideLinkHandler("fleet update");
+            break;
+          }
         case 'delete fleet':
           props.selectedSideLinkHandler("fleet delete");
           break;
@@ -140,7 +161,7 @@ const SideNavbar = (props) => {
       default:
         setSideBarLink(fleetLinks);
     }
-  }, [props.currentDash, props]);
+  }, [props.currentDash, props, selectedVehicles, dispatch]);
 
 
 
