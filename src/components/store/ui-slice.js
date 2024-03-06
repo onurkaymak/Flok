@@ -4,6 +4,8 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState: {
     notification: null,
+    selectedLink: null,
+    currentManagerDash: "Fleet"
   },
   reducers: {
     showNotification(state, action) {
@@ -14,6 +16,12 @@ const uiSlice = createSlice({
     },
     setNotification(state, action) {
       state.notification = null
+    },
+    setSelectedLink(state, action) {
+      state.selectedLink = action.payload;
+    },
+    setCurrentManagerDash(state, action) {
+      state.currentManagerDash = action.payload;
     }
   }
 });
