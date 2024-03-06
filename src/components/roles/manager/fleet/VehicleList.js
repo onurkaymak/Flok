@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DataGrid } from '@mui/x-data-grid';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedVehicles } from '../../../store/fleet-actions';
 
 const columns = [
@@ -22,16 +22,26 @@ const VehicleList = (props) => {
   const dispatch = useDispatch();
   const selectedVehiclesRef = useRef();
 
+  const selectedVehicles = useSelector(state => state.fleet.selectedVehicles);
+
+  const [selectedVehiclesForGrid, setSelectedVehiclesForGrid] = useState();
+
+
   const selectedVehicleHandler = (selectedVehiclesId) => {
     selectedVehiclesRef.current = selectedVehiclesId;
     dispatch(setSelectedVehicles(selectedVehiclesRef));
   };
+
+  useEffect(() => {
+    setSelectedVehiclesForGrid(selectedVehicles)
+  }, [selectedVehicles])
 
 
   return (
     <React.Fragment>
       <div style={{ height: 1000, width: '100%' }}>
         <DataGrid
+          rowSelectionModel={selectedVehiclesForGrid}
           checkboxSelection
           rows={props.vehicles}
           columns={columns}
