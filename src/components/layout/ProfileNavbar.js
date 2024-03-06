@@ -51,15 +51,6 @@ const ProfileNavbar = (props) => {
     }
   }, [userRole]);
 
-  // useEffect(() => {
-  //   navigation.forEach((element) => {
-  //     if (element.name === props.current) {
-  //       element.current = true;
-  //     }
-  //   })
-  // }, [props]);
-
-
   const signOutButtonHandler = (event) => {
     event.preventDefault();
     dispatch(logOutUser());
@@ -203,7 +194,6 @@ const ProfileNavbar = (props) => {
           </>
         )}
       </Disclosure>
-      {/* <main>{props.children}</main> */}
     </div>
   )
 }

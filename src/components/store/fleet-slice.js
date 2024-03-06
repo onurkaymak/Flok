@@ -36,7 +36,6 @@ const fleetSlice = createSlice({
     },
     setSelectedVehiclesById(state, action) {
       state.selectedVehicles = [...action.payload.current];
-      console.log(state.selectedVehicles);
     }
   }
 });

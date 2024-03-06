@@ -17,7 +17,6 @@ export const fetchVehicles = (queries) => {
   }
 }
 
-
 export const addVehicle = (vehicleInfo, token) => {
   return async (dispatch) => {
 
@@ -61,12 +60,9 @@ export const addVehicle = (vehicleInfo, token) => {
 
       dispatch(fleetActions.add(newVehicle));
     } catch (error) {
-
     }
-
   }
 }
-
 
 export const resetVehiclesList = () => {
   return (dispatch) => {
