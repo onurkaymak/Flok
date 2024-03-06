@@ -1,40 +1,38 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import classes from "./Profile.module.css";
 import ProfileNavbar from "../layout/ProfileNavbar";
 import SideNavbar from "../layout/SideNavbar";
 import Content from "../layout/Content";
-
+import { useSelector, useDispatch } from "react-redux";
+import { uiActions } from '../store/ui-slice';
+import { fleetActions } from '../store/fleet-slice';
 
 
 const Profile = () => {
-  // const selectedNavLink = useRef(null);
-  // console.log(selectedNavLink);
-  const [currentManagerDash, setCurrentManagerDash] = useState("Fleet");
-  const [selectedLink, setSelectedLink] = useState(null);
+  const currentManagerDash = useSelector(state => state.ui.currentManagerDash);
+  const selectedLink = useSelector(state => state.ui.selectedLink);
+  const dispatch = useDispatch();
 
   const dashChoiceHandler = (chosenDash) => {
-    setCurrentManagerDash(chosenDash);
-    // selectedNavLink.current = chosenDash;
+    dispatch(fleetActions.setSelectedVehiclesById({ current: [] }))
+    dispatch(uiActions.setCurrentManagerDash(chosenDash))
   };
 
   useEffect(() => {
-    setSelectedLink(null);
-  }, [currentManagerDash]);
+    dispatch(uiActions.setSelectedLink(null))
+  }, [currentManagerDash, dispatch]);
 
   const selectedSideLinkHandler = (link) => {
-    setSelectedLink(link);
+    dispatch(uiActions.setSelectedLink(link))
   };
-
 
   return (
     <div className={classes.profileContainer}>
       <ProfileNavbar onManagerDashChoice={dashChoiceHandler} />
       <SideNavbar currentDash={currentManagerDash} selectedLink={selectedLink} selectedSideLinkHandler={selectedSideLinkHandler} />
-      <Content selectedLink={selectedLink} currentDash={currentManagerDash} setSelectedLink={setSelectedLink} />
+      <Content selectedLink={selectedLink} currentDash={currentManagerDash} />
     </div>
-
   )
-
 };
 
 export default Profile;
