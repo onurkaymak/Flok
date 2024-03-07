@@ -5,6 +5,7 @@ import { fetchVehicles, addVehicle, resetVehiclesList } from '../../../store/fle
 import classes from './FleetManager.module.css';
 import AddVehicleForm from './AddVehicleForm';
 import { uiActions } from "../../../store/ui-slice";
+import UpdateVehicle from './UpdateVehicle';
 
 
 
@@ -40,7 +41,8 @@ const FleetManager = (props = null) => {
     title = <h1 className={classes.title}>Add Vehicle</h1>
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
-    content = <h1>Update Vehicle</h1>
+    title = <h1 className={classes.title}>Update Vehicle</h1>
+    content = <UpdateVehicle />
   }
   else if (props.selectedLink === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
