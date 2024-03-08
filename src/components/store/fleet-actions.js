@@ -2,14 +2,20 @@ import { fleetActions } from "./fleet-slice";
 import axios from "axios";
 
 
-export const fetchVehicles = (queries) => {
+export const fetchVehicles = (queries, vin = null) => {
   return async (dispatch) => {
     const { token } = queries;
     try {
-      const response = await axios.get("https://localhost:5000/api/fleet", { headers: { Authorization: `Bearer ${token}` } });
-
-      const fetchedVehicles = response.data;
-      dispatch(fleetActions.fetch(fetchedVehicles));
+      let response;
+      if (vin !== null) {
+        response = await axios.get(`https://localhost:5000/api/fleet?VIN=${vin}`, { headers: { Authorization: `Bearer ${token}` } });
+        const fetchedVehicle = response.data;
+        dispatch(fleetActions.setFindVehicleByVIN(fetchedVehicle));
+      } else {
+        response = await axios.get("https://localhost:5000/api/fleet", { headers: { Authorization: `Bearer ${token}` } });
+        const fetchedVehicles = response.data;
+        dispatch(fleetActions.fetch(fetchedVehicles));
+      }
     }
     catch (err) {
       console.log(err);
