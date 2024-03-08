@@ -1,12 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchVehicles } from "../../../store/fleet-actions";
 
 const UpdateVehicle = () => {
   const dispatch = useDispatch();
+  const token = useSelector(state => state.user.token);
   const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
   const vehiclesList = useSelector(state => state.fleet.vehicles);
+  const foundedVehicle = useSelector(state => state.fleet.selectedVehicleByVIN);
+  console.log(foundedVehicle)
 
 
+  useEffect(() => {
+    vehiclesList.forEach((vehicle) => {
+      if (vehicle.id === selectedVehicle[0]) {
+        dispatch(fetchVehicles({ token }, vehicle.vin));
+      }
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   const cancelButtonClickHandler = () => {
