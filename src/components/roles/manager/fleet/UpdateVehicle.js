@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 const UpdateVehicle = () => {
+  const dispatch = useDispatch();
+  const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
+  const vehiclesList = useSelector(state => state.fleet.vehicles);
+
+
+
+
   const cancelButtonClickHandler = () => {
 
   };
