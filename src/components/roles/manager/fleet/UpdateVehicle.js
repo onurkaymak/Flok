@@ -8,7 +8,6 @@ const UpdateVehicle = () => {
   const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
   const vehiclesList = useSelector(state => state.fleet.vehicles);
   const foundedVehicle = useSelector(state => state.fleet.selectedVehicleByVIN);
-  console.log(foundedVehicle)
 
 
   useEffect(() => {
@@ -44,6 +43,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">VIN:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].vin : ""}
                     type="text"
                     name="vin"
                     id="vin"
@@ -62,6 +62,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Make:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].make : ""}
                     type="text"
                     name="make"
                     id="make"
@@ -80,6 +81,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Model:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].model : ""}
                     type="text"
                     name="model"
                     id="model"
@@ -98,6 +100,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Color:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].color : ""}
                     type="text"
                     name="color"
                     id="color"
@@ -116,6 +119,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Mileage:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].mileage : ""}
                     type="text"
                     name="mileage"
                     id="mileage"
@@ -141,6 +145,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Vehicle Class:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].class : ""}
                     type="text"
                     name="vehicleclass"
                     id="vehicleclass"
@@ -159,6 +164,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Class Code:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].classCode : ""}
                     type="text"
                     name="classCode"
                     id="classCode"
@@ -176,6 +182,7 @@ const UpdateVehicle = () => {
               </label>
               <div className="mt-2">
                 <select
+                  defaultValue={foundedVehicle !== null ? foundedVehicle[0].state : ""}
                   id="state"
                   name="state"
                   autoComplete="off"
@@ -250,6 +257,7 @@ const UpdateVehicle = () => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">License Plate:</span>
                   <input
+                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].licensePlate : ""}
                     type="text"
                     name="licensePlate"
                     id="licensePlate"
