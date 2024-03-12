@@ -78,6 +78,6 @@ export const resetVehiclesList = () => {
 
 export const setSelectedVehicles = (selectedVehiclesId) => {
   return (dispatch) => {
-    dispatch(fleetActions.setSelectedVehiclesById(selectedVehiclesId));
+    dispatch(fleetActions.setSelectedVehicleById(selectedVehiclesId));
   }
 }
