@@ -35,7 +35,7 @@ const fleetSlice = createSlice({
     resetVehicles(state) {
       state.vehicles = []
     },
-    setSelectedVehiclesById(state, action) {
+    setSelectedVehicleById(state, action) {
       state.selectedVehicles = [...action.payload.current];
     },
     setFindVehicleByVIN(state, action) {
