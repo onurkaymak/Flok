@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import VehicleList from "./VehicleList";
-import { fetchVehicles, addVehicle, resetVehiclesList } from '../../../store/fleet-actions';
+import { fetchVehicles, addVehicle, resetVehiclesList, updateVehicle } from '../../../store/fleet-actions';
 import classes from './FleetManager.module.css';
 import AddVehicleForm from './AddVehicleForm';
 import { uiActions } from "../../../store/ui-slice";
@@ -25,6 +25,10 @@ const FleetManager = (props = null) => {
     dispatch(uiActions.setSelectedLink("fleet search"));
   };
 
+  const updateVehicleFormHandler = (vehicleInfo) => {
+    dispatch(updateVehicle(vehicleInfo));
+  }
+
   const formCancelButtonHandler = () => {
     dispatch(uiActions.setSelectedLink(null));
   };
@@ -42,7 +46,7 @@ const FleetManager = (props = null) => {
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
-    content = <UpdateVehicle />
+    content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} />
   }
   else if (props.selectedLink === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
