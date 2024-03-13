@@ -24,8 +24,24 @@ const UpdateVehicle = () => {
 
   };
 
-  const formSubmitHandler = () => {
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
 
+    const vin = event.target[0].value;
+    const make = event.target[1].value;
+    const model = event.target[2].value;
+    const color = event.target[3].value;
+    const mileage = event.target[4].value;
+    const vehicleClass = event.target[5].value;
+    const classCode = event.target[6].value;
+    const state = event.target[7].value;
+    const licensePlate = event.target[8].value;
+    const isRented = event.target[9].checked;
+    const inProduction = event.target[10].checked;
+
+    const vehicleInfo = { id: selectedVehicle[0], vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction };
+
+    console.log(vehicleInfo);
   };
 
   return (
