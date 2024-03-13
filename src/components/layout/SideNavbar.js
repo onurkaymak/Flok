@@ -18,7 +18,7 @@ const SideNavbar = (props) => {
     const selectedLinkHandler = (selectedLink) => {
       switch (selectedLink) {
         case 'search fleet':
-          dispatch(fleetActions.setSelectedVehiclesById({ current: [] }))
+          dispatch(fleetActions.setSelectedVehicleById({ current: [] }))
           props.selectedSideLinkHandler("fleet search");
           break;
         case 'add fleet':
