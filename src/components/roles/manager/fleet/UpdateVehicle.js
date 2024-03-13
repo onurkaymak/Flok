@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVehicles } from "../../../store/fleet-actions";
 
-const UpdateVehicle = () => {
+const UpdateVehicle = (props) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
   const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
@@ -41,7 +41,7 @@ const UpdateVehicle = () => {
 
     const vehicleInfo = { id: selectedVehicle[0], vin, make, model, color, mileage, vehicleClass, classCode, state, licensePlate, isRented, inProduction };
 
-    console.log(vehicleInfo);
+    props.updateVehicleFormHandler(vehicleInfo);
   };
 
   return (
