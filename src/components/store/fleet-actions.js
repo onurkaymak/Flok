@@ -81,3 +81,10 @@ export const setSelectedVehicles = (selectedVehiclesId) => {
     dispatch(fleetActions.setSelectedVehicleById(selectedVehiclesId));
   }
 }
+
+
+export const updateVehicle = (vehicleInfo) => {
+  return (dispatch) => {
+    dispatch(fleetActions.updateVehicle(vehicleInfo));
+  }
+}
