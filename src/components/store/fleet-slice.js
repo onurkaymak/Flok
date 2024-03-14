@@ -44,10 +44,9 @@ const fleetSlice = createSlice({
     updateVehicle(state, action) {
       const vehicleId = action.payload.id;
       const updatedVehicle = action.payload;
-      // console.log(state.vehicles);
-      // console.log(updatedVehicle);
-      // let foundedVehicle = state.vehicles.find(vehicle => vehicle.id === vehicleId);
-      // foundedVehicle = updatedVehicle;
+      console.log(updatedVehicle);
+      let foundedVehicle = state.vehicles.find(vehicle => vehicle.id === vehicleId);
+      foundedVehicle = { ...updatedVehicle };
 
       // state.vehicles.forEach(vehicle => console.log(vehicle.id));
     }
