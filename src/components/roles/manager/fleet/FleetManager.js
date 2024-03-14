@@ -26,7 +26,7 @@ const FleetManager = (props = null) => {
   };
 
   const updateVehicleFormHandler = (vehicleInfo) => {
-    dispatch(updateVehicle(vehicleInfo));
+    dispatch(updateVehicle(vehicleInfo, token));
   }
 
   const formCancelButtonHandler = () => {
