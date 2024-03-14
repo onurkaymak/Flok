@@ -105,12 +105,11 @@ export const updateVehicle = (vehicleInfo, token) => {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
-
-      console.log(response);
+      dispatch(fleetActions.updateVehicle(response.data.vehicle));
     } catch (err) {
       console.log(err);
     }
 
-    // dispatch(fleetActions.updateVehicle(vehicleInfo));
+
   }
 }
