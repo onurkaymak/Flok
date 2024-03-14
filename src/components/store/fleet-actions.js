@@ -83,8 +83,34 @@ export const setSelectedVehicles = (selectedVehiclesId) => {
 }
 
 
-export const updateVehicle = (vehicleInfo) => {
-  return (dispatch) => {
-    dispatch(fleetActions.updateVehicle(vehicleInfo));
+export const updateVehicle = (vehicleInfo, token) => {
+  return async (dispatch) => {
+
+    try {
+      const response = await axios.put(`https://localhost:5000/api/fleet/${vehicleInfo.id}`, {
+        "vehicleId": vehicleInfo.id,
+        "vin": vehicleInfo.vin,
+        "make": vehicleInfo.make,
+        "model": vehicleInfo.model,
+        "color": vehicleInfo.color,
+        "mileage": vehicleInfo.mileage,
+        "class": vehicleInfo.vehicleClass,
+        "classCode": vehicleInfo.classCode,
+        "state": vehicleInfo.state,
+        "licensePlate": vehicleInfo.licensePlate,
+        "isRented": vehicleInfo.isRented,
+        "inProduction": vehicleInfo.inProduction
+      },
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+
+    // dispatch(fleetActions.updateVehicle(vehicleInfo));
   }
 }
