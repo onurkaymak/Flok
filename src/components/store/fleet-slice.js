@@ -42,13 +42,23 @@ const fleetSlice = createSlice({
       state.selectedVehicleByVIN = action.payload;
     },
     updateVehicle(state, action) {
-      const vehicleId = action.payload.id;
+      const vehicleId = action.payload.vehicleId;
       const updatedVehicle = action.payload;
-      console.log(updatedVehicle);
-      let foundedVehicle = state.vehicles.find(vehicle => vehicle.id === vehicleId);
-      foundedVehicle = { ...updatedVehicle };
-
-      // state.vehicles.forEach(vehicle => console.log(vehicle.id));
+      const foundedVehicle = state.vehicles.find(vehicle => vehicle.id === vehicleId);
+      foundedVehicle.key = updatedVehicle.vehicleId;
+      foundedVehicle.id = updatedVehicle.vehicleId;
+      foundedVehicle.vin = updatedVehicle.vin;
+      foundedVehicle.make = updatedVehicle.make;
+      foundedVehicle.model = updatedVehicle.model;
+      foundedVehicle.color = updatedVehicle.color;
+      foundedVehicle.mileage = updatedVehicle.mileage;
+      foundedVehicle.vehicleClass = updatedVehicle.vehicleClass;
+      foundedVehicle.classCode = updatedVehicle.classCode;
+      foundedVehicle.state = updatedVehicle.state;
+      foundedVehicle.classCode = updatedVehicle.classCode;
+      foundedVehicle.licensePlate = updatedVehicle.licensePlate;
+      foundedVehicle.isRented = updatedVehicle.isRented;
+      foundedVehicle.inProduction = updatedVehicle.inProduction;
     }
   }
 });
