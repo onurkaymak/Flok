@@ -14,7 +14,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const dashChoiceHandler = (chosenDash) => {
-    dispatch(fleetActions.setSelectedVehiclesById({ current: [] }))
+    dispatch(fleetActions.setSelectedVehicleById({ current: [] }))
     dispatch(uiActions.setCurrentManagerDash(chosenDash))
   };
 
