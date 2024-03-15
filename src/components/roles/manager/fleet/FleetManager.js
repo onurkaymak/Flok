@@ -28,11 +28,12 @@ const FleetManager = (props = null) => {
 
   const updateVehicleFormHandler = (vehicleInfo) => {
     dispatch(updateVehicle(vehicleInfo, token));
-    dispatch(setSelectedVehicles({ current: [] }))
+    dispatch(setSelectedVehicles({ current: [] }));
     dispatch(uiActions.setSelectedLink(null));
   }
 
   const formCancelButtonHandler = () => {
+    dispatch(setSelectedVehicles({ current: [] }));
     dispatch(uiActions.setSelectedLink(null));
   };
 
@@ -49,7 +50,7 @@ const FleetManager = (props = null) => {
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
-    content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} />
+    content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   }
   else if (props.selectedLink === "fleet delete") {
     content = <h1>Delete Vehicle</h1>
