@@ -29,11 +29,11 @@ const RentalManager = (props) => {
 
   const addRentalFormHandler = (reservationInfo) => {
     dispatch(addRentalService(reservationInfo, token));
-    props.setSelectedLink(null);
+    props.selectedSideLinkHandler(null);
   };
 
   const formCancelButtonHandler = () => {
-    props.setSelectedLink(null);
+    props.selectedSideLinkHandler(null);
   };
 
 
