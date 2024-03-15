@@ -30,7 +30,7 @@ const Profile = () => {
     <div className={classes.profileContainer}>
       <ProfileNavbar onManagerDashChoice={dashChoiceHandler} />
       <SideNavbar currentDash={currentManagerDash} selectedLink={selectedLink} selectedSideLinkHandler={selectedSideLinkHandler} />
-      <Content selectedLink={selectedLink} currentDash={currentManagerDash} />
+      <Content selectedLink={selectedLink} currentDash={currentManagerDash} selectedSideLinkHandler={selectedSideLinkHandler} />
     </div>
   )
 };

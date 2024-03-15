@@ -10,7 +10,7 @@ const Content = (props) => {
     <div className={classes.contentContainer}>
       {props.currentDash === "Fleet" && <FleetManager selectedLink={props.selectedLink} setSelectedLink={props.setSelectedLink} />}
       {props.currentDash === "Production" && <ProductionManager selectedLink={props.selectedLink} setSelectedLink={props.setSelectedLink} />}
-      {props.currentDash === "Rental" && <RentalManager selectedLink={props.selectedLink} setSelectedLink={props.setSelectedLink} />}
+      {props.currentDash === "Rental" && <RentalManager selectedLink={props.selectedLink} selectedSideLinkHandler={props.selectedSideLinkHandler} />}
     </div>
   )
 };
