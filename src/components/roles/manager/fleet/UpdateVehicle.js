@@ -1,27 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchVehicles } from "../../../store/fleet-actions";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const UpdateVehicle = (props) => {
-  const dispatch = useDispatch();
-  const token = useSelector(state => state.user.token);
   const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
   const vehiclesList = useSelector(state => state.fleet.vehicles);
-  const foundedVehicle = useSelector(state => state.fleet.selectedVehicleByVIN);
+
+  const [updateVehicleInfo, setUpdateVehicleInfo] = useState({});
 
 
   useEffect(() => {
-    vehiclesList.forEach((vehicle) => {
-      if (vehicle.id === selectedVehicle[0]) {
-        dispatch(fetchVehicles({ token }, vehicle.vin));
-      }
-    })
+    const found = vehiclesList.find((vehicle) => vehicle.id === selectedVehicle[0]);
+    if (found !== null) {
+      setUpdateVehicleInfo(found);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const cancelButtonClickHandler = () => {
-
+    props.formCancelButtonHandler();
   };
 
   const formSubmitHandler = (event) => {
@@ -59,7 +55,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">VIN:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].vin : ""}
+                    defaultValue={updateVehicleInfo.vin}
                     type="text"
                     name="vin"
                     id="vin"
@@ -78,7 +74,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Make:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].make : ""}
+                    defaultValue={updateVehicleInfo.make}
                     type="text"
                     name="make"
                     id="make"
@@ -97,7 +93,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Model:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].model : ""}
+                    defaultValue={updateVehicleInfo.model}
                     type="text"
                     name="model"
                     id="model"
@@ -116,7 +112,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Color:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].color : ""}
+                    defaultValue={updateVehicleInfo.color}
                     type="text"
                     name="color"
                     id="color"
@@ -135,7 +131,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Mileage:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].mileage : ""}
+                    defaultValue={updateVehicleInfo.mileage}
                     type="text"
                     name="mileage"
                     id="mileage"
@@ -161,7 +157,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Vehicle Class:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].class : ""}
+                    defaultValue={updateVehicleInfo.vehicleClass}
                     type="text"
                     name="vehicleclass"
                     id="vehicleclass"
@@ -180,7 +176,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Class Code:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].classCode : ""}
+                    defaultValue={updateVehicleInfo.classCode}
                     type="text"
                     name="classCode"
                     id="classCode"
@@ -198,7 +194,7 @@ const UpdateVehicle = (props) => {
               </label>
               <div className="mt-2">
                 <select
-                  defaultValue={foundedVehicle !== null ? foundedVehicle[0].state : ""}
+                  defaultValue={updateVehicleInfo.state}
                   id="state"
                   name="state"
                   autoComplete="off"
@@ -273,7 +269,7 @@ const UpdateVehicle = (props) => {
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">License Plate:</span>
                   <input
-                    defaultValue={foundedVehicle !== null ? foundedVehicle[0].licensePlate : ""}
+                    defaultValue={updateVehicleInfo.licensePlate}
                     type="text"
                     name="licensePlate"
                     id="licensePlate"
