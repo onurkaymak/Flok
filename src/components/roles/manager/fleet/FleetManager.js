@@ -6,6 +6,7 @@ import classes from './FleetManager.module.css';
 import AddVehicleForm from './AddVehicleForm';
 import { uiActions } from "../../../store/ui-slice";
 import UpdateVehicle from './UpdateVehicle';
+import { setSelectedVehicles } from '../../../store/fleet-actions';
 
 
 
@@ -27,6 +28,8 @@ const FleetManager = (props = null) => {
 
   const updateVehicleFormHandler = (vehicleInfo) => {
     dispatch(updateVehicle(vehicleInfo, token));
+    dispatch(setSelectedVehicles({ current: [] }))
+    dispatch(uiActions.setSelectedLink(null));
   }
 
   const formCancelButtonHandler = () => {
