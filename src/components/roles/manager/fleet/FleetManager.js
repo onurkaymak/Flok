@@ -14,7 +14,11 @@ import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 
 const FleetManager = (props = null) => {
+  const [open, setOpen] = useState(true);
 
+  const modalCloseHandler = () => {
+    setOpen(false);
+  }
 
 
   const dispatch = useDispatch();
