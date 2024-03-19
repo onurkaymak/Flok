@@ -14,7 +14,7 @@ import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 
 const FleetManager = (props = null) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const modalCloseHandler = () => {
     setOpen(false);
@@ -112,7 +112,7 @@ const FleetManager = (props = null) => {
                       </div>
                       <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                         <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                          Delete Vehilce
+                          Delete Vehicle
                         </Dialog.Title>
                         <div className="mt-4">
                           <div className={classes.reservationInfoModalContainer}>
