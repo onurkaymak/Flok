@@ -52,6 +52,13 @@ const FleetManager = (props = null) => {
   }, [fetcher]);
 
 
+  useEffect(() => {
+    if (props.selectedLink === "fleet delete") {
+      setOpen(true);
+    }
+  }, [props.selectedLink])
+
+
   let content;
   let title;
 
@@ -61,9 +68,6 @@ const FleetManager = (props = null) => {
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
     content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
-  }
-  else if (props.selectedLink === "fleet delete") {
-    content = <h1>Delete Vehicle</h1>
   } else {
     title = <h1 className={classes.title}>Vehicle List</h1>
     content = <VehicleList vehicles={vehicles} />
