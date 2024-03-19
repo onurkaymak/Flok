@@ -59,6 +59,10 @@ const fleetSlice = createSlice({
       foundedVehicle.licensePlate = updatedVehicle.licensePlate;
       foundedVehicle.isRented = updatedVehicle.isRented;
       foundedVehicle.inProduction = updatedVehicle.inProduction;
+    },
+    deleteVehicle(state, action) {
+      const selectedVehicleId = action.payload;
+      state.vehicles = state.vehicles.filter(vehicle => vehicle.id !== selectedVehicleId);
     }
   }
 });
