@@ -113,3 +113,18 @@ export const updateVehicle = (vehicleInfo, token) => {
 
   }
 }
+
+
+export const deleteVehicle = (vehicleId, token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`https://localhost:5000/api/fleet/${vehicleId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      dispatch(fleetActions.deleteVehicle(vehicleId));
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+};
