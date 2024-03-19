@@ -43,8 +43,23 @@ const SideNavbar = (props) => {
             break;
           }
         case 'delete fleet':
-          props.selectedSideLinkHandler("fleet delete");
-          break;
+          if (selectedVehicles.length === 0) {
+            dispatch(uiActions.showNotification({
+              title: "Error",
+              message: "Please select a vehicle from the vehicle list."
+            }));
+            break;
+          } else if (selectedVehicles.length > 1) {
+            dispatch(uiActions.showNotification({
+              title: "Error",
+              message: "You can select only one vehicle to delete at once."
+            }));
+            break;
+          }
+          else {
+            props.selectedSideLinkHandler("fleet delete");
+            break;
+          }
         case 'search production':
           props.selectedSideLinkHandler("production search");
           break;
