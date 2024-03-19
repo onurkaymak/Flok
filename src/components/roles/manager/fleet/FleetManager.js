@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback, useEffect, Fragment, useState } from 'react';
 import VehicleList from "./VehicleList";
-import { fetchVehicles, addVehicle, resetVehiclesList, updateVehicle } from '../../../store/fleet-actions';
+import { fetchVehicles, addVehicle, resetVehiclesList, updateVehicle, deleteVehicle } from '../../../store/fleet-actions';
 import classes from './FleetManager.module.css';
 import AddVehicleForm from './AddVehicleForm';
 import { uiActions } from "../../../store/ui-slice";
@@ -24,6 +24,7 @@ const FleetManager = (props = null) => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
   const vehicles = useSelector(state => state.fleet.vehicles);
+  const selectedVehicle = useSelector(state => state.fleet.selectedVehicles);
 
   const fetcher = useCallback(async () => {
     dispatch(resetVehiclesList());
@@ -45,6 +46,11 @@ const FleetManager = (props = null) => {
   const formCancelButtonHandler = () => {
     dispatch(setSelectedVehicles({ current: [] }));
     dispatch(uiActions.setSelectedLink(null));
+  };
+
+  const deleteVehicleHandler = () => {
+    dispatch(deleteVehicle(selectedVehicle[0], token));
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -136,6 +142,7 @@ const FleetManager = (props = null) => {
                   </div>
                   <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button
+                      onClick={deleteVehicleHandler}
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                     >
