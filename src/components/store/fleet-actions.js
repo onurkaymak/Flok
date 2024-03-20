@@ -1,4 +1,5 @@
 import { fleetActions } from "./fleet-slice";
+import { uiActions } from "./ui-slice";
 import axios from "axios";
 
 
@@ -122,6 +123,10 @@ export const deleteVehicle = (vehicleId, token) => {
         headers: { Authorization: `Bearer ${token}` }
       })
       dispatch(fleetActions.deleteVehicle(vehicleId));
+      dispatch(uiActions.showNotification({
+        title: "Success",
+        message: "Vehicle has been deleted from the inventory."
+      }));
     } catch (err) {
       console.log(err);
     }
