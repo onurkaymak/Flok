@@ -10,6 +10,7 @@ import { setSelectedVehicles } from '../../../store/fleet-actions';
 
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import DeleteVehicle from './DeleteVehicle';
 
 
 
@@ -49,8 +50,8 @@ const FleetManager = (props = null) => {
   };
 
   const deleteVehicleHandler = () => {
+    // setOpen(false);
     dispatch(deleteVehicle(selectedVehicle[0], token));
-    setOpen(false);
   };
 
   useEffect(() => {
@@ -58,26 +59,29 @@ const FleetManager = (props = null) => {
   }, [fetcher]);
 
 
-  useEffect(() => {
-    if (props.selectedLink === "fleet delete") {
-      setOpen(true);
-    }
-  }, [props.selectedLink])
-
+  // useEffect(() => {
+  //   if (props.selectedLink === "fleet delete") {
+  //     setOpen(true);
+  //   }
+  // }, [props.selectedLink])
 
   let content;
   let title;
 
   if (props.selectedLink === "fleet add") {
-    title = <h1 className={classes.title}>Add Vehicle</h1>
+    title = "fleet add"
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
     content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
+  } else if (props.selectedLink === "fleet delete") {
+    title = <h1>Delete Vehicle</h1>
+    content = <DeleteVehicle deleteVehicleHandler={deleteVehicleHandler} />
   } else {
     title = <h1 className={classes.title}>Vehicle List</h1>
     content = <VehicleList vehicles={vehicles} />
   }
+
 
   return (
     <div className={classes.fleetManagerContainer}>
