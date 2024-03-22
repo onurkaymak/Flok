@@ -4,8 +4,7 @@ const fleetSlice = createSlice({
   name: 'fleet',
   initialState: {
     vehicles: [],
-    selectedVehicles: [],
-    selectedVehicleByVIN: null
+    selectedVehicles: []
   },
   reducers: {
     fetch(state, action) {
@@ -37,9 +36,6 @@ const fleetSlice = createSlice({
     },
     setSelectedVehicleById(state, action) {
       state.selectedVehicles = [...action.payload.current];
-    },
-    setFindVehicleByVIN(state, action) {
-      state.selectedVehicleByVIN = action.payload;
     },
     updateVehicle(state, action) {
       const vehicleId = action.payload.vehicleId;
