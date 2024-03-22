@@ -42,24 +42,6 @@ const SideNavbar = (props) => {
             props.selectedSideLinkHandler("fleet update");
             break;
           }
-        case 'delete fleet':
-          if (selectedVehicles.length === 0) {
-            dispatch(uiActions.showNotification({
-              title: "Error",
-              message: "Please select a vehicle from the vehicle list."
-            }));
-            break;
-          } else if (selectedVehicles.length > 1) {
-            dispatch(uiActions.showNotification({
-              title: "Error",
-              message: "You can select only one vehicle to delete at once."
-            }));
-            break;
-          }
-          else {
-            props.selectedSideLinkHandler("fleet delete");
-            break;
-          }
         case 'search production':
           props.selectedSideLinkHandler("production search");
           break;
@@ -103,12 +85,6 @@ const SideNavbar = (props) => {
             <li className={classes.listItem}>Update Vehicle</li>
             <svg className={classes.listItemIcon}>
               <use href={sprite + "#icon-loop2"}></use>
-            </svg>
-          </div>
-          <div className={classes.listItemContainer} onClick={() => selectedLinkHandler("delete fleet")}>
-            <li className={classes.listItem}>Delete Vehicle</li>
-            <svg className={classes.listItemIcon}>
-              <use href={sprite + "#icon-bin2"}></use>
             </svg>
           </div>
         </ul>
