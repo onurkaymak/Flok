@@ -61,6 +61,7 @@ const VehicleList = (props) => {
       </div>
       <div className="flex justify-end mt-2 bg-red w-full">
         <button
+          onClick={props.deleteModalHandler}
           type="button"
           className={"inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto opacity-0 transition ease-in-out delay-75" + (selectedVehicles.length === 0 ? " opacity-0" : " opacity-100")}
         >
