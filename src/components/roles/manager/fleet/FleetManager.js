@@ -49,6 +49,13 @@ const FleetManager = (props = null) => {
   };
 
   const deleteModalHandler = () => {
+    if (selectedVehicle.length > 1) {
+      dispatch(uiActions.showNotification({
+        title: "Error",
+        message: "You can delete only one vehicle at once."
+      }));
+      return
+    }
     setOpen((state) => !state);
   };
 
