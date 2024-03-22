@@ -10,17 +10,11 @@ import { setSelectedVehicles } from '../../../store/fleet-actions';
 
 import { Dialog, Transition } from '@headlessui/react';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import DeleteVehicle from './DeleteVehicle';
 
 
 
 const FleetManager = (props = null) => {
   const [open, setOpen] = useState(false);
-
-  const modalCloseHandler = () => {
-    setOpen(false);
-  }
-
 
   const dispatch = useDispatch();
   const token = useSelector(state => state.user.token);
@@ -50,20 +44,17 @@ const FleetManager = (props = null) => {
   };
 
   const deleteVehicleHandler = () => {
-    // setOpen(false);
     dispatch(deleteVehicle(selectedVehicle[0], token));
+    setOpen(false);
+  };
+
+  const deleteModalHandler = () => {
+    setOpen((state) => !state);
   };
 
   useEffect(() => {
     fetcher()
   }, [fetcher]);
-
-
-  // useEffect(() => {
-  //   if (props.selectedLink === "fleet delete") {
-  //     setOpen(true);
-  //   }
-  // }, [props.selectedLink])
 
   let content;
   let title;
@@ -74,12 +65,9 @@ const FleetManager = (props = null) => {
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
     content = <UpdateVehicle updateVehicleFormHandler={updateVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
-  } else if (props.selectedLink === "fleet delete") {
-    title = <h1>Delete Vehicle</h1>
-    content = <DeleteVehicle deleteVehicleHandler={deleteVehicleHandler} />
   } else {
     title = <h1 className={classes.title}>Vehicle List</h1>
-    content = <VehicleList vehicles={vehicles} />
+    content = <VehicleList vehicles={vehicles} deleteModalHandler={deleteModalHandler} />
   }
 
 
@@ -94,7 +82,7 @@ const FleetManager = (props = null) => {
       </div>
 
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={modalCloseHandler}>
+        <Dialog as="div" className="relative z-10" onClose={deleteModalHandler}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -153,7 +141,7 @@ const FleetManager = (props = null) => {
                       Delete
                     </button>
                     <button
-                      onClick={() => modalCloseHandler()}
+                      onClick={deleteModalHandler}
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
                     >
