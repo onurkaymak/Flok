@@ -5,7 +5,8 @@ const rentalSlice = createSlice({
   name: 'rental',
   initialState: {
     rentalServices: [],
-    selectedRentalService: null
+    selectedRentalService: null,
+    selectedRentalServiceById: null
   },
   reducers: {
     fetchSelectedRentalService(state, action) {
@@ -41,6 +42,9 @@ const rentalSlice = createSlice({
     },
     resetRentalServices(state) {
       state.rentalServices = []
+    },
+    setSelectedRentalService(state, action) {
+      state.selectedRentalServiceById = action.payload;
     }
   }
 });
