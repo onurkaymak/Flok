@@ -14,9 +14,7 @@ const RentalServiceList = (props) => {
   const [warningModal, setWarningModal] = useState(false);
   const [selectedRentalServiceFromList, setSelectedRentalServiceFromList] = useState();
 
-
   const fetchedRentalService = useSelector(state => state.rental.selectedRentalService);
-
 
   const formSubmitHandler = (event, rentalService) => {
     let reservationInfo;
@@ -24,7 +22,8 @@ const RentalServiceList = (props) => {
 
     if (rentalService) {
       reservationInfo = { rentalServiceId: rentalService }
-    } else {
+    }
+    else {
       const rentalServiceId = parseInt(event.target[0].value);
       const customerEmail = event.target[1].value;
       const serviceAgentId = event.target[2].value;
@@ -41,7 +40,6 @@ const RentalServiceList = (props) => {
 
       reservationInfo = { rentalServiceId, customerEmail, serviceAgentId, customerPhoneNum };
     }
-
     props.searchRentalService(reservationInfo);
     document.getElementById("checkRentalServiceForm").reset();
     setOpen(true);
@@ -230,7 +228,7 @@ const RentalServiceList = (props) => {
                       </div>
                     }
 
-                    {!warningModal && <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    {!warningModal && open !== false && fetchedRentalService !== null && <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                       <div className="sm:flex sm:items-start">
                         <div className="mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
                           <InformationCircleIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
@@ -246,13 +244,15 @@ const RentalServiceList = (props) => {
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt className="text-sm font-medium leading-6 text-gray-900">Reservation No</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.rentalServiceId : null}
+                                      {/* {fetchedRentalService ? fetchedRentalService.rentalServiceId : null} */}
+                                      {fetchedRentalService.rentalServiceId}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt className="text-sm font-medium leading-6 text-gray-900">Contact Name</dt>
                                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                      {fetchedRentalService ? fetchedRentalService.customer.name : null}
+                                      {/* {fetchedRentalService ? fetchedRentalService.customer.name : null} */}
+                                      {fetchedRentalService.customer.name}
                                     </dd>
                                   </div>
                                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
