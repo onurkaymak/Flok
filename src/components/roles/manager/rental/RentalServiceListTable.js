@@ -1,8 +1,8 @@
 import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
 import { uiActions } from "../../../store/ui-slice";
+import { rentalActions } from "../../../store/rental-slice";
 
 const columns = [
   { field: 'id', headerName: 'Id', width: 50 },
@@ -19,45 +19,45 @@ const columns = [
 
 const RentalServiceListTable = (props) => {
   const reservationList = useSelector(state => state.rental.rentalServices);
-  const selectedVehicleId = useRef();
+  const selectedRentalServiceById = useSelector(state => state.rental.selectedRentalServiceById);
   const dispatch = useDispatch();
 
   const selectedVehicleHandler = (selectedRowIds) => {
-    selectedVehicleId.current = selectedRowIds;
+    dispatch(rentalActions.setSelectedRentalService(selectedRowIds));
   };
 
   const selectedVehicleCheckHandler = () => {
-    if (selectedVehicleId.current === undefined || selectedVehicleId.current.length === 0) {
+    if (selectedRentalServiceById === undefined || selectedRentalServiceById.length === 0) {
       dispatch(uiActions.showNotification({
         title: "Reservation Check Error",
         message: "Please select a reservation."
       }));
       return
-    } else if (selectedVehicleId.current.length > 1) {
+    } else if (selectedRentalServiceById.length > 1) {
       dispatch(uiActions.showNotification({
         title: "Reservation Check Error",
         message: "You can only select one reservation at a time."
       }));
       return
     }
-    props.formSubmitHandler({ type: null }, selectedVehicleId.current[0]);
+    props.formSubmitHandler({ type: null }, selectedRentalServiceById[0]);
   }
 
   const selectedVehicleDeleteHandler = () => {
-    if (selectedVehicleId.current === undefined || selectedVehicleId.current.length === 0) {
+    if (selectedRentalServiceById === undefined || selectedRentalServiceById.length === 0) {
       dispatch(uiActions.showNotification({
         title: "Reservation Check Error",
         message: "Please select a reservation."
       }));
       return
-    } else if (selectedVehicleId.current.length > 1) {
+    } else if (selectedRentalServiceById.length > 1) {
       dispatch(uiActions.showNotification({
         title: "Reservation Check Error",
         message: "You can only select one reservation at a time."
       }));
       return
     }
-    props.vehicleListDeleteHandler(selectedVehicleId.current[0]);
+    props.vehicleListDeleteHandler(selectedRentalServiceById[0]);
   };
 
   return (
