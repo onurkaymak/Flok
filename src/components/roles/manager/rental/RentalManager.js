@@ -44,8 +44,6 @@ const RentalManager = (props) => {
   if (props.selectedLink === "rental add") {
     title = <h1 className={classes.title}>Book a Rental</h1>
     content = <AddRentalForm addRentalFormHandler={addRentalFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
-  } else if (props.selectedLink === "rental update") {
-    content = <h1>Update Rental</h1>
   } else if (props.selectedLink === "rental delete") {
     content = <h1>Delete Rental</h1>
   } else {
