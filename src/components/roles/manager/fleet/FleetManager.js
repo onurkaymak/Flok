@@ -67,7 +67,7 @@ const FleetManager = (props = null) => {
   let title;
 
   if (props.selectedLink === "fleet add") {
-    title = "fleet add"
+    title = <h1 className={classes.title}>Add Vehicle</h1>
     content = <AddVehicleForm addVehicleFormHandler={addVehicleFormHandler} formCancelButtonHandler={formCancelButtonHandler} />
   } else if (props.selectedLink === "fleet update") {
     title = <h1 className={classes.title}>Update Vehicle</h1>
